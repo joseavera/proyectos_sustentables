@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Principios, Dimensiones y Características — Clase 3 (Sistemas Computacionales)</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  /* ── Ajustes específicos de esta clase (no modifican base.css) ── */
+  .mixtle-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tip-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #FFF8FA;
+    border: 1px solid #D8A8BA;
+    border-left: 4px solid var(--guinda-rule);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.1rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .tip-box .tip-title {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    font-weight: 700;
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .tip-box p { margin-bottom: 0; font-size: .97rem; }
+
+  /* Tres dimensiones */
+  .dimension-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 700px) {
+    .dimension-grid { grid-template-columns: 1fr; }
+  }
+
+  .dimension-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.3rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .dimension-card h4 { color: var(--guinda-dark); margin-bottom: .4rem; }
+  .dimension-card p { font-size: .93rem; margin-bottom: 0; }
+
+  /* Principios: lista con tarjetas */
+  .principle-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 700px) {
+    .principle-list { grid-template-columns: 1fr; }
+  }
+
+  .principle-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+  }
+
+  .principle-card h4 {
+    font-family: var(--font-ui);
+    font-size: .95rem;
+    color: var(--guinda);
+    margin-bottom: .3rem;
+  }
+
+  .principle-card p { font-size: .92rem; margin-bottom: 0; }
+
+  /* Actividad / proyecto */
+  .activity-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .activity-header {
+    background: var(--guinda);
+    color: var(--white);
+    padding: .9rem 1.4rem;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+
+  .activity-body {
+    padding: 1.3rem 1.5rem;
+    background: var(--off-white);
+  }
+
+  .activity-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui);
+    font-size: .82rem;
+    color: var(--ink-secondary);
+  }
+
+  .activity-meta strong { color: var(--guinda-dark); }
+
+  .project-tag {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--white);
+    background: var(--guinda-dark);
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .8rem;
+  }
+
+  code.inline {
+    font-family: var(--font-mono);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: .1rem .35rem;
+    font-size: .9em;
+    color: var(--guinda-dark);
+  }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .hero-mascot {
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    height: 150px;
+    width: auto;
+    opacity: .95;
+  }
+
+  .class-hero { position: relative; overflow: hidden; }
+
+  @media (max-width: 700px) {
+    .hero-mascot { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:56px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Material de clase — Licenciatura en Sistemas Computacionales</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Sustentabilidad · Tema 1. Introducción a la Sustentabilidad</span>
+  <h1>Principios, Dimensiones y Características</h1>
+  <span class="class-subtitle">Subtema 1.3 — Las especificaciones técnicas con las que vas a construir tu proyecto sustentable.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Programa educativo<span>Lic. en Sistemas Computacionales</span></div>
+    <div class="meta-item">Asignatura<span>Sustentabilidad</span></div>
+    <div class="meta-item">Unidad / Tema<span>1. Introducción a la Sustentabilidad</span></div>
+    <div class="meta-item">Fecha<span>Sábado 26 de septiembre de 2026</span></div>
+  </div>
+  <img src="imagen2.png" alt="" class="hero-mascot">
+</section>
+
+<div class="page-wrapper">
+
+  <!-- Competencias -->
+  <section class="section">
+    <h2 class="section-title">Competencias a desarrollar</h2>
+    <div class="competency-card">
+      <span class="comp-num">01</span>
+      <span class="comp-text">
+        <strong>Distinguir</strong> los principios, dimensiones y características de la sustentabilidad,
+        reconociendo cómo se aplican a un producto, servicio o empresa de base tecnológica.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">02</span>
+      <span class="comp-text">
+        <strong>Aplicar</strong> ese marco conceptual para diagnosticar, de forma preliminar, el proyecto o la
+        organización que será el objeto de su proyecto sustentable del cuatrimestre.
+      </span>
+    </div>
+  </section>
+
+  <!-- Introducción / analogía -->
+  <section class="section">
+    <h2 class="section-title">Para comenzar: conectando lo visto</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Mixtle hace un recuento</span>
+        <p>
+          Ya vimos que ignorar la deuda técnica del planeta provoca un colapso (clase 1) y que México
+          construyó su propio "historial de versiones" legal para atenderla (clase 2). Hoy necesitamos algo
+          distinto: las <strong>especificaciones técnicas</strong> —los principios, las dimensiones y las
+          características de la sustentabilidad— que te van a servir para auditar cualquier sistema, producto
+          o empresa, tal como usarías una lista de requisitos no funcionales antes de dar por terminado un
+          desarrollo. A partir de hoy, cada clase alimentará directamente el proyecto sustentable que
+          entregarás al final del cuatrimestre.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dimensiones -->
+  <section class="section">
+    <h2 class="section-title">Las tres dimensiones: el triple resultado</h2>
+    <p>
+      Recuerda la metáfora de la arquitectura de tres capas que deben mantenerse sincronizadas. A este
+      equilibrio se le conoce técnicamente como <strong>triple resultado</strong>
+      (<em>triple bottom line</em>): un sistema —o una empresa— ya no se evalúa solo por si "compila y
+      funciona", sino por su desempeño en tres <em>test suites</em> a la vez.
+    </p>
+    <div class="dimension-grid">
+      <div class="dimension-card">
+        <h4>Económica</h4>
+        <p>
+          Viabilidad financiera y competitividad del producto o servicio, sin comprometer los recursos que el
+          propio proyecto necesitará para mantenerse en el tiempo.
+        </p>
+      </div>
+      <div class="dimension-card">
+        <h4>Social</h4>
+        <p>
+          Condiciones laborales dignas del equipo de desarrollo, accesibilidad del producto y su impacto en
+          usuarios y comunidades.
+        </p>
+      </div>
+      <div class="dimension-card">
+        <h4>Ambiental</h4>
+        <p>
+          Consumo energético del software y el hardware, eficiencia del código y manejo responsable de los
+          equipos al final de su vida útil.
+        </p>
+      </div>
+    </div>
+    <div class="callout note">
+      <p>
+        Un proyecto sustentable sólido no "pasa" una sola prueba: busca que las tres dimensiones aprueben al
+        mismo tiempo, o al menos que ninguna falle por completo a costa de las otras.
+      </p>
+    </div>
+  </section>
+
+  <!-- Principios -->
+  <section class="section">
+    <h2 class="section-title">Principios básicos de la sustentabilidad</h2>
+    <p>
+      Estos principios funcionan como las "reglas de negocio" detrás de cualquier decisión sustentable. Te van
+      a servir para justificar las decisiones de diseño de tu proyecto:
+    </p>
+    <div class="principle-list">
+      <div class="principle-card">
+        <h4>Equidad intergeneracional</h4>
+        <p>El sistema que diseñes hoy no debe limitar los recursos o las oportunidades de quienes lo mantendrán o lo usarán en el futuro.</p>
+      </div>
+      <div class="principle-card">
+        <h4>Principio precautorio</h4>
+        <p>Ante la duda razonable de un impacto ambiental grave (por ejemplo, un consumo energético desproporcionado), se actúa con prevención aunque no haya certeza total.</p>
+      </div>
+      <div class="principle-card">
+        <h4>Integralidad</h4>
+        <p>Lo económico, lo social y lo ambiental están interconectados, igual que los módulos de un sistema: un cambio en uno afecta a los otros.</p>
+      </div>
+      <div class="principle-card">
+        <h4>Corresponsabilidad</h4>
+        <p>Desarrolladores, empresas y usuarios comparten la responsabilidad de avanzar hacia una tecnología más sustentable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Características -->
+  <section class="section">
+    <h2 class="section-title">Características de la sustentabilidad</h2>
+    <div class="concept-box">
+      <span class="concept-title">Es sistémica, dinámica y de largo plazo</span>
+      <p style="margin-bottom:0;">
+        La sustentabilidad no se logra con un solo <em>commit</em>: es un proceso continuo (dinámico), que
+        involucra a todos los componentes de un sistema como si fueran módulos interdependientes de una misma
+        arquitectura (sistémica), y cuyos resultados se miden en horizontes largos, no en un sprint (largo
+        plazo). Además, es multiescalar: una decisión local —como la de un solo servidor mal configurado—
+        puede tener efectos a nivel de todo un centro de datos o incluso globales.
+      </p>
+    </div>
+  </section>
+
+  <!-- Ejemplo aplicado -->
+  <section class="section">
+    <h2 class="section-title">Ejemplo aplicado</h2>
+    <div class="example-block">
+      <div class="example-header">Caso: una startup de software audita su propio "triple resultado"</div>
+      <div class="example-body">
+        <div class="example-statement">
+          Una startup mexicana de desarrollo de apps revisa su operación bajo el lente de la sustentabilidad:
+          descubre que ofrece buenas condiciones laborales a su equipo remoto (dimensión social fuerte), pero
+          sus servidores corren sobredimensionados las 24 horas sin optimización (dimensión ambiental débil),
+          mientras sus ingresos por suscripción se mantienen estables (dimensión económica aceptable).
+        </div>
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span>
+            <span class="step-content">
+              <strong>Diagnóstico:</strong> aplicar las tres dimensiones revela fortalezas y áreas de
+              oportunidad que antes no se veían juntas.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <span class="step-content">
+              <strong>Principio aplicado:</strong> la integralidad exige que la solución (optimizar código,
+              usar autoescalado, migrar a un proveedor con energía renovable) no dispare tanto los costos que
+              ponga en riesgo la dimensión económica.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <span class="step-content">
+              <strong>Característica visible:</strong> el cambio se planea como un proceso gradual
+              (dinámico), con métricas que se revisan cada mes, no como una sola optimización de una semana.
+            </span>
+          </li>
+        </ol>
+        <div class="result-line">
+          Conclusión del caso: este mismo ejercicio de diagnóstico —tres dimensiones, principios y
+          características— es exactamente lo que vas a aplicar hoy a tu propio proyecto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Actividad integradora: arranque del proyecto -->
+  <section class="section">
+    <h2 class="section-title">Actividad integradora</h2>
+    <span class="project-tag">Primer avance del proyecto sustentable</span>
+
+    <div class="activity-block">
+      <div class="activity-header">Dinámica: mapeo inicial de tu proyecto sustentable</div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span><strong>Modalidad:</strong> equipos de 3 a 4 personas (el mismo equipo que desarrollará el proyecto del curso)</span>
+          <span><strong>Duración:</strong> 45 minutos en clase + trabajo independiente</span>
+          <span><strong>Producto:</strong> ficha de diagnóstico inicial (formato libre: documento, presentación o repositorio con README)</span>
+        </div>
+
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span>
+            <span class="step-content">
+              <strong>Elijan el objeto de su proyecto sustentable</strong>: una empresa de tecnología real, una
+              aplicación o sistema que estén desarrollando, un centro de datos, o cualquier organización con
+              un componente tecnológico relevante para su carrera. Este será el contexto que trabajarán
+              durante todo el cuatrimestre.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <span class="step-content">
+              <strong>Completen la tabla de las tres dimensiones</strong> para ese proyecto u organización: en
+              cada una, anoten una fortaleza actual y un área de oportunidad (usen la tabla que se muestra
+              abajo como formato).
+            </span>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <span class="step-content">
+              <strong>Elijan al menos un principio</strong> (equidad intergeneracional, precautorio,
+              integralidad o corresponsabilidad) que se relacione directamente con el área de oportunidad más
+              urgente que identificaron.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">4</span>
+            <span class="step-content">
+              <strong>Redacten un planteamiento inicial del problema</strong> en una sola oración: "Nuestro
+              proyecto busca atender [problema] en [sistema/organización], para mejorar su dimensión
+              [económica / social / ambiental] sin sacrificar las otras dos."
+            </span>
+          </li>
+          <li>
+            <span class="step-n">5</span>
+            <span class="step-content">
+              <strong>Compartan</strong> su planteamiento con el grupo para recibir retroalimentación del
+              asesor antes de continuar desarrollándolo en las próximas sesiones.
+            </span>
+          </li>
+        </ol>
+
+        <table class="worksheet-table">
+          <thead>
+            <tr>
+              <th>Dimensión</th>
+              <th>Fortaleza actual</th>
+              <th>Área de oportunidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Económica</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>Social</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>Ambiental</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="result-line">
+          Guarden esta ficha: será la base del diagnóstico formal de su proyecto sustentable, que se seguirá
+          ampliando con lo que veamos en los siguientes temas del curso (gestión ambiental, desarrollo
+          sustentable y diseño de proyectos).
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Inicio</span>
+      <p>
+        Recuperación en plenaria de las dos sesiones anteriores (evolución global y marco mexicano) y
+        presentación breve de los principios, dimensiones y características que se usarán en la dinámica.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Desarrollo</span>
+      <p>
+        Asesoría síncrona (Google Meet): formación de equipos de proyecto y desarrollo guiado de la dinámica
+        de mapeo inicial, con acompañamiento del asesor equipo por equipo.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Cierre</span>
+      <p>
+        Cada equipo comparte su planteamiento inicial del problema; el grupo y el asesor dan retroalimentación
+        técnica para afinarlo antes de la siguiente sesión.
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Actividad independiente</span>
+        <p>
+          Con base en la retroalimentación recibida, redacten una versión mejorada de su planteamiento del
+          problema y complementen la tabla de las tres dimensiones con al menos un dato técnico o fuente que
+          respalde cada fortaleza y área de oportunidad identificada, citando en formato APA.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- Conclusión -->
+  <section class="section">
+    <h2 class="section-title">Conclusión</h2>
+    <p>
+      Los principios, las dimensiones y las características de la sustentabilidad son, para quien diseña
+      sistemas, el equivalente a un conjunto de requisitos no funcionales que ningún proyecto tecnológico
+      debería ignorar: son la caja de herramientas con la que vas a diagnosticar, justificar y dar forma a tu
+      proyecto sustentable a lo largo del cuatrimestre. A partir de hoy, cualquier sistema, aplicación o
+      empresa de tecnología que analicemos en clase —incluido el que tú elegiste para tu propio proyecto— se
+      puede leer bajo esta misma lógica de triple resultado. En la siguiente sesión cerraremos el Tema 1
+      distinguiendo con precisión los matices entre sustentabilidad y sostenibilidad, antes de avanzar hacia
+      la gestión ambiental.
+    </p>
+  </section>
+
+  <!-- Referencias -->
+  <section class="section">
+    <h2 class="section-title">Referencias bibliográficas</h2>
+    <p class="text-sm">
+      Damián, C. A., Hernández, A., Garzón, J. E. y Bellon, D. (2022). Desde la sostenibilidad hasta el
+      desarrollo sustentable: Una radiografía de la evolución del concepto. <em>LATAM. Revista Latinoamericana
+      de Ciencias Sociales y Humanidades</em>, 3(2), 1536-1550.
+      https://latam.redilat.org/index.php/lt/article/view/200
+    </p>
+    <p class="text-sm">
+      Gómez, J. L. (2014). Del Desarrollo Sostenible a la Sustentabilidad Ambiental. <em>Revista Facultad de
+      Ciencias Económicas: Investigación y Reflexión</em>, 22(1), 115-136.
+      http://www.scielo.org.co/pdf/rfce/v22n1/v22n1a09.pdf
+    </p>
+    <p class="text-sm">
+      Ibáñez, R. M. (2012). Indicadores de sustentabilidad: utilidad y limitaciones. <em>Teoría y
+      Praxis</em>, (11), 102-126. https://www.redalyc.org/pdf/4561/456145105006.pdf
+    </p>
+    <p class="text-sm">
+      Sánchez, V. G. (2019). <em>¿Qué significa sustentabilidad?</em>
+      https://ceiba.org.mx/publicaciones/Consejo%20Editorial/190501_QueeslaSustentabilidad_VictorSS.pdf
+    </p>
+    <p class="text-sm" style="margin-bottom:0;">
+      Thomas, R. (2021). ¿Qué falta para entender la sustentabilidad?. <em>Estudios sobre las Culturas
+      Contemporáneas</em>, 27(54), 77-108.
+      https://www.redalyc.org/journal/316/31669754005/31669754005.pdf
+    </p>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Tema 1</span>
+  <img src="imagen1.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+</body>
+</html>
