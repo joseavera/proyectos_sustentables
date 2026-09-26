@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temario del curso — Sustentabilidad</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  /* ── Ajustes específicos de esta página (no modifican base.css) ── */
+  .unit-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .unit-overview { grid-template-columns: 1fr; }
+  }
+
+  .unit-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    padding: 1.3rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .unit-card .unit-num {
+    font-family: var(--font-ui);
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--guinda-mid);
+    display: block;
+    margin-bottom: .3rem;
+  }
+
+  .unit-card h3 { margin-bottom: .5rem; }
+
+  .unit-card .unit-hours {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    color: var(--ink-secondary);
+    margin-top: .7rem;
+    display: block;
+  }
+
+  .unit-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .unit-block-header {
+    background: var(--guinda);
+    color: var(--white);
+    padding: 1rem 1.5rem;
+  }
+
+  .unit-block-header .unit-tag {
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: rgba(255,255,255,.7);
+    display: block;
+    margin-bottom: .2rem;
+  }
+
+  .unit-block-header h3 { color: var(--white); margin-bottom: 0; }
+
+  .unit-block-body {
+    background: var(--off-white);
+    padding: 1.4rem 1.6rem;
+  }
+
+  .unit-block-body .subtopics {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+  }
+
+  .unit-block-body .subtopics li {
+    padding: .4rem 0 .4rem .1rem;
+    border-bottom: 1px dashed var(--border);
+    font-size: .97rem;
+  }
+
+  .unit-block-body .subtopics li:last-child { border-bottom: none; }
+
+  .purpose-line {
+    background: var(--guinda-light);
+    border-radius: var(--radius-sm);
+    padding: .8rem 1rem;
+    font-size: .95rem;
+    line-height: 1.6;
+    margin-top: .5rem;
+  }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .toc {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .toc ol { margin-bottom: 0; }
+  .toc a { font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:64px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Temario del curso — Licenciatura en Administración de Empresas</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Material para el estudiante</span>
+  <h1>Sustentabilidad</h1>
+  <span class="class-subtitle">Temario completo del curso: unidades, temas, actividades y criterios de evaluación.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Programa educativo<span>Lic. en Administración de Empresas</span></div>
+    <div class="meta-item">Cuatrimestre<span>Cuarto cuatrimestre</span></div>
+    <div class="meta-item">Duración total<span>64 horas (4 créditos)</span></div>
+  </div>
+</section>
+
+<div class="page-wrapper">
+
+  <!-- Índice -->
+  <nav class="toc">
+    <span class="card-title" style="margin-bottom:.5rem;">Contenido de esta página</span>
+    <ol>
+      <li><a href="#proposito">Propósito general de la asignatura</a></li>
+      <li><a href="#unidades">Unidades y temas del curso</a></li>
+      <li><a href="#metodologia">Metodología y actividades de aprendizaje</a></li>
+      <li><a href="#evaluacion">Criterios de evaluación</a></li>
+      <li><a href="#recursos">Recursos tecnológicos</a></li>
+      <li><a href="#bibliografia">Bibliografía por unidad</a></li>
+    </ol>
+  </nav>
+
+  <!-- Propósito general -->
+  <section class="section" id="proposito">
+    <h2 class="section-title">Propósito general de la asignatura</h2>
+    <div class="concept-box">
+      <span class="concept-title">Al concluir el curso serás capaz de</span>
+      <p style="margin-bottom:0;">
+        Comprender y aplicar los fundamentos de la sustentabilidad, distinguiendo sus conceptos, dimensiones
+        e implicaciones en la sociedad, con el fin de implementar proyectos que atiendan las problemáticas y
+        necesidades actuales, permitiendo el crecimiento económico, el bienestar social y el cuidado del medio
+        ambiente.
+      </p>
+    </div>
+
+    <div class="competency-card">
+      <span class="comp-num">01</span>
+      <span class="comp-text">
+        <strong>Identificar</strong> el alcance de la gestión ambiental, reconociendo las dimensiones,
+        normativas y estrategias para planear, dirigir y administrar proyectos sustentables.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">02</span>
+      <span class="comp-text">
+        <strong>Implementar</strong> prácticas sustentables a partir del diseño de proyectos que reduzcan los
+        impactos negativos al medio ambiente y equilibren los objetivos ambientales, económicos y sociales.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">03</span>
+      <span class="comp-text">
+        <strong>Valorar</strong> la equidad social como un elemento necesario para garantizar el desarrollo
+        sustentable, con el fin de tomar decisiones que orienten hacia el progreso económico, social y el
+        cuidado del medio ambiente.
+      </span>
+    </div>
+  </section>
+
+  <!-- Vista general de unidades -->
+  <section class="section" id="unidades">
+    <h2 class="section-title">Unidades y temas del curso</h2>
+    <p>El curso se organiza en cuatro unidades temáticas que avanzan de lo conceptual a lo aplicado:</p>
+
+    <div class="unit-overview">
+      <div class="unit-card">
+        <span class="unit-num">Unidad 1</span>
+        <h3>Introducción a la Sustentabilidad</h3>
+        <p class="text-muted">Evolución, contexto en México, principios y dimensiones del concepto.</p>
+        <span class="unit-hours">4 h conducidas · 12 h independientes</span>
+      </div>
+      <div class="unit-card">
+        <span class="unit-num">Unidad 2</span>
+        <h3>Gestión Ambiental</h3>
+        <p class="text-muted">Problemáticas, índices, políticas públicas y concientización ambiental.</p>
+        <span class="unit-hours">4 h conducidas · 12 h independientes</span>
+      </div>
+      <div class="unit-card">
+        <span class="unit-num">Unidad 3</span>
+        <h3>Desarrollo Sustentable</h3>
+        <p class="text-muted">Dimensiones, estrategias, indicadores y organizaciones sustentables.</p>
+        <span class="unit-hours">4 h conducidas · 12 h independientes</span>
+      </div>
+      <div class="unit-card">
+        <span class="unit-num">Unidad 4</span>
+        <h3>Proyectos de Desarrollo Sustentable</h3>
+        <p class="text-muted">Diseño, gestión y evaluación de proyectos y sustentabilidad organizacional.</p>
+        <span class="unit-hours">4 h conducidas · 12 h independientes</span>
+      </div>
+    </div>
+
+    <!-- Unidad 1 -->
+    <div class="unit-block">
+      <div class="unit-block-header">
+        <span class="unit-tag">Unidad 1</span>
+        <h3>Introducción a la Sustentabilidad</h3>
+      </div>
+      <div class="unit-block-body">
+        <ul class="subtopics">
+          <li>1.1 Evolución de la sustentabilidad</li>
+          <li>1.2 La sustentabilidad en México</li>
+          <li>1.3 Principios básicos, dimensiones y características de la sustentabilidad</li>
+          <li>1.4 Sustentabilidad y sostenibilidad</li>
+        </ul>
+        <div class="purpose-line">
+          <strong>Fin de aprendizaje:</strong> identificar los elementos esenciales de la sustentabilidad a
+          partir del estudio de sus principios, dimensiones y características, así como de su evolución a
+          nivel global y nacional, con el fin de reconocer su papel e importancia en el desarrollo.
+        </div>
+      </div>
+    </div>
+
+    <!-- Unidad 2 -->
+    <div class="unit-block">
+      <div class="unit-block-header">
+        <span class="unit-tag">Unidad 2</span>
+        <h3>Gestión Ambiental</h3>
+      </div>
+      <div class="unit-block-body">
+        <ul class="subtopics">
+          <li>2.1 Problemáticas ambientales</li>
+          <li>2.2 Índices de sustentabilidad</li>
+          <li>2.3 Políticas públicas ambientales y sustentabilidad</li>
+          <li>2.4 Concientización ambiental</li>
+        </ul>
+        <div class="purpose-line">
+          <strong>Fin de aprendizaje:</strong> comprender las implicaciones de la gestión ambiental a través
+          de la identificación y apropiación de planes, políticas, herramientas, acciones y procesos, con el
+          fin de potencializar la participación de los actores para contribuir al desarrollo sustentable.
+        </div>
+      </div>
+    </div>
+
+    <!-- Unidad 3 -->
+    <div class="unit-block">
+      <div class="unit-block-header">
+        <span class="unit-tag">Unidad 3</span>
+        <h3>Desarrollo Sustentable</h3>
+      </div>
+      <div class="unit-block-body">
+        <ul class="subtopics">
+          <li>3.1 Dimensiones del desarrollo sustentable</li>
+          <li>3.2 Estrategias para alcanzar el desarrollo sustentable</li>
+          <li>3.3 Indicadores de desarrollo sustentable</li>
+          <li>3.4 Organizaciones sustentables</li>
+        </ul>
+        <div class="purpose-line">
+          <strong>Fin de aprendizaje:</strong> utilizar los principios del desarrollo sustentable
+          distinguiendo sus dimensiones, indicadores, así como las estrategias que permiten alcanzarlo, para
+          implementar acciones que permitan un desarrollo económico y social respetuoso con el medio ambiente.
+        </div>
+      </div>
+    </div>
+
+    <!-- Unidad 4 -->
+    <div class="unit-block">
+      <div class="unit-block-header">
+        <span class="unit-tag">Unidad 4</span>
+        <h3>Proyectos de Desarrollo Sustentable</h3>
+      </div>
+      <div class="unit-block-body">
+        <ul class="subtopics">
+          <li>4.1 Proyectos de sustentabilidad</li>
+          <li>4.2 Diseño de proyectos sustentables</li>
+          <li>4.3 Gestión de proyectos de desarrollo sustentable</li>
+          <li>4.4 Gestión y evaluación de la sustentabilidad organizacional</li>
+        </ul>
+        <div class="purpose-line">
+          <strong>Fin de aprendizaje:</strong> diseñar propuestas de proyectos sustentables a partir de la
+          estructuración de planes de acción, con el fin de contribuir a la prosperidad económica sustentada
+          en el cuidado del medio ambiente y la equidad social.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metodología -->
+  <section class="section" id="metodologia">
+    <h2 class="section-title">Metodología y actividades de aprendizaje</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-title">Actividades con acompañamiento del docente</span>
+        <ul>
+          <li>Asesoría síncrona (videoconferencia).</li>
+          <li>Foros moderados de discusión.</li>
+          <li>Aula invertida (<em>flipped classroom</em>).</li>
+          <li>Aprendizaje Basado en Problemas (ABP).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-title">Actividades independientes</span>
+        <ul>
+          <li>Lectura y análisis crítico de artículos y libros.</li>
+          <li>Elaboración de resúmenes citando fuentes con gestor de referencias (APA).</li>
+          <li>Desarrollo de un proyecto sustentable a lo largo del curso.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout note">
+      <p>
+        El proyecto sustentable que se desarrolla de manera independiente se construye de forma progresiva a
+        lo largo de las cuatro unidades y es uno de los productos que integran tu calificación final.
+      </p>
+    </div>
+  </section>
+
+  <!-- Evaluación -->
+  <section class="section" id="evaluacion">
+    <h2 class="section-title">Criterios de evaluación</h2>
+    <p>
+      Tu aprendizaje se valora como un proceso continuo, a través de dos momentos clave: un producto de
+      aprendizaje integral a lo largo del curso y un examen integrador al finalizar el periodo.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Porcentaje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Examen integrador</td>
+          <td>70&nbsp;%</td>
+        </tr>
+        <tr>
+          <td>Proyecto sustentable</td>
+          <td>30&nbsp;%</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong>100&nbsp;%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Recursos -->
+  <section class="section" id="recursos">
+    <h2 class="section-title">Recursos tecnológicos</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Plataforma de Gestión de Aprendizaje (LMS):</strong> Open edX.</li>
+        <li><strong>Videoconferencias:</strong> asesorías virtuales síncronas.</li>
+        <li><strong>Repositorios digitales:</strong> biblioteca virtual y recursos educativos abiertos de revistas académicas.</li>
+        <li><strong>Recursos de comunicación:</strong> foros de discusión en el LMS y correo electrónico.</li>
+        
+      </ul>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- Bibliografía -->
+  <section class="section" id="bibliografia">
+    <h2 class="section-title">Bibliografía por unidad</h2>
+
+    <h4 class="text-guinda mt-2">Unidad 1</h4>
+    <p class="text-sm">
+      Damián, C. A., Hernández, A., Garzón, J. E. y Bellon, D. (2022). Desde la sostenibilidad hasta el
+      desarrollo sustentable: Una radiografía de la evolución del concepto. <em>LATAM. Revista Latinoamericana
+      de Ciencias Sociales y Humanidades</em>, 3(2), 1536-1550.
+      https://latam.redilat.org/index.php/lt/article/view/200
+    </p>
+    <p class="text-sm">
+      Gómez, J. L. (2014). Del Desarrollo Sostenible a la Sustentabilidad Ambiental. <em>Revista Facultad de
+      Ciencias Económicas: Investigación y Reflexión</em>, 22(1), 115-136.
+      http://www.scielo.org.co/pdf/rfce/v22n1/v22n1a09.pdf
+    </p>
+    <p class="text-sm">
+      Ibáñez, R. M. (2012). Indicadores de sustentabilidad: utilidad y limitaciones. <em>Teoría y
+      Praxis</em>, (11), 102-126. https://www.redalyc.org/pdf/4561/456145105006.pdf
+    </p>
+    <p class="text-sm">
+      Sánchez, V. G. (2019). <em>¿Qué significa sustentabilidad?</em>
+      https://ceiba.org.mx/publicaciones/Consejo%20Editorial/190501_QueeslaSustentabilidad_VictorSS.pdf
+    </p>
+    <p class="text-sm">
+      Thomas, R. (2021). ¿Qué falta para entender la sustentabilidad?. <em>Estudios sobre las Culturas
+      Contemporáneas</em>, 27(54), 77-108.
+      https://www.redalyc.org/journal/316/31669754005/31669754005.pdf
+    </p>
+
+    <h4 class="text-guinda mt-2">Unidad 2</h4>
+    <p class="text-sm">
+      Bonilla, M. R. (2019). Educación, medio ambiente y sustentabilidad. <em>Revista Asuntos</em>, (25),
+      207-2019. https://revistasum.umanizales.edu.co/ojs/index.php/Asuntosecoyadmon/article/view/2217
+    </p>
+    <p class="text-sm">
+      Maldonado, T. N. J. (2014). Educación ambiental para la sustentabilidad. <em>Horizonte Sanitario</em>,
+      8(2), 4-7. https://revistahorizonte.ujat.mx/index.php/horizonte/article/view/168
+    </p>
+    <p class="text-sm">
+      Manzanares, G. (2020). Desarrollo sostenible y políticas públicas: enfoque de la ONU y ecología
+      política. <em>Revista Ciencia Jurídica y Política</em>, 6(12), 73-87.
+      https://www.revistaancjp.org/index.php/ancjp/article/view/66
+    </p>
+    <p class="text-sm">
+      Martínez H. E. (2020). El discurso de la sustentabilidad y la Educación Ambiental. <em>EDUCERE -
+      Investigación Arbitrada</em>, 25(81), 505-515.
+      https://www.redalyc.org/journal/356/35666225014/35666225014.pdf
+    </p>
+    <p class="text-sm">
+      Morales, J. (2020). Educación y Desarrollo Humano: Dimensiones para la elaboración de Políticas Públicas
+      en tiempos de complejidad. <em>Revista Conrado</em>, 16(75), 372-383.
+      http://scielo.sld.cu/pdf/rc/v16n75/1990-8644-rc-16-75-372.pdf
+    </p>
+    <p class="text-sm">
+      Sánchez, D. V. (2021). La huella ecológica, un indicador de sustentabilidad. <em>TEPEXI. Boletín
+      Científico de la Escuela Superior Tepeji del Río</em>, 8(15), 16-17.
+      https://repository.uaeh.edu.mx/revistas/index.php/tepexi/article/view/5682
+    </p>
+
+    <h4 class="text-guinda mt-2">Unidad 3</h4>
+    <p class="text-sm">
+      Arteaga, Y. A., Begnini, L. F., Cabezas, M. J. y Salcedo, I. A. (2022). Desarrollo Sostenible y
+      Responsabilidad Social Corporativa. <em>Revista Científica Dominio de las Ciencias</em>, 8(3), 867-880.
+      https://dominiodelasciencias.com/ojs/index.php/es/article/view/2843/6588
+    </p>
+    <p class="text-sm">
+      Ayala, B. D. y Cabrera, C. F. (2022). El Concepto del Desarrollo Sustentable. <em>RD-ICUAP</em>, 8(22),
+      78-86. https://rd.buap.mx/ojs-rdicuap/index.php/rdicuap/article/view/708
+    </p>
+    <p class="text-sm">
+      Foladori, G. y Tommasino, H. (2000). El enfoque técnico del concepto de Desarrollo Sustentable.
+      <em>Revista Paranaense de Desenvolvimiento</em>, Curitiba, (98), 67-75.
+      http://ricaxcan.uaz.edu.mx/jspui/bitstream/20.500.11845/230/1/Foladori%2c%20Tommasino.%20ElEnfoqueTecnicoYElEnfoqueSocialDeLaSustentabilida.pdf
+    </p>
+    <p class="text-sm">
+      Larrouyet, M. C. (2015). <em>Desarrollo sustentable: origen, evolución y su implementación para el
+      cuidado del planeta.</em> Repositorio Institucional Digital de Acceso Abierto de la Universidad
+      Nacional de Quilmes.
+      https://ridaa.unq.edu.ar/bitstream/handle/20.500.11807/154/TFI_2015_larrouyet_003.pdf
+    </p>
+    <p class="text-sm">
+      Octtinger, C. (2022). ¿Desarrollo sustentable o sostenible?: he allí la cuestión. <em>In-Genium</em>,
+      (3), 106-110. https://sedici.unlp.edu.ar/handle/10915/136077
+    </p>
+    <p class="text-sm">
+      Peña, C. N., Ortega, L. S. y San Juan, L. G. (2020). Desarrollo sustentable: un detonante para el
+      crecimiento. <em>Boletín Científico INVESTIGIUM de la Escuela Superior de Tizayuca</em>, 6(11), 15-23.
+      https://repository.uaeh.edu.mx/revistas/index.php/investigium/article/view/5559
+    </p>
+    <p class="text-sm">
+      Predassi, S. y Sosa, A. (2020). Gestión de la Innovación. Restauración, Regeneración y Desarrollo
+      Sostenible. <em>Enseñanza y Práctica Profesional</em>, (11), 1-8.
+      https://sedici.unlp.edu.ar/bitstream/handle/10915/110702/Documento_completo.pdf-PDFA.pdf
+    </p>
+
+    <h4 class="text-guinda mt-2">Unidad 4</h4>
+    <p class="text-sm">
+      Aponte, G. M. (2022). Estado del Arte de la Sustentabilidad y su Incidencia en la Gestión de Proyectos.
+      <em>Gestión de las Organizaciones</em>, 8(1), 196-223.
+      http://saber.ucv.ve/ojs/index.php/rev_GID/article/view/25194
+    </p>
+    <p class="text-sm">
+      Kent, P. (2020). Gestión y Evaluación de la Sustentabilidad Organizacional. <em>Ciencias
+      Administrativas. Revista Digital FCE-UNLP</em>, (15), 87-96.
+      https://www.scielo.org.ar/pdf/cadmin/n15/2314-3738-cadmin-15-87.pdf
+    </p>
+    <p class="text-sm">
+      Tapia, J. D. (2020). La sostenibilidad del concepto de Desarrollo Sostenible. ¿Cómo hacerlo operativo?.
+      <em>UDA AKADEM - Pensamiento Empresarial. Revista de la Universidad de Azuay</em>, (6), 184-202.
+      https://revistas.uazuay.edu.ec/index.php/udaakadem/article/view/320/466
+    </p>
+    <p class="text-sm">
+      Tapia, M., Flores, E. y Serrano, A. (2020). <em>Cambio Climático, Energía y Medio Ambiente. Por un
+      Futuro Sustentable para México. Propuestas para una agenda ambiental.</em> Friedrich Ebert.
+      https://library.fes.de/pdf-files/bueros/mexiko/16970.pdf
+    </p>
+    <p class="text-sm" style="margin-bottom:0;">
+      Vigo, V., Vigil, S., Sánchez, M. y Medianero, D. (2018). <em>Manual de Diseño de Proyectos de Desarrollo
+      Sostenible.</em> Asociación Los Andes de Cajamarca.
+      https://www.losandes.org.pe/libros/LIBRO-DISENO-DE-PROYECTOS-ALAC.pdf
+    </p>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Temario del curso</span>
+  <img src="imagen2.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+</body>
+</html>
