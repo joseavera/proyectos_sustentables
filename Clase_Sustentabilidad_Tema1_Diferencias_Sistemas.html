@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sostenibilidad y Sustentabilidad: precisando el concepto — Clase 4 (Sistemas Computacionales)</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .mixtle-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tip-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #FFF8FA;
+    border: 1px solid #D8A8BA;
+    border-left: 4px solid var(--guinda-rule);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.1rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .tip-box .tip-title {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    font-weight: 700;
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .tip-box p { margin-bottom: 0; font-size: .97rem; }
+
+  /* Comparativo de dos conceptos */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 700px) {
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+
+  .compare-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem 1.4rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .compare-card h4 {
+    color: var(--guinda-dark);
+    margin-bottom: .5rem;
+    font-size: 1.05rem;
+  }
+
+  .compare-card .compare-kicker {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--ink-secondary);
+    margin-bottom: .3rem;
+  }
+
+  .compare-card p { font-size: .93rem; margin-bottom: 0; }
+
+  .compare-card ul {
+    margin: .6rem 0 0 1.1rem;
+    padding: 0;
+    font-size: .9rem;
+  }
+
+  .compare-card li { margin-bottom: .3rem; }
+
+  code.inline {
+    font-family: var(--font-mono);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: .1rem .35rem;
+    font-size: .9em;
+    color: var(--guinda-dark);
+  }
+
+  /* Actividad / proyecto */
+  .activity-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .activity-header {
+    background: var(--guinda);
+    color: var(--white);
+    padding: .9rem 1.4rem;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+
+  .activity-body {
+    padding: 1.3rem 1.5rem;
+    background: var(--off-white);
+  }
+
+  .activity-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui);
+    font-size: .82rem;
+    color: var(--ink-secondary);
+  }
+
+  .activity-meta strong { color: var(--guinda-dark); }
+
+  .project-tag {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--white);
+    background: var(--guinda-dark);
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .8rem;
+  }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .hero-mascot {
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    height: 150px;
+    width: auto;
+    opacity: .95;
+  }
+
+  .class-hero { position: relative; overflow: hidden; }
+
+  @media (max-width: 700px) {
+    .hero-mascot { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:56px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Material de clase — Licenciatura en Sistemas Computacionales</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Sustentabilidad · Tema 1. Introducción a la Sustentabilidad</span>
+  <h1>Sostenibilidad y Sustentabilidad: precisando el concepto</h1>
+  <span class="class-subtitle">Subtema 1.4 — Cerramos el Tema 1 afinando el vocabulario técnico de tu proyecto.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Programa educativo<span>Lic. en Sistemas Computacionales</span></div>
+    <div class="meta-item">Asignatura<span>Sustentabilidad</span></div>
+    <div class="meta-item">Unidad / Tema<span>1. Introducción a la Sustentabilidad</span></div>
+    <div class="meta-item">Fecha<span>Sábado 3 de octubre de 2026</span></div>
+  </div>
+  <img src="imagen2.png" alt="" class="hero-mascot">
+</section>
+
+<div class="page-wrapper">
+
+  <!-- Competencias -->
+  <section class="section">
+    <h2 class="section-title">Competencias a desarrollar</h2>
+    <div class="competency-card">
+      <span class="comp-num">01</span>
+      <span class="comp-text">
+        <strong>Distinguir</strong> con precisión los conceptos de sostenibilidad y sustentabilidad (desarrollo
+        sustentable), identificando cuándo cada término describe un estado del sistema y cuándo describe una
+        estrategia de implementación.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">02</span>
+      <span class="comp-text">
+        <strong>Aplicar</strong> esa distinción para documentar con lenguaje técnico preciso el proyecto
+        sustentable que cada equipo viene construyendo.
+      </span>
+    </div>
+  </section>
+
+  <!-- Introducción / analogía -->
+  <section class="section">
+    <h2 class="section-title">Para comenzar: cerrando el Tema 1</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Mixtle pide precisión</span>
+        <p>
+          En tres clases hemos usado "sustentabilidad" y "sostenibilidad" casi como sinónimos. En documentación
+          técnica informal eso no es grave, pero cuando documentes tu proyecto en un README, una propuesta
+          técnica o un reporte para stakeholders, mezclar ambos términos sin criterio resta precisión, igual
+          que confundir un <code class="inline">requirement</code> con un <code class="inline">test case</code>.
+          Hoy aprenderemos a usar cada palabra donde corresponde, para cerrar el Tema 1 con las bases
+          conceptuales completas antes de entrar a la Gestión Ambiental.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparativo -->
+  <section class="section">
+    <h2 class="section-title">Dos palabras, dos funciones distintas</h2>
+    <p>
+      Piensa en la diferencia entre el <strong>estado deseado de un sistema</strong> (uptime del 99.9%, latencia
+      bajo cierto umbral) y el <strong>plan de implementación</strong> diseñado para alcanzarlo (autoescalado,
+      caché, balanceo de carga). Uno describe la condición objetivo; el otro, el camino técnico para llegar a
+      ella. Con sostenibilidad y sustentabilidad ocurre algo parecido.
+    </p>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <span class="compare-kicker">Un estado / una condición</span>
+        <h4>Sostenibilidad</h4>
+        <p>
+          Es la <strong>capacidad de un sistema</strong> —una aplicación, un centro de datos, una empresa de
+          tecnología— de mantenerse en el tiempo sin agotar los recursos de los que depende. Describe una
+          condición deseable, no las acciones para lograrla.
+        </p>
+        <ul>
+          <li>Equivale a un requisito no funcional: "el sistema debe mantenerse operable y viable a largo plazo".</li>
+          <li>Responde a la pregunta: <em>¿este sistema puede mantenerse así indefinidamente?</em></li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <span class="compare-kicker">Un proceso / una estrategia</span>
+        <h4>Sustentabilidad (desarrollo sustentable)</h4>
+        <p>
+          Es el <strong>plan de implementación</strong> que integra de forma deliberada las dimensiones
+          económica, social y ambiental para construir, con el tiempo, esa condición de sostenibilidad.
+          Describe el camino técnico, no solo la meta.
+        </p>
+        <ul>
+          <li>Incorpora explícitamente la equidad intergeneracional y el triple resultado como criterios de diseño.</li>
+          <li>Responde a la pregunta: <em>¿qué arquitectura o estrategia seguimos para llegar a ese equilibrio?</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout note">
+      <p>
+        En la documentación técnica real, ambos términos suelen usarse de forma intercambiable, y eso no es un
+        error. Lo importante es que, como futuro desarrollador o administrador de sistemas, sepas reconocer
+        cuándo tu documentación describe una meta (sostenibilidad) y cuándo describe las acciones para
+        alcanzarla (desarrollo sustentable), porque esa claridad fortalece cualquier propuesta técnica o
+        reporte de impacto.
+      </p>
+    </div>
+  </section>
+
+  <!-- Ejemplo aplicado -->
+  <section class="section">
+    <h2 class="section-title">Ejemplo aplicado</h2>
+    <div class="example-block">
+      <div class="example-header">Caso: un equipo de DevOps redacta su reporte de eficiencia energética</div>
+      <div class="example-body">
+        <div class="example-statement">
+          El equipo de infraestructura de una startup de software prepara un reporte interno sobre el consumo
+          energético de sus servidores. En el primer borrador, alguien escribió: "Buscamos la sustentabilidad
+          de nuestra infraestructura en la nube." Al revisarlo con el lente de esta clase, el equipo notó que
+          la frase mezclaba la meta con la estrategia.
+        </div>
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span>
+            <span class="step-content">
+              <strong>Meta (sostenibilidad):</strong> "Que nuestro consumo energético por transacción procesada
+              se mantenga estable o disminuya durante los próximos dos años, sin sacrificar el rendimiento."
+            </span>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <span class="step-content">
+              <strong>Estrategia (desarrollo sustentable):</strong> "Para lograrlo, migramos a instancias con
+              autoescalado, implementamos apagado automático de entornos de prueba fuera de horario y elegimos
+              un proveedor con centros de datos alimentados por energía renovable."
+            </span>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <span class="step-content">
+              <strong>Resultado:</strong> el reporte final separa claramente "a dónde queremos llegar" de "cómo
+              lo estamos logrando", lo que lo hace mucho más claro y auditable para el equipo técnico y para
+              dirección.
+            </span>
+          </li>
+        </ol>
+        <div class="result-line">
+          Esta misma separación —meta vs. estrategia— es la que vas a aplicar hoy a tu propio proyecto
+          sustentable.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Actividad integradora: cierre de Tema 1 -->
+  <section class="section">
+    <h2 class="section-title">Actividad integradora</h2>
+    <span class="project-tag">Avance del proyecto sustentable · Cierre del Tema 1</span>
+
+    <div class="activity-block">
+      <div class="activity-header">Dinámica: afinando el lenguaje técnico de tu proyecto</div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span><strong>Modalidad:</strong> mismo equipo del proyecto</span>
+          <span><strong>Duración:</strong> 40 minutos en clase + trabajo independiente</span>
+          <span><strong>Producto:</strong> ficha de diagnóstico actualizada (la misma de la clase anterior)</span>
+        </div>
+
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span>
+            <span class="step-content">
+              <strong>Recuperen su ficha de diagnóstico</strong> de la clase pasada (las tres dimensiones, el
+              principio elegido y el planteamiento inicial del problema de su proyecto u organización
+              tecnológica).
+            </span>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <span class="step-content">
+              <strong>Redacten una meta de sostenibilidad</strong>: una oración que describa el estado futuro
+              deseado de su sistema, aplicación o empresa, sin mencionar acciones todavía (como escribir un
+              requisito no funcional).
+            </span>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <span class="step-content">
+              <strong>Listen al menos dos acciones de desarrollo sustentable</strong> concretas —técnicas o de
+              gestión— que su equipo implementará (o propondrá) para avanzar hacia esa meta.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">4</span>
+            <span class="step-content">
+              <strong>Revisen su planteamiento del problema</strong> de la clase anterior y corrijan cualquier
+              frase que mezcle meta y estrategia, usando la tabla de abajo como apoyo.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">5</span>
+            <span class="step-content">
+              <strong>Compartan</strong> su meta y sus acciones con el grupo para recibir retroalimentación
+              antes de avanzar al Tema 2.
+            </span>
+          </li>
+        </ol>
+
+        <table class="worksheet-table">
+          <thead>
+            <tr>
+              <th>Meta de sostenibilidad (estado deseado)</th>
+              <th>Acciones de desarrollo sustentable (estrategia)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="result-line">
+          Con esta ficha completa, su equipo cierra el Tema 1 con una base conceptual sólida: dimensiones,
+          principios, características y ahora una meta y una estrategia claramente diferenciadas. Esta
+          estructura se seguirá ampliando en el Tema 2 con herramientas de gestión ambiental.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Inicio</span>
+      <p>
+        Recapitulación breve de los tres subtemas anteriores (evolución, marco mexicano, principios y
+        dimensiones) y presentación de la distinción entre sostenibilidad y desarrollo sustentable.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Desarrollo</span>
+      <p>
+        Asesoría síncrona (Google Meet): revisión del caso aplicado y desarrollo guiado de la dinámica de
+        afinación del lenguaje técnico, equipo por equipo.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Cierre</span>
+      <p>
+        Cada equipo comparte su meta de sostenibilidad y sus acciones de desarrollo sustentable; el grupo y el
+        asesor dan retroalimentación final del Tema 1.
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Actividad independiente</span>
+        <p>
+          Integren en un solo documento (o README de su repositorio de proyecto) su ficha de diagnóstico
+          completa del Tema 1: dimensiones, principio, meta de sostenibilidad y acciones de desarrollo
+          sustentable. Será el insumo con el que iniciarán el Tema 2, Gestión Ambiental.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- Conclusión -->
+  <section class="section">
+    <h2 class="section-title">Conclusión</h2>
+    <p>
+      Con esta sesión cerramos el Tema 1: ya conocemos cómo evolucionó el concepto de sustentabilidad a nivel
+      global, cómo se adoptó y reguló en México, qué principios y dimensiones lo sostienen, y ahora sabemos
+      distinguir con precisión entre la meta (sostenibilidad) y la estrategia (desarrollo sustentable). Este
+      vocabulario preciso es exactamente lo que necesitas para documentar tu proyecto con rigor técnico, ya
+      sea en un reporte, un README o una propuesta de arquitectura. En la siguiente sesión damos el paso hacia
+      el Tema 2, Gestión Ambiental, donde empezaremos a trabajar con herramientas concretas de diagnóstico y
+      manejo ambiental aplicadas a sistemas y tecnología.
+    </p>
+  </section>
+
+  <!-- Referencias -->
+  <section class="section">
+    <h2 class="section-title">Referencias bibliográficas</h2>
+    <p class="text-sm">
+      Damián, C. A., Hernández, A., Garzón, J. E. y Bellon, D. (2022). Desde la sostenibilidad hasta el
+      desarrollo sustentable: Una radiografía de la evolución del concepto. <em>LATAM. Revista Latinoamericana
+      de Ciencias Sociales y Humanidades</em>, 3(2), 1536-1550.
+      https://latam.redilat.org/index.php/lt/article/view/200
+    </p>
+    <p class="text-sm">
+      Gómez, J. L. (2014). Del Desarrollo Sostenible a la Sustentabilidad Ambiental. <em>Revista Facultad de
+      Ciencias Económicas: Investigación y Reflexión</em>, 22(1), 115-136.
+      http://www.scielo.org.co/pdf/rfce/v22n1/v22n1a09.pdf
+    </p>
+    <p class="text-sm">
+      Ibáñez, R. M. (2012). Indicadores de sustentabilidad: utilidad y limitaciones. <em>Teoría y
+      Praxis</em>, (11), 102-126. https://www.redalyc.org/pdf/4561/456145105006.pdf
+    </p>
+    <p class="text-sm">
+      Sánchez, V. G. (2019). <em>¿Qué significa sustentabilidad?</em>
+      https://ceiba.org.mx/publicaciones/Consejo%20Editorial/190501_QueeslaSustentabilidad_VictorSS.pdf
+    </p>
+    <p class="text-sm" style="margin-bottom:0;">
+      Thomas, R. (2021). ¿Qué falta para entender la sustentabilidad?. <em>Estudios sobre las Culturas
+      Contemporáneas</em>, 27(54), 77-108.
+      https://www.redalyc.org/journal/316/31669754005/31669754005.pdf
+    </p>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Tema 1</span>
+  <img src="imagen1.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+</body>
+</html>
