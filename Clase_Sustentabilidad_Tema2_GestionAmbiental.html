@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introducción a la Gestión Ambiental — Clase 5</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .mixtle-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tip-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #FFF8FA;
+    border: 1px solid #D8A8BA;
+    border-left: 4px solid var(--guinda-rule);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.1rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .tip-box .tip-title {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    font-weight: 700;
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .tip-box p { margin-bottom: 0; font-size: .97rem; }
+
+  .principle-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 700px) {
+    .principle-list { grid-template-columns: 1fr; }
+  }
+
+  .principle-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+  }
+
+  .principle-card h4 {
+    font-family: var(--font-ui);
+    font-size: .95rem;
+    color: var(--guinda);
+    margin-bottom: .3rem;
+  }
+
+  .principle-card p { font-size: .92rem; margin-bottom: 0; }
+
+  /* Ciclo PHVA */
+  .cycle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .8rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 800px) {
+    .cycle-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .cycle-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    padding: .9rem 1rem;
+    text-align: center;
+  }
+
+  .cycle-card .cycle-letter {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--guinda);
+    line-height: 1;
+    margin-bottom: .3rem;
+  }
+
+  .cycle-card h4 { font-size: .95rem; margin-bottom: .3rem; color: var(--guinda-dark); }
+  .cycle-card p { font-size: .84rem; margin-bottom: 0; }
+
+  /* Actividad / proyecto */
+  .activity-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .activity-header {
+    background: var(--guinda);
+    color: var(--white);
+    padding: .9rem 1.4rem;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+
+  .activity-body {
+    padding: 1.3rem 1.5rem;
+    background: var(--off-white);
+  }
+
+  .activity-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui);
+    font-size: .82rem;
+    color: var(--ink-secondary);
+  }
+
+  .activity-meta strong { color: var(--guinda-dark); }
+
+  .project-tag {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--white);
+    background: var(--guinda-dark);
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .8rem;
+  }
+
+  .worksheet-title {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--guinda-dark);
+    font-weight: 700;
+    margin: 1.2rem 0 .4rem;
+  }
+
+  .charter-table td:first-child { width: 34%; font-weight: 700; color: var(--guinda-dark); }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .hero-mascot {
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    height: 150px;
+    width: auto;
+    opacity: .95;
+  }
+
+  .class-hero { position: relative; overflow: hidden; }
+
+  @media (max-width: 700px) {
+    .hero-mascot { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:56px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Material de clase — Licenciatura en Administración de Empresas</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Sustentabilidad · Tema 2. Gestión Ambiental</span>
+  <h1>Introducción a la Gestión Ambiental</h1>
+  <span class="class-subtitle">Subtema 2.1 — Del marco conceptual a la acción: así se administra el impacto de una organización.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Programa educativo<span>Lic. en Administración de Empresas</span></div>
+    <div class="meta-item">Asignatura<span>Sustentabilidad</span></div>
+    <div class="meta-item">Unidad / Tema<span>2. Gestión Ambiental</span></div>
+    <div class="meta-item">Fecha<span>Sábado 10 de octubre de 2026</span></div>
+  </div>
+  <img src="imagen2.png" alt="" class="hero-mascot">
+</section>
+
+<div class="page-wrapper">
+
+  <!-- Competencias -->
+  <section class="section">
+    <h2 class="section-title">Competencias a desarrollar</h2>
+    <div class="competency-card">
+      <span class="comp-num">01</span>
+      <span class="comp-text">
+        <strong>Explicar</strong> qué es la gestión ambiental, quiénes intervienen en ella y con qué
+        herramientas una organización administra su impacto sobre el entorno.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">02</span>
+      <span class="comp-text">
+        <strong>Definir</strong> formalmente el proyecto sustentable del equipo (organización, problema, meta,
+        objetivo y alcance) e identificar sus primeros aspectos ambientales.
+      </span>
+    </div>
+  </section>
+
+  <!-- Introducción / analogía -->
+  <section class="section">
+    <h2 class="section-title">Para comenzar: de la teoría a la gestión</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Mixtle da la bienvenida al Tema 2</span>
+        <p>
+          Con la primera evaluación parcial ya calificada, cerramos la etapa conceptual: sabes de dónde viene
+          la sustentabilidad, cómo la regula México, qué principios la sostienen y cómo distinguir la meta de
+          la estrategia. Ahora toca el paso que distingue a un administrador: <strong>gestionar</strong>. Así
+          como una empresa no sobrevive solo con saber qué es la rentabilidad, tampoco avanza en
+          sustentabilidad solo con entender el concepto: necesita planear, medir y corregir. Hoy empezamos
+          ese camino, y lo haremos sobre tu propio proyecto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concepto -->
+  <section class="section">
+    <h2 class="section-title">¿Qué es la gestión ambiental?</h2>
+    <div class="concept-box">
+      <span class="concept-title">Definición de trabajo</span>
+      <p style="margin-bottom:0;">
+        La gestión ambiental es el conjunto de políticas, planes, acciones y controles con los que una
+        organización —o un gobierno— administra las actividades que afectan al ambiente, con el fin de
+        prevenir, reducir o corregir sus impactos y avanzar hacia el desarrollo sustentable.
+      </p>
+    </div>
+    <p>
+      Piensa en la <strong>gestión financiera</strong>: nadie la confunde con "tener dinero". Es el sistema
+      que planea el presupuesto, registra los movimientos, revisa resultados y ajusta decisiones. La gestión
+      ambiental hace lo mismo, pero con insumos como energía, agua y materiales, y con salidas como residuos,
+      emisiones y descargas.
+    </p>
+  </section>
+
+  <!-- Actores -->
+  <section class="section">
+    <h2 class="section-title">¿Quiénes intervienen?</h2>
+    <p>Recuerda el principio de corresponsabilidad: la gestión ambiental no es tarea de un solo actor.</p>
+    <div class="principle-list">
+      <div class="principle-card">
+        <h4>Gobierno</h4>
+        <p>Define la política y la regulación, y vigila su cumplimiento. En el ámbito federal, la SEMARNAT conduce la política ambiental y la PROFEPA se encarga de la inspección y vigilancia.</p>
+      </div>
+      <div class="principle-card">
+        <h4>Empresas y organizaciones</h4>
+        <p>Cumplen la norma y, de forma voluntaria, van más allá: miden su impacto, fijan metas y mejoran sus procesos.</p>
+      </div>
+      <div class="principle-card">
+        <h4>Sociedad civil y comunidad</h4>
+        <p>Participa, exige información, denuncia y colabora en soluciones locales.</p>
+      </div>
+      <div class="principle-card">
+        <h4>Academia y centros de investigación</h4>
+        <p>Generan datos, metodologías y evidencia que respaldan las decisiones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Herramientas y ciclo -->
+  <section class="section">
+    <h2 class="section-title">Herramientas y lógica de mejora continua</h2>
+    <p>
+      Una organización dispone de herramientas para gestionar su impacto, por ejemplo: la normatividad
+      aplicable, las autorizaciones y estudios de impacto ambiental (como la manifestación de impacto
+      ambiental en los proyectos que lo requieren), las auditorías ambientales y los sistemas de gestión
+      ambiental, entre los que destaca la norma internacional ISO 14001. Todos comparten una lógica de mejora
+      continua que conocerás como <strong>ciclo PHVA</strong>:
+    </p>
+    <div class="cycle-grid">
+      <div class="cycle-card">
+        <span class="cycle-letter">P</span>
+        <h4>Planear</h4>
+        <p>Diagnosticar, fijar objetivos y definir acciones.</p>
+      </div>
+      <div class="cycle-card">
+        <span class="cycle-letter">H</span>
+        <h4>Hacer</h4>
+        <p>Ejecutar las acciones planeadas.</p>
+      </div>
+      <div class="cycle-card">
+        <span class="cycle-letter">V</span>
+        <h4>Verificar</h4>
+        <p>Medir resultados y compararlos con la meta.</p>
+      </div>
+      <div class="cycle-card">
+        <span class="cycle-letter">A</span>
+        <h4>Actuar</h4>
+        <p>Corregir y mejorar para el siguiente ciclo.</p>
+      </div>
+    </div>
+    <div class="callout note">
+      <p>
+        Esta lógica te resultará familiar desde la administración: es la misma de cualquier proceso de
+        calidad. Tu proyecto sustentable seguirá este ciclo a lo largo del cuatrimestre: hoy planeamos, en las
+        próximas sesiones ejecutaremos y mediremos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Ejemplo aplicado -->
+  <section class="section">
+    <h2 class="section-title">Ejemplo aplicado</h2>
+    <div class="example-block">
+      <div class="example-header">Caso: una panadería poblana identifica sus aspectos ambientales</div>
+      <div class="example-body">
+        <div class="example-statement">
+          Una panadería con tres sucursales en Puebla quiere reducir su impacto ambiental. Antes de proponer
+          acciones, su administradora decide hacer lo que haría con cualquier problema de negocio: primero
+          diagnosticar, y para ello revisa qué entra y qué sale de su operación.
+        </div>
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span>
+            <span class="step-content">
+              <strong>Entradas:</strong> consumo de gas y electricidad en los hornos, agua para limpieza y
+              empaques desechables.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <span class="step-content">
+              <strong>Salidas:</strong> residuos orgánicos del pan no vendido, plásticos de empaque y aguas de
+              lavado.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <span class="step-content">
+              <strong>Prioridad (Planear):</strong> el pan no vendido es el residuo más grande y el más
+              aprovechable, por lo que se define como primera meta reducirlo y canalizarlo a un uso útil
+              (donación o composta). El resto de los aspectos se atiende en ciclos posteriores.
+            </span>
+          </li>
+        </ol>
+        <div class="result-line">
+          Ese primer inventario de entradas y salidas es lo que se conoce como identificar los aspectos
+          ambientales de una organización, y es justo lo que harás con tu proyecto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Actividad integradora: definición del proyecto -->
+  <section class="section">
+    <h2 class="section-title">Actividad integradora</h2>
+    <span class="project-tag">Definición del proyecto sustentable</span>
+
+    <div class="activity-block">
+      <div class="activity-header">Dinámica: acta de constitución de nuestro proyecto sustentable</div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span><strong>Modalidad:</strong> equipos de 3 a 4 personas (el mismo equipo del proyecto)</span>
+          <span><strong>Duración:</strong> 50 minutos en clase + trabajo independiente</span>
+          <span><strong>Producto:</strong> acta de constitución del proyecto + inventario inicial de aspectos ambientales</span>
+        </div>
+
+        <p>
+          En administración, ningún proyecto arranca sin un <strong>acta de constitución</strong>: el
+          documento breve que dice qué se va a hacer, para quién, con qué alcance y quién participa. Hoy su
+          equipo redacta la de su proyecto sustentable, apoyándose en la ficha de diagnóstico que ya
+          construyeron en el Tema 1.
+        </p>
+
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span>
+            <span class="step-content">
+              <strong>Confirmen el equipo y la organización.</strong> Registren a las personas integrantes (3 a
+              4) y la organización objeto del proyecto, tal como la eligieron en la ficha del Tema 1.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <span class="step-content">
+              <strong>Traigan su ficha del Tema 1</strong> y copien a la tabla de abajo el planteamiento del
+              problema y la meta de sostenibilidad ya redactados; si hace falta, mejórenlos.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <span class="step-content">
+              <strong>Definan el objetivo general y el alcance:</strong> qué incluye el proyecto y, igual de
+              importante, qué queda fuera. Un alcance realista es el que puede cumplirse en un cuatrimestre.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">4</span>
+            <span class="step-content">
+              <strong>Acuerden el producto final</strong> que entregarán al cierre del cuatrimestre (por
+              ejemplo: un plan de gestión ambiental para su organización) y asignen un rol a cada integrante.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">5</span>
+            <span class="step-content">
+              <strong>Hagan el primer inventario de aspectos ambientales</strong> (segunda tabla): al menos
+              tres entradas o salidas de su organización, su posible impacto y quién la gestiona hoy.
+            </span>
+          </li>
+        </ol>
+
+        <div class="worksheet-title">Acta de constitución del proyecto</div>
+        <table class="worksheet-table charter-table">
+          <thead>
+            <tr><th>Elemento</th><th>Definición del equipo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nombre del proyecto</td><td>&nbsp;</td></tr>
+            <tr><td>Integrantes y roles</td><td>&nbsp;</td></tr>
+            <tr><td>Organización objeto del proyecto</td><td>&nbsp;</td></tr>
+            <tr><td>Planteamiento del problema</td><td>&nbsp;</td></tr>
+            <tr><td>Meta de sostenibilidad</td><td>&nbsp;</td></tr>
+            <tr><td>Objetivo general</td><td>&nbsp;</td></tr>
+            <tr><td>Alcance (incluye / no incluye)</td><td>&nbsp;</td></tr>
+            <tr><td>Producto final del cuatrimestre</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+
+        <div class="worksheet-title">Inventario inicial de aspectos ambientales</div>
+        <table class="worksheet-table">
+          <thead>
+            <tr><th>Entrada o salida</th><th>Posible impacto</th><th>¿Quién la gestiona hoy?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+
+        <div class="result-line">
+          Con esta acta, el proyecto deja de ser una idea y se vuelve un compromiso del equipo. En las
+          siguientes sesiones la irán completando con diagnóstico, indicadores y plan de acción.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Inicio</span>
+      <p>
+        Retroalimentación general de la primera evaluación parcial y presentación del paso del marco
+        conceptual a la gestión: definición, actores, herramientas y ciclo PHVA.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Desarrollo</span>
+      <p>
+        Asesoría síncrona (Google Meet): revisión del caso de la panadería y trabajo guiado por equipos en el
+        acta de constitución y en el inventario de aspectos ambientales.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Cierre</span>
+      <p>
+        Cada equipo presenta en un minuto el nombre, la organización, el problema y el objetivo de su
+        proyecto; el grupo y el asesor retroalimentan el alcance.
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Actividad independiente</span>
+        <p>
+          Ajusten el acta con la retroalimentación recibida y complementen el inventario hasta tener al menos
+          cinco aspectos ambientales, apoyándose en una visita, entrevista o consulta a la organización
+          elegida. Súbanla a Classroom como primera entrega formal del proyecto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- Conclusión -->
+  <section class="section">
+    <h2 class="section-title">Conclusión</h2>
+    <p>
+      La gestión ambiental es, para quien administra, la manera de convertir la sustentabilidad en decisiones
+      concretas: se planea, se ejecuta, se mide y se mejora. Conocer a los actores y las herramientas te
+      permite saber con quién y con qué cuentas, y el ciclo PHVA te da el método. Hoy además dejaste firmada
+      el acta de tu proyecto sustentable: ya tienes equipo, organización, problema, meta, alcance y un primer
+      inventario de aspectos ambientales. En la siguiente sesión profundizaremos en el diagnóstico ambiental
+      para empezar a medir lo que ya identificaste.
+    </p>
+  </section>
+
+  <!-- Referencias -->
+  <section class="section">
+    <h2 class="section-title">Referencias bibliográficas</h2>
+    <p class="text-sm">
+      Gómez, J. L. (2014). Del Desarrollo Sostenible a la Sustentabilidad Ambiental. <em>Revista Facultad de
+      Ciencias Económicas: Investigación y Reflexión</em>, 22(1), 115-136.
+      http://www.scielo.org.co/pdf/rfce/v22n1/v22n1a09.pdf
+    </p>
+    <p class="text-sm">
+      Ibáñez, R. M. (2012). Indicadores de sustentabilidad: utilidad y limitaciones. <em>Teoría y
+      Praxis</em>, (11), 102-126. https://www.redalyc.org/pdf/4561/456145105006.pdf
+    </p>
+    <p class="text-sm" style="margin-bottom:0;">
+      Sánchez, V. G. (2019). <em>¿Qué significa sustentabilidad?</em>
+      https://ceiba.org.mx/publicaciones/Consejo%20Editorial/190501_QueeslaSustentabilidad_VictorSS.pdf
+    </p>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Tema 2</span>
+  <img src="imagen1.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+</body>
+</html>
