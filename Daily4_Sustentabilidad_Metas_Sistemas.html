@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Scrum 4 — Metas de sustentabilidad para residuos electrónicos</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .mixtle-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tip-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #FFF8FA;
+    border: 1px solid #D8A8BA;
+    border-left: 4px solid var(--guinda-rule);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.1rem 1.4rem;
+    margin: 1.2rem 0;
+  }
+
+  .tip-box .tip-title {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    font-weight: 700;
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .tip-box p { margin-bottom: 0; font-size: .97rem; }
+
+  /* Barra de tiempo del daily */
+  .agenda {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .6rem;
+    margin: 1rem 0 0;
+  }
+
+  @media (max-width: 700px) { .agenda { grid-template-columns: repeat(2, 1fr); } }
+
+  .agenda-item {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-md);
+    padding: .6rem .8rem;
+    font-family: var(--font-ui);
+    font-size: .8rem;
+  }
+
+  .agenda-item strong { display: block; color: var(--guinda-dark); font-size: .95rem; }
+  .agenda-item span { color: var(--ink-secondary); }
+
+  .timer-row {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    font-family: var(--font-ui);
+  }
+
+  .timer-display {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--guinda);
+    min-width: 5.2rem;
+  }
+
+  .timer-display.low { color: #b3261e; }
+
+  .btn {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: .85rem;
+    background: var(--guinda);
+    color: var(--white);
+    border: none;
+    padding: .55rem 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .btn:hover { background: var(--guinda-dark); }
+  .btn.secondary { background: var(--white); color: var(--guinda); border: 1px solid var(--guinda); }
+  .btn.secondary:hover { background: var(--off-white); }
+
+  /* Ejemplos de metas */
+  .goal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+
+  @media (max-width: 700px) { .goal-grid { grid-template-columns: 1fr; } }
+
+  .goal-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .goal-card .goal-kicker {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--ink-secondary);
+    margin-bottom: .2rem;
+  }
+
+  .goal-card h4 { color: var(--guinda-dark); margin-bottom: .4rem; font-size: 1rem; }
+  .goal-card p { font-size: .92rem; margin-bottom: .4rem; }
+  .goal-card .goal-measure {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    color: var(--guinda-dark);
+    background: var(--surface);
+    border-radius: 6px;
+    padding: .35rem .6rem;
+  }
+
+  /* Meta o acción */
+  .quiz-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.2rem;
+    margin-bottom: .8rem;
+  }
+
+  .quiz-card .quiz-text { font-weight: 700; margin-bottom: .6rem; font-size: .98rem; }
+
+  .quiz-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+
+  .quiz-feedback {
+    margin-top: .7rem;
+    font-size: .9rem;
+    padding: .6rem .8rem;
+    border-radius: 8px;
+    display: none;
+  }
+
+  .quiz-feedback.ok { display: block; background: #eef7ee; border: 1px solid #c9e4c9; color: #1e7d3a; }
+  .quiz-feedback.bad { display: block; background: #fdeceb; border: 1px solid #f3c6c3; color: #b3261e; }
+
+  .score-line {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    color: var(--guinda-dark);
+    margin-top: .6rem;
+  }
+
+  /* Constructor de meta */
+  .builder {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem 1.4rem;
+    margin: 1rem 0;
+  }
+
+  .builder-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .8rem 1rem;
+  }
+
+  @media (max-width: 700px) { .builder-grid { grid-template-columns: 1fr; } }
+
+  .builder label {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--guinda-dark);
+    font-weight: 700;
+    margin-bottom: .25rem;
+  }
+
+  .builder select, .builder input[type="text"], .builder input[type="number"] {
+    width: 100%;
+    padding: .5rem .6rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: .95rem;
+    background: var(--white);
+  }
+
+  .builder-output {
+    margin-top: 1rem;
+    background: var(--white);
+    border: 1px dashed var(--guinda);
+    border-radius: var(--radius-md);
+    padding: .9rem 1.1rem;
+  }
+
+  .builder-output .out-label {
+    font-family: var(--font-ui);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--ink-secondary);
+    display: block;
+    margin-bottom: .2rem;
+  }
+
+  .builder-output p { margin: 0 0 .7rem; font-size: .97rem; }
+
+  .copy-msg { font-family: var(--font-ui); font-size: .8rem; color: #1e7d3a; margin-left: .5rem; }
+
+  .footer-logo { height: 30px; width: auto; border-radius: 50%; display: block; }
+
+  .hero-mascot {
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    height: 150px;
+    width: auto;
+    opacity: .95;
+  }
+
+  .class-hero { position: relative; overflow: hidden; }
+  .class-hero .meta-row { padding-right: 190px; }
+  @media (max-width: 700px) { .class-hero .meta-row { padding-right: 0; } }
+
+  @media (max-width: 700px) { .hero-mascot { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:56px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Daily Scrum — Licenciatura en Sistemas Computacionales</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Sustentabilidad · Daily Scrum 4 · 15 minutos</span>
+  <h1>Metas de sustentabilidad para residuos electrónicos</h1>
+  <span class="class-subtitle">Cómo pasar de "queremos reciclar" a una meta que se pueda medir.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Formato<span>Daily Scrum, máximo 15 min</span></div>
+    <div class="meta-item">Tema<span>Metas de sostenibilidad del proyecto</span></div>
+    <div class="meta-item">Enfoque<span>Equipo y piezas en desuso</span></div>
+  </div>
+  <img src="imagen2.png" alt="" class="hero-mascot">
+</section>
+
+<div class="page-wrapper">
+
+  <!-- Agenda y temporizador -->
+  <section class="section">
+    <h2 class="section-title">El daily en 15 minutos</h2>
+    <div class="agenda">
+      <div class="agenda-item"><strong>0 – 2 min</strong><span>Qué es una buena meta</span></div>
+      <div class="agenda-item"><strong>2 – 6 min</strong><span>Ejemplos para e-waste</span></div>
+      <div class="agenda-item"><strong>6 – 11 min</strong><span>¿Meta o acción?</span></div>
+      <div class="agenda-item"><strong>11 – 15 min</strong><span>Escribe la meta de tu equipo</span></div>
+    </div>
+    <div class="timer-row">
+      <span class="timer-display" id="timerDisplay">15:00</span>
+      <button class="btn" id="btnTimerStart">Iniciar</button>
+      <button class="btn secondary" id="btnTimerReset">Reiniciar</button>
+    </div>
+  </section>
+
+  <!-- 0-2 -->
+  <section class="section">
+    <h2 class="section-title">Una buena meta responde a "dónde queremos llegar"</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Mixtle recuerda</span>
+        <p>
+          Una <strong>meta de sostenibilidad</strong> describe el estado al que quieres llegar; las
+          <strong>acciones</strong> son lo que haces para lograrlo. Para que una meta sea útil en un sprint,
+          conviene que tenga cuatro ingredientes: <strong>qué</strong> (el residuo o equipo),
+          <strong>cuánto</strong> (una cantidad), <strong>cuándo</strong> (un plazo) y
+          <strong>cómo se mide</strong> (la evidencia). Es como definir el criterio de aceptación de una
+          historia de usuario.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2-6 -->
+  <section class="section">
+    <h2 class="section-title">Ejemplos de metas para equipo de cómputo y electrónicos en desuso</h2>
+    <p class="text-sm">Son ejemplos orientativos: ajusta las cifras al tamaño real de tu proyecto.</p>
+    <div class="goal-grid">
+      <div class="goal-card">
+        <span class="goal-kicker">Acopio</span>
+        <h4>Recolectar lo que hoy está olvidado</h4>
+        <p>Reunir 150 kg de equipo electrónico en desuso del plantel antes de que cierre el cuatrimestre.</p>
+        <div class="goal-measure">Se mide con: registro de peso por entrega</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-kicker">Reutilización</span>
+        <h4>Alargar la vida útil</h4>
+        <p>Reacondicionar y reasignar al menos 10 equipos que aún funcionan, en lugar de desecharlos.</p>
+        <div class="goal-measure">Se mide con: bitácora de equipos reasignados</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-kicker">Disposición responsable</span>
+        <h4>Que nada termine en la basura común</h4>
+        <p>Entregar el 100% de lo no reutilizable a un gestor autorizado, con comprobante de entrega.</p>
+        <div class="goal-measure">Se mide con: comprobantes del gestor</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-kicker">Seguridad de la información</span>
+        <h4>Borrar antes de soltar</h4>
+        <p>Aplicar borrado seguro al 100% de los discos y memorias antes de reutilizarlos o desecharlos.</p>
+        <div class="goal-measure">Se mide con: lista de verificación por dispositivo</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-kicker">Inventario</span>
+        <h4>Saber qué hay antes de decidir</h4>
+        <p>Clasificar el 100% del equipo en desuso del laboratorio como reutilizable, reparable o desecho.</p>
+        <div class="goal-measure">Se mide con: hoja de inventario con estado por equipo</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-kicker">Cultura</span>
+        <h4>Que más gente lo haga bien</h4>
+        <p>Sensibilizar a 100 personas del plantel con una campaña de acopio de electrónicos en 4 semanas.</p>
+        <div class="goal-measure">Se mide con: lista de asistencia o registro de participantes</div>
+      </div>
+    </div>
+    <div class="callout note">
+      <p>
+        Dato útil para tu proyecto: en México, los residuos tecnológicos de la informática y la electrónica se
+        consideran, en general, residuos de manejo especial dentro de la LGPGIR, por lo que conviene
+        canalizarlos a gestores autorizados. Revisa siempre la normativa y los requisitos aplicables a tu caso.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6-11 -->
+  <section class="section">
+    <h2 class="section-title">Reto rápido: ¿meta o acción?</h2>
+    <p>Lee cada frase y decide en equipo. Tienen 1 minuto por frase.</p>
+    <div id="quizContainer"></div>
+    <div class="score-line" id="quizScore"></div>
+  </section>
+
+  <!-- 11-15 -->
+  <section class="section">
+    <h2 class="section-title">Escribe la meta de tu equipo</h2>
+    <p>
+      Completen los campos y obtendrán una meta lista para copiar a su tablero, junto con una historia de
+      usuario para el backlog.
+    </p>
+    <div class="builder">
+      <div class="builder-grid">
+        <div>
+          <label for="bVerb">Verbo (qué haremos)</label>
+          <select id="bVerb">
+            <option>Recolectar</option>
+            <option>Reacondicionar</option>
+            <option>Entregar a un gestor autorizado</option>
+            <option>Aplicar borrado seguro a</option>
+            <option>Clasificar</option>
+            <option>Sensibilizar a</option>
+            <option>Reducir</option>
+          </select>
+        </div>
+        <div>
+          <label for="bQty">Cantidad</label>
+          <input type="number" id="bQty" min="1" value="10">
+        </div>
+        <div>
+          <label for="bObj">Sobre qué (unidad y objeto)</label>
+          <input type="text" id="bObj" value="equipos de cómputo en desuso">
+        </div>
+        <div>
+          <label for="bTime">Plazo</label>
+          <select id="bTime">
+            <option>antes de que cierre el cuatrimestre</option>
+            <option>en 4 semanas</option>
+            <option>en 2 sprints</option>
+            <option>antes de la entrega final del proyecto</option>
+          </select>
+        </div>
+        <div>
+          <label for="bMeasure">¿Cómo lo mediremos?</label>
+          <input type="text" id="bMeasure" value="una bitácora con fecha y responsable">
+        </div>
+        <div>
+          <label for="bWhy">¿Para qué? (beneficio)</label>
+          <input type="text" id="bWhy" value="evitar que estos residuos terminen en la basura común">
+        </div>
+      </div>
+
+      <div class="builder-output">
+        <span class="out-label">Meta de sostenibilidad</span>
+        <p id="outGoal"></p>
+        <span class="out-label">Historia de usuario sugerida</span>
+        <p id="outStory"></p>
+        <button class="btn" id="btnCopy">Copiar al portapapeles</button>
+        <span class="copy-msg" id="copyMsg"></span>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Cierre del daily</span>
+        <p>
+          Cada persona responde en una frase: <em>¿qué hice con mi historia de usuario, qué haré hoy para
+          acercarnos a la meta y qué impedimento tengo?</em> Si el impedimento es de información (por ejemplo,
+          a quién entregar los residuos), regístrenlo en el tablero para resolverlo antes del siguiente daily.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Daily Scrum 4</span>
+  <img src="imagen1.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------------- Temporizador de 15 minutos ----------------
+  var TOTAL = 15 * 60, left = TOTAL, handle = null;
+  var display = document.getElementById("timerDisplay");
+  var btnStart = document.getElementById("btnTimerStart");
+
+  function fmt(s) {
+    var m = Math.floor(s / 60), r = s % 60;
+    return (m < 10 ? "0" : "") + m + ":" + (r < 10 ? "0" : "") + r;
+  }
+
+  function paint() {
+    display.textContent = fmt(left);
+    display.classList.toggle("low", left <= 120);
+  }
+
+  btnStart.addEventListener("click", function () {
+    if (handle) {
+      clearInterval(handle); handle = null; btnStart.textContent = "Continuar";
+      return;
+    }
+    btnStart.textContent = "Pausar";
+    handle = setInterval(function () {
+      left -= 1;
+      if (left <= 0) {
+        left = 0; clearInterval(handle); handle = null; btnStart.textContent = "Iniciar";
+      }
+      paint();
+    }, 1000);
+  });
+
+  document.getElementById("btnTimerReset").addEventListener("click", function () {
+    if (handle) { clearInterval(handle); handle = null; }
+    left = TOTAL; btnStart.textContent = "Iniciar"; paint();
+  });
+
+  paint();
+
+  // ---------------- Reto: meta o acción ----------------
+  var ITEMS = [
+    { t: "Instalar un punto de acopio de electrónicos en el plantel.", a: "accion",
+      why: "Es algo que se hace (una acción) para avanzar hacia una meta, como juntar cierta cantidad de residuos." },
+    { t: "Que el 100% del equipo en desuso termine con un gestor autorizado al cierre del cuatrimestre.", a: "meta",
+      why: "Describe el estado al que se quiere llegar, con cantidad y plazo. Cómo se logre es la estrategia." },
+    { t: "Hacer borrado seguro a los discos duros antes de entregarlos.", a: "accion",
+      why: "Es una tarea concreta. La meta sería, por ejemplo, borrar el 100% de los discos antes de reutilizarlos o desecharlos." },
+    { t: "Reducir 30% los equipos que terminan en la basura común durante este cuatrimestre.", a: "meta",
+      why: "Es un resultado medible en el tiempo. Las acciones (acopio, campañas, convenios) son el camino." },
+    { t: "Capacitar a compañeros para separar componentes reutilizables.", a: "accion",
+      why: "Es una actividad. Se convierte en meta al indicar cuántas personas y con qué evidencia se medirá." }
+  ];
+  var answered = 0, correct = 0;
+  var qc = document.getElementById("quizContainer");
+
+  ITEMS.forEach(function (it, i) {
+    var card = document.createElement("div");
+    card.className = "quiz-card";
+    card.innerHTML =
+      '<div class="quiz-text">' + (i + 1) + ". " + it.t + "</div>" +
+      '<div class="quiz-actions">' +
+        '<button class="btn secondary" data-v="meta">Es una meta</button>' +
+        '<button class="btn secondary" data-v="accion">Es una acción</button>' +
+      "</div>" +
+      '<div class="quiz-feedback"></div>';
+    var done = false;
+    card.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (done) return;
+        done = true;
+        var ok = b.getAttribute("data-v") === it.a;
+        answered += 1; if (ok) correct += 1;
+        var fb = card.querySelector(".quiz-feedback");
+        fb.className = "quiz-feedback " + (ok ? "ok" : "bad");
+        fb.textContent = (ok ? "Correcto. " : "Casi. Es " + (it.a === "meta" ? "una meta" : "una acción") + ". ") + it.why;
+        card.querySelectorAll("button").forEach(function (x) { x.disabled = true; });
+        if (answered === ITEMS.length) {
+          document.getElementById("quizScore").textContent =
+            "Resultado del equipo: " + correct + " de " + ITEMS.length + " aciertos.";
+        }
+      });
+    });
+    qc.appendChild(card);
+  });
+
+  // ---------------- Constructor de meta ----------------
+  var ids = ["bVerb", "bQty", "bObj", "bTime", "bMeasure", "bWhy"];
+  var el = {};
+  ids.forEach(function (id) { el[id] = document.getElementById(id); });
+
+  function build() {
+    var verb = el.bVerb.value, qty = el.bQty.value || "…", obj = el.bObj.value.trim() || "…",
+        time = el.bTime.value, measure = el.bMeasure.value.trim() || "…", why = el.bWhy.value.trim() || "…";
+    var goal = verb + " " + qty + " " + obj + " " + time + ", medido con " + measure + ".";
+    var story = "Como equipo del proyecto, queremos " + verb.charAt(0).toLowerCase() + verb.slice(1) + " " +
+      qty + " " + obj + " " + time + ", para " + why + ".";
+    document.getElementById("outGoal").textContent = goal;
+    document.getElementById("outStory").textContent = story;
+    return "Meta: " + goal + "\nHistoria de usuario: " + story;
+  }
+
+  ids.forEach(function (id) {
+    el[id].addEventListener("input", build);
+    el[id].addEventListener("change", build);
+  });
+  build();
+
+  document.getElementById("btnCopy").addEventListener("click", function () {
+    var text = build();
+    var msg = document.getElementById("copyMsg");
+    function ok() { msg.textContent = "Copiado"; setTimeout(function () { msg.textContent = ""; }, 2000); }
+    function fallback() {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand("copy"); document.body.removeChild(ta); ok();
+      } catch (e) { msg.textContent = "Selecciona el texto y cópialo manualmente"; }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok, fallback);
+    } else { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>
