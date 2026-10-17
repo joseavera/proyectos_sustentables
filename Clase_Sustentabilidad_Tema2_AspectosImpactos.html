@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aspectos e impactos ambientales — Clase 6</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .mixtle-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tip-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #FFF8FA;
+    border: 1px solid #D8A8BA;
+    border-left: 4px solid var(--guinda-rule);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.1rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .tip-box .tip-title {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    font-weight: 700;
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .tip-box p { margin-bottom: 0; font-size: .97rem; }
+
+  .principle-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 700px) {
+    .principle-list { grid-template-columns: 1fr; }
+  }
+
+  .principle-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+  }
+
+  .principle-card h4 {
+    font-family: var(--font-ui);
+    font-size: .95rem;
+    color: var(--guinda);
+    margin-bottom: .3rem;
+  }
+
+  .principle-card p { font-size: .92rem; margin-bottom: 0; }
+
+  /* Flujo entradas / organizacion / salidas */
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 44px 1fr 44px 1fr;
+    align-items: stretch;
+    gap: 0;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 800px) {
+    .flow { grid-template-columns: 1fr; gap: .4rem; }
+    .flow-arrow { transform: rotate(90deg); height: 32px; }
+  }
+
+  .flow-col {
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    background: var(--off-white);
+    padding: .9rem 1rem 1rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .flow-col.center { background: var(--guinda); border-color: var(--guinda-dark); border-top-color: var(--guinda-rule); color: var(--white); }
+  .flow-col.center h4, .flow-col.center li { color: var(--white); }
+  .flow-col.out { border-top-color: var(--guinda-rule); }
+
+  .flow-col h4 {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    margin-bottom: .6rem;
+  }
+
+  .flow-col ul { list-style: none; margin: 0; padding: 0; }
+  .flow-col li {
+    font-size: .9rem;
+    padding: .35rem .6rem;
+    margin-bottom: .35rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .flow-col.center li { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    font-size: 1.8rem;
+    color: var(--guinda);
+    font-weight: 700;
+  }
+
+  /* Cadena actividad - aspecto - impacto */
+  .chain-head, .chain-row {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1.2fr;
+    gap: .2rem;
+    align-items: center;
+  }
+  .chain-head {
+    font-family: var(--font-ui);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink-secondary);
+    margin: 1.3rem 0 .3rem;
+  }
+  .chain-row { margin-bottom: .5rem; }
+  .chain-cell {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .5rem .7rem;
+    font-size: .88rem;
+    height: 100%;
+  }
+  .chain-cell.aspect { border-left: 4px solid var(--guinda); }
+  .chain-cell.impact { border-left: 4px solid var(--guinda-rule); background: #FFF8FA; }
+  .chain-arrow { text-align: center; color: var(--guinda); font-weight: 700; font-family: var(--font-ui); }
+
+  @media (max-width: 700px) {
+    .chain-head { display: none; }
+    .chain-row { grid-template-columns: 1fr; margin-bottom: 1rem; }
+    .chain-arrow { transform: rotate(90deg); }
+  }
+
+  /* Escalas */
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  @media (max-width: 700px) { .scale-grid { grid-template-columns: 1fr; } }
+
+  .scale-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: .9rem 1.1rem;
+  }
+  .scale-card h4 { font-family: var(--font-ui); font-size: .95rem; color: var(--guinda); margin-bottom: .5rem; }
+  .scale-card ol { margin: 0; padding-left: 0; list-style: none; font-size: .88rem; }
+  .scale-card li { display: flex; gap: .6rem; padding: .2rem 0; }
+  .scale-card li b {
+    flex: 0 0 1.5rem; height: 1.5rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white);
+    font-family: var(--font-ui); font-size: .8rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  /* Niveles */
+  .lvl-bajo { --lc: #E3F1E6; --lt: #1e6b35; }
+  .lvl-mod  { --lc: #FFF3CD; --lt: #7a5a00; }
+  .lvl-alto { --lc: #FFE0C2; --lt: #8a4300; }
+  .lvl-crit { --lc: #F8D0CD; --lt: #9b1c14; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0 0; font-family: var(--font-ui); font-size: .78rem; }
+  .legend span {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    padding: .2rem .6rem; border-radius: 999px; font-weight: 700;
+  }
+
+  /* Recurso interactivo */
+  .lab {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin: 1.2rem 0;
+  }
+  .lab-head {
+    background: var(--guinda); color: var(--white);
+    padding: .8rem 1.3rem; font-family: var(--font-ui); font-size: .9rem; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center; gap: .8rem; flex-wrap: wrap;
+  }
+  .lab-body { background: var(--off-white); padding: 1.2rem 1.3rem; }
+  .lab-cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.3rem; align-items: start; }
+  @media (max-width: 900px) { .lab-cols { grid-template-columns: 1fr; } }
+
+  .btn {
+    font-family: var(--font-ui); font-weight: 700; font-size: .8rem;
+    background: var(--guinda); color: var(--white); border: none;
+    padding: .5rem .9rem; border-radius: 8px; cursor: pointer;
+  }
+  .btn:hover { background: var(--guinda-dark); }
+  .btn.ghost { background: var(--white); color: var(--guinda); border: 1px solid var(--guinda); }
+  .btn.ghost:hover { background: #FFF8FA; }
+  .lab-head .btn { background: var(--white); color: var(--guinda); }
+  .lab-head .btn:hover { background: #FFF8FA; }
+
+  .asp-row {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--lt, var(--guinda));
+    border-radius: 8px;
+    padding: .6rem .7rem;
+    margin-bottom: .6rem;
+  }
+  .asp-top { display: flex; gap: .5rem; align-items: center; margin-bottom: .45rem; }
+  .asp-num {
+    flex: 0 0 1.7rem; height: 1.7rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white);
+    font-family: var(--font-ui); font-weight: 700; font-size: .8rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .asp-top input[type="text"] {
+    flex: 1; min-width: 0; padding: .35rem .5rem; border: 1px solid var(--border);
+    border-radius: 6px; font-family: inherit; font-size: .9rem;
+  }
+  .asp-del {
+    background: none; border: none; color: var(--ink-secondary); cursor: pointer;
+    font-size: 1.1rem; line-height: 1; padding: .2rem .4rem;
+  }
+  .asp-del:hover { color: #9b1c14; }
+  .asp-sliders { display: grid; grid-template-columns: 1fr 1fr auto; gap: .6rem; align-items: center; font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); }
+  .asp-sliders label { display: block; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--guinda-dark); }
+  .asp-sliders input[type="range"] { width: 100%; accent-color: #490b58; }
+  .asp-score {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    border-radius: 8px; padding: .25rem .5rem; text-align: center; font-weight: 700; font-size: .78rem; min-width: 5.4rem;
+  }
+  @media (max-width: 500px) { .asp-sliders { grid-template-columns: 1fr 1fr; } .asp-score { grid-column: 1 / -1; } }
+
+  /* Mapa de calor */
+  .heat-wrap { display: grid; grid-template-columns: 1.6rem 1fr; gap: .3rem; }
+  .heat-ylabel {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    text-align: center; font-family: var(--font-ui); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--guinda-dark); font-weight: 700;
+  }
+  .heat-grid { display: grid; grid-template-columns: 1.1rem repeat(5, 1fr); gap: 3px; }
+  .heat-tick { font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); display: flex; align-items: center; justify-content: center; }
+  .heat-cell {
+    background: var(--lc); color: var(--lt);
+    border-radius: 6px; aspect-ratio: 1 / 1; min-height: 44px;
+    display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 2px;
+    padding: 2px; position: relative; font-family: var(--font-ui); font-size: .62rem;
+  }
+  .heat-cell .prod { position: absolute; top: 2px; left: 4px; opacity: .55; font-size: .6rem; }
+  .heat-dot {
+    width: 1.35rem; height: 1.35rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white); border: 2px solid var(--white);
+    font-weight: 700; font-size: .72rem; display: inline-flex; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+  .heat-xlabel {
+    grid-column: 2; text-align: center; font-family: var(--font-ui); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--guinda-dark); font-weight: 700; margin-top: .3rem;
+  }
+
+  .rank-title { font-family: var(--font-ui); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--guinda-dark); font-weight: 700; margin: 1.1rem 0 .4rem; }
+  .rank-list { list-style: none; margin: 0; padding: 0; }
+  .rank-list li {
+    display: flex; align-items: center; gap: .6rem; font-size: .88rem;
+    background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+    padding: .4rem .6rem; margin-bottom: .35rem;
+  }
+  .rank-list .rk-name { flex: 1; }
+  .rank-list .rk-lvl {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    border-radius: 999px; padding: .1rem .55rem; font-family: var(--font-ui); font-size: .72rem; font-weight: 700; white-space: nowrap;
+  }
+  .lab-note { font-size: .85rem; color: var(--ink-secondary); margin: .8rem 0 0; }
+
+  .text-sm { overflow-wrap: anywhere; }
+  .table-scroll { overflow-x: auto; max-width: 100%; }
+  .sig-table { min-width: 560px; }
+  .sig-table td:first-child { font-weight: 700; color: var(--guinda-dark); }
+  /* Actividad / proyecto */
+  .activity-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .activity-header {
+    background: var(--guinda);
+    color: var(--white);
+    padding: .9rem 1.4rem;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+
+  .activity-body {
+    padding: 1.3rem 1.5rem;
+    background: var(--off-white);
+  }
+
+  .activity-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui);
+    font-size: .82rem;
+    color: var(--ink-secondary);
+  }
+
+  .activity-meta strong { color: var(--guinda-dark); }
+
+  .project-tag {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--white);
+    background: var(--guinda-dark);
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .8rem;
+  }
+
+  .worksheet-title {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--guinda-dark);
+    font-weight: 700;
+    margin: 1.2rem 0 .4rem;
+  }
+
+  .charter-table td:first-child { width: 34%; font-weight: 700; color: var(--guinda-dark); }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .hero-mascot {
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    height: 150px;
+    width: auto;
+    opacity: .95;
+  }
+
+  .class-hero { position: relative; overflow: hidden; }
+
+  @media (max-width: 700px) {
+    .hero-mascot { display: none; }
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:56px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Material de clase — Licenciatura en Administración de Empresas</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Sustentabilidad · Tema 2. Gestión Ambiental</span>
+  <h1>Aspectos e impactos ambientales</h1>
+  <span class="class-subtitle">Subtema 2.2 — Qué entra, qué sale y qué tanto importa: cómo priorizar lo que vamos a gestionar.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Programa educativo<span>Lic. en Administración de Empresas</span></div>
+    <div class="meta-item">Asignatura<span>Sustentabilidad</span></div>
+    <div class="meta-item">Unidad / Tema<span>2. Gestión Ambiental</span></div>
+    <div class="meta-item">Fecha<span>Sábado 17 de octubre de 2026</span></div>
+  </div>
+  <img src="imagen2.png" alt="" class="hero-mascot">
+</section>
+
+<div class="page-wrapper">
+
+  <section class="section">
+    <h2 class="section-title">Competencias a desarrollar</h2>
+    <div class="competency-card">
+      <span class="comp-num">01</span>
+      <span class="comp-text">
+        <strong>Distinguir</strong> entre actividad, aspecto ambiental e impacto ambiental, y reconocer la
+        cadena que los une en cualquier organización.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">02</span>
+      <span class="comp-text">
+        <strong>Priorizar</strong> los aspectos ambientales de su proyecto sustentable con una matriz de
+        gravedad y frecuencia, para decidir dónde conviene actuar primero.
+      </span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Para comenzar: del acta al diagnóstico</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Mixtle te recuerda dónde vas</span>
+        <p>
+          Tu equipo ya tiene el planteamiento inicial de su proyecto: organización, problema, meta y un primer
+          inventario de entradas y salidas. Un administrador sabe que no se puede atender todo a la vez:
+          cuando hay muchos pendientes, se <strong>prioriza</strong> por riesgo e impacto en el negocio. Hoy
+          haremos lo mismo con el ambiente: de todo lo que tu organización consume y desecha, ¿qué merece
+          atención primero?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Actividad, aspecto e impacto: tres palabras distintas</h2>
+    <div class="concept-box">
+      <span class="concept-title">Definiciones de trabajo</span>
+      <p>
+        <strong>Aspecto ambiental:</strong> elemento de las actividades, productos o servicios de una
+        organización que interactúa con el ambiente; por ejemplo, un consumo (de agua, energía, materiales) o
+        una salida (residuos, emisiones, descargas).
+      </p>
+      <p style="margin-bottom:0;">
+        <strong>Impacto ambiental:</strong> el cambio que ese aspecto provoca en el ambiente, ya sea adverso
+        (contaminación del agua, agotamiento de recursos) o benéfico (recuperación de materiales).
+      </p>
+    </div>
+    <p>
+      Una analogía contable: el aspecto es el <strong>gasto o movimiento</strong> que registras; el impacto es
+      su <strong>efecto en el estado de resultados</strong>. Registrar el movimiento no basta: lo que decide es
+      cuánto pesa.
+    </p>
+
+    <div class="flow">
+      <div class="flow-col">
+        <h4>Entradas</h4>
+        <ul>
+          <li>Gas y electricidad</li>
+          <li>Agua</li>
+          <li>Harina, azúcar y otros insumos</li>
+          <li>Empaques desechables</li>
+        </ul>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+      <div class="flow-col center">
+        <h4>Organización</h4>
+        <ul>
+          <li>Producción en hornos</li>
+          <li>Limpieza y mantenimiento</li>
+          <li>Venta y entrega</li>
+        </ul>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+      <div class="flow-col out">
+        <h4>Salidas</h4>
+        <ul>
+          <li>Pan no vendido</li>
+          <li>Plásticos de empaque</li>
+          <li>Aguas de lavado</li>
+          <li>Emisiones de la combustión</li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-sm">Ejemplo: la panadería poblana de la clase anterior. Cada elemento de las columnas laterales es un aspecto ambiental.</p>
+
+    <div class="chain-head">
+      <span>Actividad</span><span></span><span>Aspecto</span><span></span><span>Posible impacto</span>
+    </div>
+    <div class="chain-row">
+      <div class="chain-cell">Hornear el pan</div><div class="chain-arrow">&rarr;</div>
+      <div class="chain-cell aspect">Consumo de gas y emisiones de combustión</div><div class="chain-arrow">&rarr;</div>
+      <div class="chain-cell impact">Uso de un recurso no renovable y emisiones a la atmósfera</div>
+    </div>
+    <div class="chain-row">
+      <div class="chain-cell">Vender y cerrar el día</div><div class="chain-arrow">&rarr;</div>
+      <div class="chain-cell aspect">Pan no vendido que se desecha</div><div class="chain-arrow">&rarr;</div>
+      <div class="chain-cell impact">Residuos orgánicos que, al descomponerse en un relleno, generan gases de efecto invernadero</div>
+    </div>
+    <div class="chain-row">
+      <div class="chain-cell">Limpiar equipos y utensilios</div><div class="chain-arrow">&rarr;</div>
+      <div class="chain-cell aspect">Aguas de lavado con grasas y restos</div><div class="chain-arrow">&rarr;</div>
+      <div class="chain-cell impact">Carga contaminante al drenaje y mayor consumo de agua</div>
+    </div>
+    <div class="chain-row">
+      <div class="chain-cell">Entregar y empacar</div><div class="chain-arrow">&rarr;</div>
+      <div class="chain-cell aspect">Empaques plásticos desechables</div><div class="chain-arrow">&rarr;</div>
+      <div class="chain-cell impact">Residuos sólidos de lenta degradación</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">¿Cuáles atendemos primero? Gravedad por frecuencia</h2>
+    <p>
+      Una forma sencilla de priorizar es valorar cada aspecto con dos preguntas y multiplicar las respuestas.
+      El resultado indica qué tan <strong>significativo</strong> es el aspecto para tu organización.
+    </p>
+    <div class="scale-grid">
+      <div class="scale-card">
+        <h4>Gravedad (G): ¿qué tan fuerte es el impacto?</h4>
+        <ol>
+          <li><b>1</b> Mínimo, local y fácil de revertir</li>
+          <li><b>2</b> Leve</li>
+          <li><b>3</b> Moderado</li>
+          <li><b>4</b> Considerable</li>
+          <li><b>5</b> Severo, amplio o difícil de revertir</li>
+        </ol>
+      </div>
+      <div class="scale-card">
+        <h4>Frecuencia (F): ¿cada cuánto ocurre?</h4>
+        <ol>
+          <li><b>1</b> Excepcional</li>
+          <li><b>2</b> Ocasional (varias veces al año)</li>
+          <li><b>3</b> Mensual</li>
+          <li><b>4</b> Semanal</li>
+          <li><b>5</b> Diaria o continua</li>
+        </ol>
+      </div>
+    </div>
+    <div class="legend" aria-label="Niveles de significancia">
+      <span class="lvl-bajo">Bajo: 1 a 4</span>
+      <span class="lvl-mod">Moderado: 5 a 9</span>
+      <span class="lvl-alto">Alto: 10 a 15</span>
+      <span class="lvl-crit">Crítico: 16 a 25</span>
+    </div>
+    <div class="callout note">
+      <p>
+        Esta escala es didáctica: cada organización define sus propios criterios y los documenta. Lo
+        importante es que sean claros, que el equipo los aplique de la misma manera y que se puedan revisar.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Recurso interactivo: matriz de significancia</h2>
+    <p>
+      Mueve los controles para ver cómo cambia la prioridad de cada aspecto en el mapa de calor. Empieza con
+      el caso de la panadería; después pulsa <strong>"Mi proyecto"</strong> y captura los aspectos de tu
+      equipo.
+    </p>
+
+    <div class="lab">
+      <div class="lab-head">
+        <span>Matriz de significancia ambiental (G × F)</span>
+        <span>
+          <button class="btn" type="button" id="btnExample">Caso panadería</button>
+          <button class="btn" type="button" id="btnMine">Mi proyecto</button>
+        </span>
+      </div>
+      <div class="lab-body">
+        <div class="lab-cols">
+          <div>
+            <div id="rows"></div>
+            <button class="btn ghost" type="button" id="btnAdd">+ Agregar aspecto</button>
+            <p class="lab-note" id="limitNote"></p>
+          </div>
+          <div>
+            <div class="heat-wrap">
+              <div class="heat-ylabel">Gravedad</div>
+              <div>
+                <div class="heat-grid" id="heat"></div>
+                <div class="heat-grid"><span></span><div class="heat-xlabel" style="grid-column: 2 / -1;">Frecuencia</div></div>
+              </div>
+            </div>
+            <div class="rank-title">Orden de prioridad</div>
+            <ol class="rank-list" id="rank"></ol>
+          </div>
+        </div>
+        <p class="lab-note">
+          Los datos que captures aquí no se guardan: si cierras la página, se pierden. Copia tus resultados a la
+          tabla de la actividad integradora.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Actividad integradora</h2>
+    <span class="project-tag">Proyecto sustentable: priorización de aspectos</span>
+
+    <div class="activity-block">
+      <div class="activity-header">Dinámica: ¿cuáles son los aspectos significativos de nuestra organización?</div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span><strong>Modalidad:</strong> equipos de 3 a 4 personas (el equipo del proyecto)</span>
+          <span><strong>Duración:</strong> 45 minutos en clase + trabajo independiente</span>
+          <span><strong>Producto:</strong> matriz de aspectos e impactos con priorización</span>
+        </div>
+
+        <p>
+          Retomen el inventario inicial que incluyeron en el acta de constitución. Hoy lo convierten en una
+          herramienta de decisión: completan los impactos, valoran cada aspecto y eligen los que atenderá su
+          proyecto.
+        </p>
+
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span>
+            <span class="step-content">
+              <strong>Abran su inventario</strong> y verifiquen que cada aspecto esté claramente ligado a una
+              actividad de la organización. Agreguen los que falten hasta tener, al menos, cinco.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <span class="step-content">
+              <strong>Redacten el impacto</strong> de cada aspecto con la fórmula "aspecto &rarr; cambio en el
+              ambiente" (por ejemplo: pan no vendido &rarr; residuos orgánicos que generan gases en el relleno).
+            </span>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <span class="step-content">
+              <strong>Valoren G y F en equipo</strong>, con el recurso interactivo, y discutan cualquier
+              desacuerdo: la conversación vale más que el número.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">4</span>
+            <span class="step-content">
+              <strong>Elijan los dos aspectos de mayor prioridad</strong> y expliquen cómo se relacionan con la
+              meta de sostenibilidad de su acta: ¿atenderlos acerca al equipo a esa meta?
+            </span>
+          </li>
+        </ol>
+
+        <div class="worksheet-title">Matriz de aspectos e impactos del proyecto</div>
+        <div class="table-scroll"><table class="worksheet-table sig-table">
+          <thead>
+            <tr><th>Aspecto</th><th>Impacto</th><th>G</th><th>F</th><th>G × F</th><th>Nivel</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="worksheet-title">Decisión de prioridad</div>
+        <table class="worksheet-table charter-table">
+          <thead>
+            <tr><th>Elemento</th><th>Respuesta del equipo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Aspecto prioritario 1</td><td>&nbsp;</td></tr>
+            <tr><td>Aspecto prioritario 2</td><td>&nbsp;</td></tr>
+            <tr><td>Relación con nuestra meta de sostenibilidad</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+
+        <div class="result-line">
+          Con esta matriz, su proyecto ya sabe dónde enfocar el esfuerzo del cuatrimestre. El siguiente paso es
+          decidir cómo medir avances en esos aspectos.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Inicio</span>
+      <p>
+        Repaso breve del acta de constitución y presentación de la cadena actividad &rarr; aspecto &rarr;
+        impacto con el caso de la panadería.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Desarrollo</span>
+      <p>
+        Asesoría síncrona (Google Meet): exploración grupal del recurso interactivo y trabajo por equipos en la
+        matriz de aspectos e impactos de su proyecto.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Cierre</span>
+      <p>
+        Cada equipo comparte en un minuto sus dos aspectos prioritarios y por qué los eligió; el grupo comenta
+        si coincide con su valoración.
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Actividad independiente</span>
+        <p>
+          Verifiquen con una persona de la organización elegida (visita, entrevista o consulta de datos) que la
+          frecuencia y la gravedad asignadas sean realistas. Ajusten la matriz y súbanla a Classroom junto con
+          el acta actualizada.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section class="section">
+    <h2 class="section-title">Conclusión</h2>
+    <p>
+      Identificar aspectos es el primer paso; priorizarlos es lo que convierte el inventario en una decisión de
+      administración. Hoy aprendiste a distinguir actividad, aspecto e impacto, y a valorar la significancia con
+      gravedad y frecuencia. Tu equipo sale con una matriz que señala dónde conviene actuar primero. En la
+      siguiente sesión usaremos esa priorización para definir cómo medir avances y planear las acciones del
+      proyecto.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Referencias bibliográficas</h2>
+    <p class="text-sm">
+      Gómez, J. L. (2014). Del Desarrollo Sostenible a la Sustentabilidad Ambiental. <em>Revista Facultad de
+      Ciencias Económicas: Investigación y Reflexión</em>, 22(1), 115-136.
+      http://www.scielo.org.co/pdf/rfce/v22n1/v22n1a09.pdf
+    </p>
+    <p class="text-sm">
+      Ibáñez, R. M. (2012). Indicadores de sustentabilidad: utilidad y limitaciones. <em>Teoría y
+      Praxis</em>, (11), 102-126. https://www.redalyc.org/pdf/4561/456145105006.pdf
+    </p>
+    <p class="text-sm" style="margin-bottom:0;">
+      Sánchez, V. G. (2019). <em>¿Qué significa sustentabilidad?</em>
+      https://ceiba.org.mx/publicaciones/Consejo%20Editorial/190501_QueeslaSustentabilidad_VictorSS.pdf
+    </p>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Tema 2</span>
+  <img src="imagen1.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var MAX = 8;
+  var EXAMPLE = [
+    { n: "Consumo de gas en hornos", g: 3, f: 5 },
+    { n: "Pan no vendido desechado", g: 4, f: 5 },
+    { n: "Aguas de lavado con grasas", g: 3, f: 4 },
+    { n: "Empaques plásticos desechables", g: 3, f: 4 },
+    { n: "Fuga ocasional de gas en el almacén", g: 5, f: 1 }
+  ];
+  var data = clone(EXAMPLE);
+
+  function clone(a) { return a.map(function (x) { return { n: x.n, g: x.g, f: x.f }; }); }
+
+  function level(p) {
+    if (p <= 4) return { k: "lvl-bajo", t: "Bajo" };
+    if (p <= 9) return { k: "lvl-mod", t: "Moderado" };
+    if (p <= 15) return { k: "lvl-alto", t: "Alto" };
+    return { k: "lvl-crit", t: "Crítico" };
+  }
+
+  var rowsEl = document.getElementById("rows");
+  var heatEl = document.getElementById("heat");
+  var rankEl = document.getElementById("rank");
+  var noteEl = document.getElementById("limitNote");
+
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function renderRows() {
+    rowsEl.innerHTML = "";
+    data.forEach(function (d, i) {
+      var p = d.g * d.f, lv = level(p);
+      var el = document.createElement("div");
+      el.className = "asp-row " + lv.k;
+      el.innerHTML =
+        '<div class="asp-top">' +
+          '<span class="asp-num">' + (i + 1) + '</span>' +
+          '<input type="text" maxlength="60" value="' + esc(d.n) + '" aria-label="Nombre del aspecto ' + (i + 1) + '" placeholder="Nombre del aspecto">' +
+          '<button type="button" class="asp-del" title="Quitar aspecto" aria-label="Quitar aspecto ' + (i + 1) + '">&times;</button>' +
+        '</div>' +
+        '<div class="asp-sliders">' +
+          '<div><label>Gravedad: <span data-v="g">' + d.g + '</span></label><input type="range" min="1" max="5" step="1" value="' + d.g + '" data-k="g" aria-label="Gravedad del aspecto ' + (i + 1) + '"></div>' +
+          '<div><label>Frecuencia: <span data-v="f">' + d.f + '</span></label><input type="range" min="1" max="5" step="1" value="' + d.f + '" data-k="f" aria-label="Frecuencia del aspecto ' + (i + 1) + '"></div>' +
+          '<div class="asp-score">' + p + ' · ' + lv.t + '</div>' +
+        '</div>';
+      el.querySelector('input[type="text"]').addEventListener("input", function (e) {
+        d.n = e.target.value; renderViews();
+      });
+      el.querySelectorAll('input[type="range"]').forEach(function (r) {
+        r.addEventListener("input", function (e) {
+          d[e.target.getAttribute("data-k")] = parseInt(e.target.value, 10);
+          // actualizar solo esta fila para no perder el foco del control
+          var np = d.g * d.f, nl = level(np);
+          el.className = "asp-row " + nl.k;
+          el.querySelector('[data-v="g"]').textContent = d.g;
+          el.querySelector('[data-v="f"]').textContent = d.f;
+          el.querySelector(".asp-score").textContent = np + " · " + nl.t;
+          renderViews();
+        });
+      });
+      el.querySelector(".asp-del").addEventListener("click", function () {
+        data.splice(i, 1); renderAll();
+      });
+      rowsEl.appendChild(el);
+    });
+    document.getElementById("btnAdd").disabled = data.length >= MAX;
+    noteEl.textContent = data.length >= MAX ? "Máximo de " + MAX + " aspectos en el recurso." : "";
+    if (!data.length) rowsEl.innerHTML = '<p class="lab-note">Aún no hay aspectos. Pulsa "Agregar aspecto".</p>';
+  }
+
+  function renderViews() {
+    // mapa de calor: filas de gravedad 5..1, columnas de frecuencia 1..5
+    var html = "";
+    for (var g = 5; g >= 1; g--) {
+      html += '<div class="heat-tick">' + g + '</div>';
+      for (var f = 1; f <= 5; f++) {
+        var lv = level(g * f);
+        var dots = "";
+        data.forEach(function (d, i) {
+          if (d.g === g && d.f === f) {
+            dots += '<span class="heat-dot" title="' + esc(d.n || "Aspecto " + (i + 1)) + '">' + (i + 1) + '</span>';
+          }
+        });
+        html += '<div class="heat-cell ' + lv.k + '" title="G ' + g + ' × F ' + f + ' = ' + (g * f) + ' (' + lv.t + ')">' +
+                '<span class="prod">' + (g * f) + '</span>' + dots + '</div>';
+      }
+    }
+    html += '<div class="heat-tick"></div>';
+    for (var x = 1; x <= 5; x++) html += '<div class="heat-tick">' + x + '</div>';
+    heatEl.innerHTML = html;
+
+    var order = data.map(function (d, i) { return { d: d, i: i, p: d.g * d.f }; })
+      .sort(function (a, b) { return b.p - a.p || a.i - b.i; });
+    rankEl.innerHTML = order.map(function (o) {
+      var lv = level(o.p);
+      return '<li class="' + lv.k + '"><span class="asp-num">' + (o.i + 1) + '</span>' +
+        '<span class="rk-name">' + esc(o.d.n || "Aspecto sin nombre") + '</span>' +
+        '<span class="rk-lvl">' + o.p + ' · ' + lv.t + '</span></li>';
+    }).join("");
+  }
+
+  function renderAll() { renderRows(); renderViews(); }
+
+  document.getElementById("btnAdd").addEventListener("click", function () {
+    if (data.length >= MAX) return;
+    data.push({ n: "", g: 3, f: 3 });
+    renderAll();
+    var inputs = rowsEl.querySelectorAll('input[type="text"]');
+    if (inputs.length) inputs[inputs.length - 1].focus();
+  });
+  document.getElementById("btnExample").addEventListener("click", function () { data = clone(EXAMPLE); renderAll(); });
+  document.getElementById("btnMine").addEventListener("click", function () {
+    data = [{ n: "", g: 3, f: 3 }, { n: "", g: 3, f: 3 }, { n: "", g: 3, f: 3 }];
+    renderAll();
+  });
+
+  renderAll();
+})();
+</script>
+
+</body>
+</html>
