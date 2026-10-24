@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indicadores y plan de acción — Clase 7</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .mixtle-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tip-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #FFF8FA;
+    border: 1px solid #D8A8BA;
+    border-left: 4px solid var(--guinda-rule);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.1rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .tip-box .tip-title {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    font-weight: 700;
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .tip-box p { margin-bottom: 0; font-size: .97rem; }
+
+  .principle-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 700px) {
+    .principle-list { grid-template-columns: 1fr; }
+  }
+
+  .principle-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+  }
+
+  .principle-card h4 {
+    font-family: var(--font-ui);
+    font-size: .95rem;
+    color: var(--guinda);
+    margin-bottom: .3rem;
+  }
+
+  .principle-card p { font-size: .92rem; margin-bottom: 0; }
+
+  /* Flujo entradas / organizacion / salidas */
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 44px 1fr 44px 1fr;
+    align-items: stretch;
+    gap: 0;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 800px) {
+    .flow { grid-template-columns: 1fr; gap: .4rem; }
+    .flow-arrow { transform: rotate(90deg); height: 32px; }
+  }
+
+  .flow-col {
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    background: var(--off-white);
+    padding: .9rem 1rem 1rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .flow-col.center { background: var(--guinda); border-color: var(--guinda-dark); border-top-color: var(--guinda-rule); color: var(--white); }
+  .flow-col.center h4, .flow-col.center li { color: var(--white); }
+  .flow-col.out { border-top-color: var(--guinda-rule); }
+
+  .flow-col h4 {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    margin-bottom: .6rem;
+  }
+
+  .flow-col ul { list-style: none; margin: 0; padding: 0; }
+  .flow-col li {
+    font-size: .9rem;
+    padding: .35rem .6rem;
+    margin-bottom: .35rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .flow-col.center li { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    font-size: 1.8rem;
+    color: var(--guinda);
+    font-weight: 700;
+  }
+
+  /* Cadena actividad - aspecto - impacto */
+  .chain-head, .chain-row {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1.2fr;
+    gap: .2rem;
+    align-items: center;
+  }
+  .chain-head {
+    font-family: var(--font-ui);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink-secondary);
+    margin: 1.3rem 0 .3rem;
+  }
+  .chain-row { margin-bottom: .5rem; }
+  .chain-cell {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .5rem .7rem;
+    font-size: .88rem;
+    height: 100%;
+  }
+  .chain-cell.aspect { border-left: 4px solid var(--guinda); }
+  .chain-cell.impact { border-left: 4px solid var(--guinda-rule); background: #FFF8FA; }
+  .chain-arrow { text-align: center; color: var(--guinda); font-weight: 700; font-family: var(--font-ui); }
+
+  @media (max-width: 700px) {
+    .chain-head { display: none; }
+    .chain-row { grid-template-columns: 1fr; margin-bottom: 1rem; }
+    .chain-arrow { transform: rotate(90deg); }
+  }
+
+  /* Escalas */
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  @media (max-width: 700px) { .scale-grid { grid-template-columns: 1fr; } }
+
+  .scale-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: .9rem 1.1rem;
+  }
+  .scale-card h4 { font-family: var(--font-ui); font-size: .95rem; color: var(--guinda); margin-bottom: .5rem; }
+  .scale-card ol { margin: 0; padding-left: 0; list-style: none; font-size: .88rem; }
+  .scale-card li { display: flex; gap: .6rem; padding: .2rem 0; }
+  .scale-card li b {
+    flex: 0 0 1.5rem; height: 1.5rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white);
+    font-family: var(--font-ui); font-size: .8rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  /* Niveles */
+  .lvl-bajo { --lc: #E3F1E6; --lt: #1e6b35; }
+  .lvl-mod  { --lc: #FFF3CD; --lt: #7a5a00; }
+  .lvl-alto { --lc: #FFE0C2; --lt: #8a4300; }
+  .lvl-crit { --lc: #F8D0CD; --lt: #9b1c14; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0 0; font-family: var(--font-ui); font-size: .78rem; }
+  .legend span {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    padding: .2rem .6rem; border-radius: 999px; font-weight: 700;
+  }
+
+  /* Recurso interactivo */
+  .lab {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin: 1.2rem 0;
+  }
+  .lab-head {
+    background: var(--guinda); color: var(--white);
+    padding: .8rem 1.3rem; font-family: var(--font-ui); font-size: .9rem; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center; gap: .8rem; flex-wrap: wrap;
+  }
+  .lab-body { background: var(--off-white); padding: 1.2rem 1.3rem; }
+  .lab-cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.3rem; align-items: start; }
+  @media (max-width: 900px) { .lab-cols { grid-template-columns: 1fr; } }
+
+  .btn {
+    font-family: var(--font-ui); font-weight: 700; font-size: .8rem;
+    background: var(--guinda); color: var(--white); border: none;
+    padding: .5rem .9rem; border-radius: 8px; cursor: pointer;
+  }
+  .btn:hover { background: var(--guinda-dark); }
+  .btn.ghost { background: var(--white); color: var(--guinda); border: 1px solid var(--guinda); }
+  .btn.ghost:hover { background: #FFF8FA; }
+  .lab-head .btn { background: var(--white); color: var(--guinda); }
+  .lab-head .btn:hover { background: #FFF8FA; }
+
+  .asp-row {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--lt, var(--guinda));
+    border-radius: 8px;
+    padding: .6rem .7rem;
+    margin-bottom: .6rem;
+  }
+  .asp-top { display: flex; gap: .5rem; align-items: center; margin-bottom: .45rem; }
+  .asp-num {
+    flex: 0 0 1.7rem; height: 1.7rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white);
+    font-family: var(--font-ui); font-weight: 700; font-size: .8rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .asp-top input[type="text"] {
+    flex: 1; min-width: 0; padding: .35rem .5rem; border: 1px solid var(--border);
+    border-radius: 6px; font-family: inherit; font-size: .9rem;
+  }
+  .asp-del {
+    background: none; border: none; color: var(--ink-secondary); cursor: pointer;
+    font-size: 1.1rem; line-height: 1; padding: .2rem .4rem;
+  }
+  .asp-del:hover { color: #9b1c14; }
+  .asp-sliders { display: grid; grid-template-columns: 1fr 1fr auto; gap: .6rem; align-items: center; font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); }
+  .asp-sliders label { display: block; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--guinda-dark); }
+  .asp-sliders input[type="range"] { width: 100%; accent-color: #490b58; }
+  .asp-score {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    border-radius: 8px; padding: .25rem .5rem; text-align: center; font-weight: 700; font-size: .78rem; min-width: 5.4rem;
+  }
+  @media (max-width: 500px) { .asp-sliders { grid-template-columns: 1fr 1fr; } .asp-score { grid-column: 1 / -1; } }
+
+  /* Mapa de calor */
+  .heat-wrap { display: grid; grid-template-columns: 1.6rem 1fr; gap: .3rem; }
+  .heat-ylabel {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    text-align: center; font-family: var(--font-ui); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--guinda-dark); font-weight: 700;
+  }
+  .heat-grid { display: grid; grid-template-columns: 1.1rem repeat(5, 1fr); gap: 3px; }
+  .heat-tick { font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); display: flex; align-items: center; justify-content: center; }
+  .heat-cell {
+    background: var(--lc); color: var(--lt);
+    border-radius: 6px; aspect-ratio: 1 / 1; min-height: 44px;
+    display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 2px;
+    padding: 2px; position: relative; font-family: var(--font-ui); font-size: .62rem;
+  }
+  .heat-cell .prod { position: absolute; top: 2px; left: 4px; opacity: .55; font-size: .6rem; }
+  .heat-dot {
+    width: 1.35rem; height: 1.35rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white); border: 2px solid var(--white);
+    font-weight: 700; font-size: .72rem; display: inline-flex; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+  .heat-xlabel {
+    grid-column: 2; text-align: center; font-family: var(--font-ui); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--guinda-dark); font-weight: 700; margin-top: .3rem;
+  }
+
+  .rank-title { font-family: var(--font-ui); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--guinda-dark); font-weight: 700; margin: 1.1rem 0 .4rem; }
+  .rank-list { list-style: none; margin: 0; padding: 0; }
+  .rank-list li {
+    display: flex; align-items: center; gap: .6rem; font-size: .88rem;
+    background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+    padding: .4rem .6rem; margin-bottom: .35rem;
+  }
+  .rank-list .rk-name { flex: 1; }
+  .rank-list .rk-lvl {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    border-radius: 999px; padding: .1rem .55rem; font-family: var(--font-ui); font-size: .72rem; font-weight: 700; white-space: nowrap;
+  }
+  .lab-note { font-size: .85rem; color: var(--ink-secondary); margin: .8rem 0 0; }
+
+  .text-sm { overflow-wrap: anywhere; }
+  .table-scroll { overflow-x: auto; max-width: 100%; }
+  .sig-table { min-width: 560px; }
+
+  /* Piezas del planteamiento */
+  .piece-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .7rem; margin: 1.3rem 0; }
+  @media (max-width: 900px) { .piece-grid { grid-template-columns: repeat(2, 1fr); } }
+  .piece-card {
+    background: var(--off-white); border: 1px solid var(--border); border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-lg); padding: .8rem .9rem; text-align: center;
+  }
+  .piece-card .piece-n { display: block; font-family: var(--font-ui); font-size: 1.5rem; font-weight: 700; color: var(--guinda); line-height: 1; margin-bottom: .25rem; }
+  .piece-card h4 { font-size: .92rem; color: var(--guinda-dark); margin-bottom: .2rem; }
+  .piece-card p { font-size: .8rem; margin: 0; color: var(--ink-secondary); }
+
+  .agenda-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-top: 1rem; }
+  @media (max-width: 700px) { .agenda-strip { grid-template-columns: repeat(2, 1fr); } }
+  .compare-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.2rem 0; }
+  @media (max-width: 700px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: .9rem 1.1rem; background: var(--off-white); }
+  .compare-card.weak { border-top: 4px solid #b3261e; }
+  .compare-card.strong { border-top: 4px solid #1e7d3a; }
+  .compare-card .cmp-label { display: block; font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; margin-bottom: .3rem; }
+  .compare-card.weak .cmp-label { color: #b3261e; }
+  .compare-card.strong .cmp-label { color: #1e7d3a; }
+  .compare-card p { font-size: .92rem; margin: 0 0 .4rem; }
+  .compare-card .cmp-why { font-size: .82rem; color: var(--ink-secondary); margin: 0; }
+
+  /* Constructor */
+  .pl-field { margin-bottom: .8rem; }
+  .pl-field label { display: block; font-family: var(--font-ui); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--guinda-dark); font-weight: 700; margin-bottom: .25rem; }
+  .pl-field .pl-hint { font-family: var(--font-ui); font-size: .74rem; color: var(--ink-secondary); text-transform: none; letter-spacing: 0; font-weight: 400; display: block; }
+  .pl-field input[type="text"], .pl-field textarea {
+    width: 100%; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 6px;
+    font-family: inherit; font-size: .93rem; background: var(--white); resize: vertical;
+  }
+  .pl-two { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  @media (max-width: 600px) { .pl-two { grid-template-columns: 1fr; } }
+
+  .meter { height: 10px; background: var(--border); border-radius: 999px; overflow: hidden; margin: .5rem 0 .2rem; }
+  .meter-fill { height: 100%; width: 0; background: var(--guinda); transition: width .25s; }
+  .meter-label { font-family: var(--font-ui); font-size: .78rem; font-weight: 700; color: var(--guinda-dark); }
+
+  .check-list { list-style: none; margin: .7rem 0 0; padding: 0; }
+  .check-list li { display: flex; gap: .5rem; align-items: flex-start; font-size: .86rem; padding: .3rem 0; }
+  .check-dot {
+    flex: 0 0 1.25rem; height: 1.25rem; border-radius: 50%; border: 2px solid var(--border-strong, #bbb);
+    display: inline-flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; color: var(--white); margin-top: .1rem;
+  }
+  .check-list li.ok .check-dot { background: #1e7d3a; border-color: #1e7d3a; }
+  .check-list li.ok { color: var(--ink); }
+  .check-list li:not(.ok) { color: var(--ink-secondary); }
+
+  .plan-preview { background: var(--white); border: 1px dashed var(--guinda); border-radius: var(--radius-md); padding: .9rem 1.1rem; margin-top: 1rem; }
+  .plan-preview h5 { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--guinda); margin: 0 0 .5rem; }
+  .plan-preview dt { font-family: var(--font-ui); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-secondary); margin-top: .5rem; }
+  .plan-preview dd { margin: 0; font-size: .92rem; min-height: 1.2em; }
+  .plan-preview dd.empty { color: var(--ink-secondary); font-style: italic; }
+  .copy-msg { font-family: var(--font-ui); font-size: .8rem; color: #1e7d3a; margin-left: .5rem; }
+  .btn-row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-top: .8rem; }
+
+  /* Indicadores */
+  .gauge { margin: .8rem 0 .3rem; }
+  .gauge-track { position: relative; height: 16px; background: var(--border); border-radius: 999px; overflow: hidden; }
+  .gauge-fill { height: 100%; width: 0; background: var(--guinda); transition: width .25s; }
+  .gauge-scale { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); margin-top: .25rem; }
+  .status-pill {
+    display: inline-block; font-family: var(--font-ui); font-size: .78rem; font-weight: 700;
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt); border-radius: 999px; padding: .15rem .7rem;
+  }
+  .gauge-row { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin-top: .5rem; font-family: var(--font-ui); font-size: .85rem; }
+  .gauge-row strong { font-size: 1.3rem; color: var(--guinda); }
+  .act-row { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: .6rem .7rem; margin-bottom: .5rem; }
+  .act-row .act-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .4rem; }
+  @media (max-width: 600px) { .act-row .act-grid { grid-template-columns: 1fr; } }
+  .act-row input[type="text"], .act-row input[type="date"] {
+    width: 100%; padding: .4rem .5rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: .88rem; background: var(--white);
+  }
+  .act-row .act-n { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--guinda-dark); font-weight: 700; display: block; margin-bottom: .3rem; }
+  .pl-field select, .pl-field input[type="number"] {
+    width: 100%; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: .93rem; background: var(--white);
+  }
+  .pl-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+  @media (max-width: 600px) { .pl-three { grid-template-columns: 1fr; } }
+  .pv-act { border-left: 4px solid var(--guinda); background: var(--off-white); border-radius: 0 8px 8px 0; padding: .45rem .7rem; margin-bottom: .45rem; font-size: .86rem; }
+  .pv-act strong { display: block; color: var(--guinda-dark); }
+  .pv-act span { display: block; color: var(--ink-secondary); font-size: .8rem; }
+  .eval-table td:first-child, .map-table td:first-child { font-weight: 700; color: var(--guinda-dark); width: 30%; }
+  .eval-table td:last-child { white-space: nowrap; text-align: center; font-family: var(--font-ui); font-weight: 700; }
+  .bridge { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin: 1.2rem 0; }
+  @media (max-width: 800px) { .bridge { grid-template-columns: 1fr; } }
+  .bridge .piece-card { text-align: left; }
+  .bridge .piece-card h4 { margin-bottom: .3rem; }
+  .bridge .piece-card p { font-size: .86rem; color: var(--ink); }
+  .sig-table td:first-child { font-weight: 700; color: var(--guinda-dark); }
+  /* Actividad / proyecto */
+  .activity-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .activity-header {
+    background: var(--guinda);
+    color: var(--white);
+    padding: .9rem 1.4rem;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+
+  .activity-body {
+    padding: 1.3rem 1.5rem;
+    background: var(--off-white);
+  }
+
+  .activity-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui);
+    font-size: .82rem;
+    color: var(--ink-secondary);
+  }
+
+  .activity-meta strong { color: var(--guinda-dark); }
+
+  .project-tag {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--white);
+    background: var(--guinda-dark);
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .8rem;
+  }
+
+  .worksheet-title {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--guinda-dark);
+    font-weight: 700;
+    margin: 1.2rem 0 .4rem;
+  }
+
+  .charter-table td:first-child { width: 34%; font-weight: 700; color: var(--guinda-dark); }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .hero-mascot {
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    height: 150px;
+    width: auto;
+    opacity: .95;
+  }
+
+  .class-hero { position: relative; overflow: hidden; }
+
+  @media (max-width: 700px) {
+    .hero-mascot { display: none; }
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:56px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Material de clase — Licenciatura en Administración de Empresas</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Sustentabilidad · Tema 2. Gestión Ambiental</span>
+  <h1>Indicadores y plan de acción</h1>
+  <span class="class-subtitle">Subtema 2.3 — Lo que no se mide no se mejora: cómo convertir los aspectos prioritarios en indicadores, acciones y evidencias.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Programa educativo<span>Lic. en Administración de Empresas</span></div>
+    <div class="meta-item">Asignatura<span>Sustentabilidad</span></div>
+    <div class="meta-item">Unidad / Tema<span>2. Gestión Ambiental</span></div>
+    <div class="meta-item">Fecha<span>Sábado 24 de octubre de 2026</span></div>
+  </div>
+  <img src="imagen2.png" alt="" class="hero-mascot">
+</section>
+
+<div class="page-wrapper">
+
+  <section class="section">
+    <h2 class="section-title">Competencias a desarrollar</h2>
+    <div class="competency-card">
+      <span class="comp-num">01</span>
+      <span class="comp-text">
+        <strong>Definir</strong> indicadores medibles para los aspectos prioritarios del proyecto, con línea
+        base, meta, frecuencia y fuente de evidencia.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">02</span>
+      <span class="comp-text">
+        <strong>Elaborar</strong> un plan de acción con responsables, fechas y evidencias verificables, aplicando
+        la lógica del ciclo PHVA.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">03</span>
+      <span class="comp-text">
+        <strong>Relacionar</strong> el proyecto sustentable con su proyecto integrador y reconocer la
+        sustentabilidad como un criterio presente en cualquier proyecto.
+      </span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Para comenzar: de lo que identificamos a lo que vamos a medir</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Mixtle te recuerda dónde vas</span>
+        <p>
+          Ya tienen el planteamiento de su proyecto, el inventario de aspectos y la matriz que señala cuáles
+          atender primero. Falta lo que hace creíble a cualquier proyecto en administración: <strong>medirlo y
+          planearlo</strong>. Nadie aprueba un presupuesto sin cifras ni un plan de trabajo sin responsables y
+          fechas. Hoy convertirán sus aspectos prioritarios en indicadores y acciones concretas, y dejarán
+          listas las evidencias que demuestran el trabajo real del equipo.
+        </p>
+      </div>
+    </div>
+    <div class="agenda-strip">
+      <div class="piece-card"><h4>Bloque 1</h4><p>Del aspecto al indicador</p></div>
+      <div class="piece-card"><h4>Bloque 2</h4><p>Indicadores y plan de acción</p></div>
+      <div class="piece-card"><h4>Bloque 3</h4><p>Simulador de indicador</p></div>
+      <div class="piece-card"><h4>Bloque 4</h4><p>Entregable de la semana</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Bloque 1. Del aspecto prioritario a la evidencia</h2>
+    <p>
+      Cada decisión del proyecto se puede seguir como una cadena. Si un eslabón falta, el siguiente se queda
+      sin sustento. Veámoslo con el caso de la panadería poblana.
+    </p>
+    <div class="piece-grid">
+      <div class="piece-card"><span class="piece-n">1</span><h4>Aspecto</h4><p>Pan no vendido que se desecha</p></div>
+      <div class="piece-card"><span class="piece-n">2</span><h4>Meta</h4><p>Aprovechar el 80% del pan no vendido al cierre del cuatrimestre</p></div>
+      <div class="piece-card"><span class="piece-n">3</span><h4>Indicador</h4><p>% de pan aprovechado = kg donados o composteados ÷ kg no vendidos × 100</p></div>
+      <div class="piece-card"><span class="piece-n">4</span><h4>Acción</h4><p>Convenio de donación con un comedor comunitario</p></div>
+      <div class="piece-card"><span class="piece-n">5</span><h4>Evidencia</h4><p>Registro semanal de kilos y fotos de las entregas</p></div>
+    </div>
+    <div class="callout note">
+      <p>
+        Piensen en el ciclo PHVA: <strong>Planear</strong> es definir meta, indicador y acciones;
+        <strong>Hacer</strong> es ejecutarlas; <strong>Verificar</strong> es medir el indicador y compararlo con
+        la meta; <strong>Actuar</strong> es corregir lo que no avanzó. Sin indicador, no hay forma de verificar.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Bloque 2. Indicadores y plan de acción</h2>
+    <div class="concept-box">
+      <span class="concept-title">Definiciones de trabajo</span>
+      <p>
+        <strong>Indicador:</strong> variable medible que resume información sobre un aspecto o sobre el avance
+        hacia una meta, y permite comparar el resultado con un punto de partida y con lo esperado.
+      </p>
+      <p style="margin-bottom:0;">
+        <strong>Plan de acción:</strong> conjunto ordenado de acciones, cada una con responsable, fecha, recursos
+        y evidencia, que lleva a la organización de su situación actual a la meta.
+      </p>
+    </div>
+    <p>
+      Si trabajan con indicadores de desempeño en administración, la idea es la misma: un KPI sin línea base ni
+      meta es solo un dato. Aquí el KPI mide el desempeño ambiental de su organización.
+    </p>
+
+    <div class="scale-grid">
+      <div class="scale-card">
+        <h4>Indicador de proceso: ¿qué hacemos?</h4>
+        <p style="font-size:.88rem;margin:0;">Mide la ejecución de las acciones. Ejemplo: número de entregas de pan a un comedor realizadas al mes.</p>
+      </div>
+      <div class="scale-card">
+        <h4>Indicador de resultado: ¿qué logramos?</h4>
+        <p style="font-size:.88rem;margin:0;">Mide el cambio en el aspecto. Ejemplo: kilos de pan desechado por semana o porcentaje de pan aprovechado.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-ui);font-size:1rem;color:var(--guinda);margin:1.4rem 0 .4rem;">Cinco características de un buen indicador</h3>
+    <div class="piece-grid">
+      <div class="piece-card"><h4>Claro</h4><p>Cualquiera entiende qué mide y cómo se calcula.</p></div>
+      <div class="piece-card"><h4>Medible</h4><p>Tiene unidad y dato disponible.</p></div>
+      <div class="piece-card"><h4>Relevante</h4><p>Está ligado a un aspecto prioritario.</p></div>
+      <div class="piece-card"><h4>Con línea base</h4><p>Se conoce el valor de partida.</p></div>
+      <div class="piece-card"><h4>Con evidencia</h4><p>Hay fuente verificable del dato.</p></div>
+    </div>
+    <div class="callout note">
+      <p>
+        La <strong>línea base</strong> es el saldo inicial del indicador: el valor que tiene hoy, antes de actuar.
+        Sin ella no se puede demostrar avance, así como un estado financiero sin saldo inicial no permite medir
+        el cambio.
+      </p>
+    </div>
+
+    <h3 style="font-family:var(--font-ui);font-size:1rem;color:var(--guinda);margin:1.4rem 0 .4rem;">Ejemplo de plan de acción (panadería poblana)</h3>
+    <div class="table-scroll">
+      <table class="worksheet-table" style="min-width:640px;">
+        <thead>
+          <tr><th>Acción</th><th>Responsable</th><th>Fecha</th><th>Evidencia</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pesar y registrar el pan no vendido cada día</td><td>Encargado de cierre</td><td>Desde el 28 de octubre</td><td>Bitácora de kilos y fotos de la báscula</td></tr>
+          <tr><td>Gestionar un convenio de donación con un comedor comunitario</td><td>Administradora</td><td>4 de noviembre</td><td>Carta o correo de acuerdo firmado</td></tr>
+          <tr><td>Instalar un contenedor para composta de lo no apto para donar</td><td>Encargado de producción</td><td>11 de noviembre</td><td>Fotografía del contenedor instalado</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Bloque 3. Recurso interactivo: simulador de indicador y plan de acción</h2>
+    <p>
+      Capturen un aspecto prioritario de su proyecto y definan su indicador. Después, muevan el control de
+      avance para ver cómo cambia el semáforo del indicador. Si quieren ver primero un ejemplo completo, pulsen
+      <strong>"Ver ejemplo"</strong>.
+    </p>
+
+    <div class="lab">
+      <div class="lab-head">
+        <span>Ficha de indicador y plan de acción</span>
+        <span>
+          <button class="btn" type="button" id="inEx">Ver ejemplo</button>
+          <button class="btn" type="button" id="inClear">Limpiar</button>
+        </span>
+      </div>
+      <div class="lab-body">
+        <div class="lab-cols">
+          <div>
+            <div class="pl-field">
+              <label for="inAsp">Aspecto prioritario <span class="pl-hint">El que salió más alto en su matriz</span></label>
+              <input type="text" id="inAsp" maxlength="100" placeholder="Ej.: pan no vendido que se desecha">
+            </div>
+            <div class="pl-field">
+              <label for="inName">Nombre del indicador</label>
+              <input type="text" id="inName" maxlength="100" placeholder="Ej.: aprovechamiento del pan no vendido">
+            </div>
+            <div class="pl-two">
+              <div class="pl-field">
+                <label for="inType">Tipo</label>
+                <select id="inType"><option value="resultado">De resultado</option><option value="proceso">De proceso</option></select>
+              </div>
+              <div class="pl-field">
+                <label for="inUnit">Unidad de medida</label>
+                <input type="text" id="inUnit" maxlength="40" placeholder="Ej.: %, kg/mes, kWh/mes">
+              </div>
+            </div>
+            <div class="pl-field">
+              <label for="inFormula">Cómo se calcula <span class="pl-hint">Fórmula o procedimiento de medición</span></label>
+              <input type="text" id="inFormula" maxlength="160" placeholder="Ej.: kg donados o composteados ÷ kg no vendidos × 100">
+            </div>
+            <div class="pl-three">
+              <div class="pl-field">
+                <label for="inBase">Línea base</label>
+                <input type="number" id="inBase" step="any" placeholder="Hoy">
+              </div>
+              <div class="pl-field">
+                <label for="inGoal">Meta</label>
+                <input type="number" id="inGoal" step="any" placeholder="A dónde llegar">
+              </div>
+              <div class="pl-field">
+                <label for="inNow">Valor actual</label>
+                <input type="number" id="inNow" step="any" placeholder="Último dato">
+              </div>
+            </div>
+            <div class="pl-two">
+              <div class="pl-field">
+                <label for="inFreq">Frecuencia de medición</label>
+                <select id="inFreq">
+                  <option value="">Elige…</option><option>Diaria</option><option>Semanal</option><option>Quincenal</option><option>Mensual</option>
+                </select>
+              </div>
+              <div class="pl-field">
+                <label for="inSrc">Fuente de evidencia</label>
+                <input type="text" id="inSrc" maxlength="120" placeholder="Ej.: bitácora con fotos">
+              </div>
+            </div>
+
+            <div class="pl-field" style="margin-top:.6rem;">
+              <label>Plan de acción <span class="pl-hint">Al menos tres acciones con responsable y evidencia</span></label>
+              <div id="actRows"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="plan-preview" style="margin-top:0;">
+              <h5>Tarjeta del indicador</h5>
+              <dl>
+                <dt>Aspecto</dt><dd id="pvAsp"></dd>
+                <dt>Indicador</dt><dd id="pvName"></dd>
+                <dt>Cómo se calcula</dt><dd id="pvFormula"></dd>
+                <dt>Medición</dt><dd id="pvMeas"></dd>
+              </dl>
+
+              <div class="gauge" aria-live="polite">
+                <div class="gauge-track"><div class="gauge-fill" id="gFill"></div></div>
+                <div class="gauge-scale"><span id="gBase">Línea base</span><span id="gGoal">Meta</span></div>
+                <div class="gauge-row"><strong id="gPct">--</strong><span class="status-pill lvl-mod" id="gStatus">Sin datos</span></div>
+              </div>
+              <div class="pl-field" style="margin-top:.8rem;">
+                <label for="inSlide">Simular avance: <span id="slideVal">0</span>%</label>
+                <input type="range" id="inSlide" min="0" max="120" step="1" value="0" style="width:100%;accent-color:#490b58;">
+              </div>
+            </div>
+
+            <div class="meter" aria-hidden="true" style="margin-top:1rem;"><div class="meter-fill" id="inMeter"></div></div>
+            <div class="meter-label" id="inMeterLabel">0 de 5 sugerencias cumplidas</div>
+            <ul class="check-list" id="inChecks"></ul>
+
+            <div class="plan-preview">
+              <h5>Plan de acción</h5>
+              <div id="pvActs"></div>
+              <div class="btn-row">
+                <button class="btn" type="button" id="inCopy">Copiar ficha y plan</button>
+                <span class="copy-msg" id="inMsg"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="lab-note">
+          El avance se calcula como (valor actual − línea base) ÷ (meta − línea base). Funciona tanto para metas
+          de reducir como de aumentar. Las sugerencias son automáticas y orientativas; lo que escriban aquí no se
+          guarda, así que copien la ficha al documento que entregarán.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Bloque 4. Actividad integradora y entregable de la semana</h2>
+    <span class="project-tag">Proyecto sustentable: indicadores, plan de acción y evidencias</span>
+
+    <div class="activity-block">
+      <div class="activity-header">Dinámica en clase: ficha de indicador y borrador del plan de acción</div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span><strong>Modalidad:</strong> equipos de 3 a 4 personas (el equipo del proyecto)</span>
+          <span><strong>Duración:</strong> 50 minutos en clase</span>
+          <span><strong>Producto:</strong> ficha de indicador y borrador de plan de acción</span>
+        </div>
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span>
+            <span class="step-content">
+              <strong>Retomen su matriz</strong> de la clase anterior y confirmen cuáles son sus dos aspectos
+              prioritarios.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <span class="step-content">
+              <strong>Llenen el simulador</strong> para el primer aspecto: nombre del indicador, unidad, fórmula,
+              línea base provisional, meta, frecuencia y fuente de evidencia.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <span class="step-content">
+              <strong>Redacten al menos tres acciones</strong> con responsable, fecha y evidencia, y revisen que
+              las cinco sugerencias automáticas queden cumplidas.
+            </span>
+          </li>
+          <li>
+            <span class="step-n">4</span>
+            <span class="step-content">
+              <strong>Identifiquen qué dato falta</strong> para confirmar la línea base real. Ese dato será su
+              primera tarea de campo de la semana.
+            </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity-block">
+      <div class="activity-header">Entregable de la semana: Avance 1 del proyecto sustentable</div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span><strong>Modalidad:</strong> un archivo por equipo, subido a Classroom</span>
+          <span><strong>Fecha límite sugerida:</strong> viernes 30 de octubre de 2026</span>
+          <span><strong>Formato:</strong> PDF con portada (proyecto, integrantes y fecha)</span>
+        </div>
+        <p>
+          Este avance muestra que el equipo ya está trabajando con su organización y no solo en el aula. Debe
+          incluir los siguientes elementos:
+        </p>
+        <ol class="step-list">
+          <li><span class="step-n">1</span><span class="step-content"><strong>Planteamiento y matriz actualizados</strong> con la retroalimentación recibida.</span></li>
+          <li><span class="step-n">2</span><span class="step-content"><strong>Fichas de indicadores</strong> (una por cada aspecto prioritario, es decir, dos) con los ocho campos del simulador.</span></li>
+          <li><span class="step-n">3</span><span class="step-content"><strong>Línea base real</strong>, medida o consultada en la organización (ver evidencias).</span></li>
+          <li><span class="step-n">4</span><span class="step-content"><strong>Plan de acción de cuatro semanas</strong> con al menos cuatro acciones, cada una con responsable, fecha, recursos y evidencia esperada.</span></li>
+          <li><span class="step-n">5</span><span class="step-content"><strong>Evidencias de trabajo</strong> (tabla de abajo), con una breve descripción de cada una.</span></li>
+          <li><span class="step-n">6</span><span class="step-content"><strong>Reflexión de un párrafo</strong>: qué de este proyecto aplicarán en su proyecto integrador (ver sección siguiente).</span></li>
+        </ol>
+
+        <div class="worksheet-title">Evidencias de trabajo (mínimo cuatro tipos)</div>
+        <div class="table-scroll">
+          <table class="worksheet-table" style="min-width:600px;">
+            <thead><tr><th>Tipo de evidencia</th><th>Qué debe mostrar</th><th>Ejemplos</th></tr></thead>
+            <tbody>
+              <tr><td>Visita o entrevista</td><td>Contacto real con la organización</td><td>Fotografía de la visita, minuta de la entrevista con nombre del entrevistado</td></tr>
+              <tr><td>Dato de línea base</td><td>Valor medido o consultado hoy</td><td>Recibo de luz o agua, bitácora de pesaje, registro de residuos</td></tr>
+              <tr><td>Trabajo del equipo</td><td>Participación de las personas integrantes</td><td>Minuta o acta de reunión, capturas del trabajo colaborativo</td></tr>
+              <tr><td>Documentos del proyecto</td><td>Versiones actualizadas</td><td>Planteamiento, matriz, fichas de indicadores y plan de acción</td></tr>
+              <tr><td>Primer avance de acción</td><td>Una acción iniciada</td><td>Foto del contenedor instalado, correo de solicitud de convenio</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout note">
+          <p>
+            Cuidado con las evidencias: pidan permiso antes de fotografiar a personas o de usar datos internos de
+            la organización, y protejan información sensible. Nombren el archivo así:
+            <em>Equipo_NombreDelProyecto_Sustentabilidad_Avance1.pdf</em>.
+          </p>
+        </div>
+
+        <div class="worksheet-title">Criterios de evaluación del entregable</div>
+        <table class="worksheet-table eval-table">
+          <thead><tr><th>Criterio</th><th>Qué se revisa</th><th>Peso</th></tr></thead>
+          <tbody>
+            <tr><td>Planteamiento y matriz</td><td>Actualizados, coherentes y con prioridades justificadas</td><td>20%</td></tr>
+            <tr><td>Indicadores</td><td>Claros, medibles, con línea base, meta y fuente</td><td>25%</td></tr>
+            <tr><td>Plan de acción</td><td>Acciones concretas con responsable, fecha y evidencia</td><td>25%</td></tr>
+            <tr><td>Evidencias de trabajo</td><td>Variadas, reales y bien descritas</td><td>20%</td></tr>
+            <tr><td>Redacción y presentación</td><td>Ortografía, orden y reflexión sobre el proyecto integrador</td><td>10%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Inicio</span>
+      <p>
+        Retroalimentación breve sobre las matrices de la clase anterior y presentación de la cadena aspecto,
+        meta, indicador, acción y evidencia con el caso de la panadería.
+      </p>
+    </div>
+    <div class="card">
+      <span class="card-title">Desarrollo</span>
+      <p>
+        Asesoría síncrona (Google Meet): revisión de la lógica de indicadores y plan de acción, exploración del
+        simulador y trabajo por equipos en la ficha de su primer aspecto prioritario.
+      </p>
+    </div>
+    <div class="card">
+      <span class="card-title">Cierre</span>
+      <p>
+        Cada equipo lee en un minuto su indicador con línea base y meta, y las dos primeras acciones de su plan.
+        El grupo comenta si el indicador es claro y medible. Se aclaran los requisitos del entregable.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">La sustentabilidad no termina en esta materia</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">La idea de fondo</span>
+        <p>
+          El proyecto que construyen en esta materia no es un trabajo aislado. Las bases que están dejando
+          (diagnóstico, aspectos, indicadores y plan de acción) también sirven para el <strong>proyecto
+          integrador</strong> que vienen desarrollando desde hace un cuatrimestre. El propósito de esta
+          asignatura es que comprendan que la sustentabilidad debe estar presente siempre: en cada proyecto, en
+          cada decisión de negocio y en cada organización que administren.
+        </p>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="worksheet-table map-table" style="min-width:560px;">
+        <thead><tr><th>Lo que construyen aquí</th><th>Cómo lo usan en su proyecto integrador</th></tr></thead>
+        <tbody>
+          <tr><td>Planteamiento del proyecto</td><td>Justificación del proyecto: qué problema atiende y qué efecto tiene en el entorno</td></tr>
+          <tr><td>Aspectos e impactos</td><td>Riesgos y consideraciones ambientales de la operación y del producto o servicio</td></tr>
+          <tr><td>Matriz de significancia</td><td>Priorización de riesgos y de dónde conviene invertir esfuerzo</td></tr>
+          <tr><td>Indicadores</td><td>Métricas de éxito que se suman a las financieras y operativas</td></tr>
+          <tr><td>Plan de acción</td><td>Parte del plan de trabajo, con responsables, fechas y presupuesto</td></tr>
+          <tr><td>Evidencias</td><td>Bitácora y soporte documental del proyecto</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:var(--font-ui);font-size:1rem;color:var(--guinda);margin:1.4rem 0 .4rem;">Tres preguntas que cualquier proyecto debería poder responder</h3>
+    <div class="bridge">
+      <div class="piece-card"><h4>¿Qué consume?</h4><p>Energía, agua, materiales, tiempo de las personas y dinero. Todo recurso tiene un costo ambiental y económico.</p></div>
+      <div class="piece-card"><h4>¿Qué desecha o emite?</h4><p>Residuos, emisiones y descargas que genera la operación, hoy y a futuro.</p></div>
+      <div class="piece-card"><h4>¿Quién resulta afectado y cómo lo sabremos?</h4><p>Personas, comunidad y entorno, y qué indicador permitirá comprobarlo.</p></div>
+    </div>
+    <div class="callout note">
+      <p>
+        Recuerden el triple resultado: lo económico, lo social y lo ambiental se evalúan juntos. Un proyecto
+        rentable que ignora su impacto ambiental deja una deuda que alguien más pagará.
+      </p>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section class="section">
+    <h2 class="section-title">Conclusión</h2>
+    <p>
+      Un aspecto identificado no mejora por sí solo: mejora cuando se mide y se actúa sobre él. Hoy aprendiste a
+      construir la cadena aspecto, meta, indicador, acción y evidencia, a definir indicadores con línea base y
+      fuente, y a planear acciones con responsables y fechas. Con ello, tu equipo cuenta con la base para
+      verificar resultados y corregir el rumbo, como lo haría con cualquier proyecto de negocio. Además, las
+      herramientas de este proyecto te acompañarán en el proyecto integrador y en cualquier organización en que
+      participes: la sustentabilidad es una forma de decidir, no una materia de un cuatrimestre. En la siguiente
+      sesión usaremos estos avances para revisar resultados y ajustar el plan.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Referencias bibliográficas</h2>
+    <p class="text-sm">
+      Gómez, J. L. (2014). Del Desarrollo Sostenible a la Sustentabilidad Ambiental. <em>Revista Facultad de
+      Ciencias Económicas: Investigación y Reflexión</em>, 22(1), 115-136.
+      http://www.scielo.org.co/pdf/rfce/v22n1/v22n1a09.pdf
+    </p>
+    <p class="text-sm">
+      Ibáñez, R. M. (2012). Indicadores de sustentabilidad: utilidad y limitaciones. <em>Teoría y
+      Praxis</em>, (11), 102-126. https://www.redalyc.org/pdf/4561/456145105006.pdf
+    </p>
+    <p class="text-sm" style="margin-bottom:0;">
+      Sánchez, V. G. (2019). <em>¿Qué significa sustentabilidad?</em>
+      https://ceiba.org.mx/publicaciones/Consejo%20Editorial/190501_QueeslaSustentabilidad_VictorSS.pdf
+    </p>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Tema 2</span>
+  <img src="imagen1.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+<script>
+
+(function () {
+  "use strict";
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  var NACT = 3;
+
+  // filas de acciones
+  var actWrap = $("actRows");
+  for (var i = 1; i <= NACT; i++) {
+    var d = document.createElement("div");
+    d.className = "act-row";
+    d.innerHTML =
+      '<span class="act-n">Acción ' + i + '</span>' +
+      '<input type="text" id="aA' + i + '" maxlength="140" placeholder="Qué se hará" aria-label="Acción ' + i + '">' +
+      '<div class="act-grid">' +
+        '<input type="text" id="aR' + i + '" maxlength="80" placeholder="Responsable" aria-label="Responsable de la acción ' + i + '">' +
+        '<input type="date" id="aD' + i + '" aria-label="Fecha de la acción ' + i + '">' +
+      '</div>' +
+      '<div style="margin-top:.5rem"><input type="text" id="aE' + i + '" maxlength="140" placeholder="Evidencia que se generará" aria-label="Evidencia de la acción ' + i + '"></div>';
+    actWrap.appendChild(d);
+  }
+
+  var F = { asp: $("inAsp"), name: $("inName"), type: $("inType"), unit: $("inUnit"), formula: $("inFormula"),
+            base: $("inBase"), goal: $("inGoal"), now: $("inNow"), freq: $("inFreq"), src: $("inSrc") };
+  var syncing = false;
+
+  var EX = {
+    asp: "Pan no vendido que se desecha", name: "Aprovechamiento del pan no vendido", type: "resultado", unit: "% del pan no vendido",
+    formula: "kg donados o composteados ÷ kg no vendidos × 100", base: "10", goal: "80", now: "35", freq: "Semanal",
+    src: "Bitácora semanal de kilos con fotos de las entregas",
+    acts: [
+      ["Pesar y registrar el pan no vendido cada día", "Encargado de cierre", "2026-10-28", "Bitácora de kilos y fotos de la báscula"],
+      ["Gestionar un convenio de donación con un comedor comunitario", "Administradora", "2026-11-04", "Carta o correo de acuerdo firmado"],
+      ["Instalar un contenedor para composta de lo no apto para donar", "Encargado de producción", "2026-11-11", "Fotografía del contenedor instalado"]
+    ]
+  };
+
+  function num(el) { var v = parseFloat(el.value); return isFinite(v) ? v : null; }
+  function fmtDate(v) { if (!v) return ""; var p = v.split("-"); return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : v; }
+  function acts() {
+    var out = [];
+    for (var i = 1; i <= NACT; i++) {
+      out.push({ a: $("aA" + i).value.trim(), r: $("aR" + i).value.trim(), d: $("aD" + i).value, e: $("aE" + i).value.trim() });
+    }
+    return out;
+  }
+
+  function status(p) {
+    if (p < 0) return { k: "lvl-crit", t: "Por debajo de la línea base" };
+    if (p < 40) return { k: "lvl-crit", t: "Atención: avance bajo" };
+    if (p < 80) return { k: "lvl-mod", t: "En camino" };
+    if (p < 100) return { k: "lvl-bajo", t: "Casi en la meta" };
+    return { k: "lvl-bajo", t: "Meta alcanzada" };
+  }
+
+  function setDd(id, text) {
+    var el = $(id);
+    if (text) { el.textContent = text; el.className = ""; } else { el.textContent = "Pendiente"; el.className = "empty"; }
+  }
+
+  function render() {
+    var base = num(F.base), goal = num(F.goal), now = num(F.now);
+    var unit = F.unit.value.trim();
+    setDd("pvAsp", F.asp.value.trim());
+    setDd("pvName", F.name.value.trim());
+    setDd("pvFormula", F.formula.value.trim());
+    var meas = [];
+    meas.push(F.type.value === "resultado" ? "Indicador de resultado" : "Indicador de proceso");
+    if (F.freq.value) meas.push("medición " + F.freq.value.toLowerCase());
+    if (F.src.value.trim()) meas.push("evidencia: " + F.src.value.trim());
+    $("pvMeas").textContent = meas.join(" · ");
+    $("pvMeas").className = "";
+
+    var valid = base !== null && goal !== null && base !== goal;
+    $("gBase").textContent = base !== null ? "Línea base: " + base + (unit ? " " + unit : "") : "Línea base";
+    $("gGoal").textContent = goal !== null ? "Meta: " + goal + (unit ? " " + unit : "") : "Meta";
+    var pct = null;
+    if (valid && now !== null) pct = (now - base) / (goal - base) * 100;
+    var fill = $("gFill"), pctEl = $("gPct"), st = $("gStatus");
+    if (pct === null) {
+      fill.style.width = "0%"; pctEl.textContent = "--";
+      st.className = "status-pill lvl-mod";
+      st.textContent = valid ? "Captura el valor actual" : (base !== null && goal !== null ? "La meta debe ser distinta de la línea base" : "Sin datos");
+    } else {
+      fill.style.width = Math.max(0, Math.min(100, pct)) + "%";
+      pctEl.textContent = Math.round(pct) + "% de avance";
+      var s = status(pct);
+      st.className = "status-pill " + s.k; st.textContent = s.t + (goal < base ? " (meta de reducir)" : " (meta de aumentar)");
+      if (!syncing) { $("inSlide").value = Math.max(0, Math.min(120, Math.round(pct))); }
+      $("slideVal").textContent = $("inSlide").value;
+    }
+
+    // plan de acción
+    var A = acts(), rows = A.filter(function (x) { return x.a || x.r || x.e || x.d; });
+    $("pvActs").innerHTML = rows.length
+      ? rows.map(function (x, i) {
+          var meta = [x.r ? "Responsable: " + x.r : "", x.d ? "Fecha: " + fmtDate(x.d) : ""].filter(Boolean).join(" · ");
+          return '<div class="pv-act"><strong>' + esc(x.a || "Acción sin describir") + '</strong>' +
+            (meta ? '<span>' + esc(meta) + '</span>' : '') +
+            (x.e ? '<span>Evidencia: ' + esc(x.e) + '</span>' : '') + '</div>';
+        }).join("")
+      : '<p class="lab-note" style="margin:0">Aún no hay acciones capturadas.</p>';
+
+    // sugerencias
+    var complete = A.filter(function (x) { return x.a && x.r && x.e; }).length;
+    var checks = [
+      { t: "El indicador tiene un nombre claro", ok: F.name.value.trim().length >= 8 },
+      { t: "Se define la unidad de medida y cómo se calcula", ok: unit.length >= 1 && F.formula.value.trim().length >= 10 },
+      { t: "Hay línea base y meta numéricas y distintas", ok: valid },
+      { t: "Se indica la frecuencia de medición y la fuente de evidencia", ok: F.freq.value !== "" && F.src.value.trim().length >= 10 },
+      { t: "El plan tiene al menos tres acciones con responsable y evidencia", ok: complete >= 3 }
+    ];
+    var ok = 0;
+    $("inChecks").innerHTML = checks.map(function (c) {
+      if (c.ok) ok++;
+      return '<li class="' + (c.ok ? "ok" : "") + '"><span class="check-dot">' + (c.ok ? "&#10003;" : "") + '</span><span>' + c.t + '</span></li>';
+    }).join("");
+    $("inMeter").style.width = (ok / checks.length * 100) + "%";
+    $("inMeterLabel").textContent = ok + " de " + checks.length + " sugerencias cumplidas";
+  }
+
+  function plain() {
+    function g(x) { return x || "(pendiente)"; }
+    var base = F.base.value, goal = F.goal.value, now = F.now.value, u = F.unit.value.trim();
+    var t = "FICHA DE INDICADOR\n" +
+      "Aspecto prioritario: " + g(F.asp.value.trim()) + "\n" +
+      "Indicador: " + g(F.name.value.trim()) + " (" + (F.type.value === "resultado" ? "de resultado" : "de proceso") + ")\n" +
+      "Unidad de medida: " + g(u) + "\n" +
+      "Cómo se calcula: " + g(F.formula.value.trim()) + "\n" +
+      "Línea base: " + g(base) + " | Meta: " + g(goal) + " | Valor actual: " + g(now) + "\n" +
+      "Frecuencia de medición: " + g(F.freq.value) + "\n" +
+      "Fuente de evidencia: " + g(F.src.value.trim()) + "\n\nPLAN DE ACCIÓN\n";
+    acts().forEach(function (x, i) {
+      t += (i + 1) + ". " + g(x.a) + " | Responsable: " + g(x.r) + " | Fecha: " + g(fmtDate(x.d)) + " | Evidencia: " + g(x.e) + "\n";
+    });
+    return t;
+  }
+
+  Object.keys(F).forEach(function (k) { F[k].addEventListener("input", render); F[k].addEventListener("change", render); });
+  for (var j = 1; j <= NACT; j++) {
+    ["aA", "aR", "aD", "aE"].forEach(function (p) { $(p + j).addEventListener("input", render); $(p + j).addEventListener("change", render); });
+  }
+
+  $("inSlide").addEventListener("input", function () {
+    var base = num(F.base), goal = num(F.goal);
+    var v = parseInt($("inSlide").value, 10);
+    $("slideVal").textContent = v;
+    if (base === null || goal === null || base === goal) { render(); return; }
+    var val = base + v / 100 * (goal - base);
+    F.now.value = String(Math.round(val * 100) / 100);
+    syncing = true; render(); syncing = false;
+  });
+
+  $("inEx").addEventListener("click", function () {
+    ["asp", "name", "type", "unit", "formula", "base", "goal", "now", "freq", "src"].forEach(function (k) { F[k].value = EX[k]; });
+    EX.acts.forEach(function (a, i) { $("aA" + (i + 1)).value = a[0]; $("aR" + (i + 1)).value = a[1]; $("aD" + (i + 1)).value = a[2]; $("aE" + (i + 1)).value = a[3]; });
+    render();
+  });
+  $("inClear").addEventListener("click", function () {
+    Object.keys(F).forEach(function (k) { F[k].value = (k === "type") ? "resultado" : ""; });
+    for (var n = 1; n <= NACT; n++) { ["aA", "aR", "aD", "aE"].forEach(function (p) { $(p + n).value = ""; }); }
+    $("inSlide").value = 0; render();
+  });
+  $("inCopy").addEventListener("click", function () {
+    var text = plain(), msg = $("inMsg");
+    function ok() { msg.textContent = "Copiado"; setTimeout(function () { msg.textContent = ""; }, 2000); }
+    function fb() {
+      try {
+        var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand("copy"); document.body.removeChild(ta); ok();
+      } catch (e) { msg.textContent = "Selecciona el texto de la vista previa y cópialo manualmente"; }
+    }
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fb); else fb(); } catch (e) { fb(); }
+  });
+  render();
+})();
+</script>
+
+</body>
+</html>
