@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto sustentable: reutilizar una computadora en desuso — Sesión de evaluación</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .mixtle-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tip-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #FFF8FA;
+    border: 1px solid #D8A8BA;
+    border-left: 4px solid var(--guinda-rule);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.1rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .tip-box .tip-title {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    font-weight: 700;
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .tip-box p { margin-bottom: 0; font-size: .97rem; }
+
+  .principle-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 700px) {
+    .principle-list { grid-template-columns: 1fr; }
+  }
+
+  .principle-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+  }
+
+  .principle-card h4 {
+    font-family: var(--font-ui);
+    font-size: .95rem;
+    color: var(--guinda);
+    margin-bottom: .3rem;
+  }
+
+  .principle-card p { font-size: .92rem; margin-bottom: 0; }
+
+  /* Flujo entradas / organizacion / salidas */
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 44px 1fr 44px 1fr;
+    align-items: stretch;
+    gap: 0;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 800px) {
+    .flow { grid-template-columns: 1fr; gap: .4rem; }
+    .flow-arrow { transform: rotate(90deg); height: 32px; }
+  }
+
+  .flow-col {
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    background: var(--off-white);
+    padding: .9rem 1rem 1rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .flow-col.center { background: var(--guinda); border-color: var(--guinda-dark); border-top-color: var(--guinda-rule); color: var(--white); }
+  .flow-col.center h4, .flow-col.center li { color: var(--white); }
+  .flow-col.out { border-top-color: var(--guinda-rule); }
+
+  .flow-col h4 {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    margin-bottom: .6rem;
+  }
+
+  .flow-col ul { list-style: none; margin: 0; padding: 0; }
+  .flow-col li {
+    font-size: .9rem;
+    padding: .35rem .6rem;
+    margin-bottom: .35rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .flow-col.center li { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    font-size: 1.8rem;
+    color: var(--guinda);
+    font-weight: 700;
+  }
+
+  /* Cadena actividad - aspecto - impacto */
+  .chain-head, .chain-row {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1.2fr;
+    gap: .2rem;
+    align-items: center;
+  }
+  .chain-head {
+    font-family: var(--font-ui);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink-secondary);
+    margin: 1.3rem 0 .3rem;
+  }
+  .chain-row { margin-bottom: .5rem; }
+  .chain-cell {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .5rem .7rem;
+    font-size: .88rem;
+    height: 100%;
+  }
+  .chain-cell.aspect { border-left: 4px solid var(--guinda); }
+  .chain-cell.impact { border-left: 4px solid var(--guinda-rule); background: #FFF8FA; }
+  .chain-arrow { text-align: center; color: var(--guinda); font-weight: 700; font-family: var(--font-ui); }
+
+  @media (max-width: 700px) {
+    .chain-head { display: none; }
+    .chain-row { grid-template-columns: 1fr; margin-bottom: 1rem; }
+    .chain-arrow { transform: rotate(90deg); }
+  }
+
+  /* Escalas */
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  @media (max-width: 700px) { .scale-grid { grid-template-columns: 1fr; } }
+
+  .scale-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: .9rem 1.1rem;
+  }
+  .scale-card h4 { font-family: var(--font-ui); font-size: .95rem; color: var(--guinda); margin-bottom: .5rem; }
+  .scale-card ol { margin: 0; padding-left: 0; list-style: none; font-size: .88rem; }
+  .scale-card li { display: flex; gap: .6rem; padding: .2rem 0; }
+  .scale-card li b {
+    flex: 0 0 1.5rem; height: 1.5rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white);
+    font-family: var(--font-ui); font-size: .8rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  /* Niveles */
+  .lvl-bajo { --lc: #E3F1E6; --lt: #1e6b35; }
+  .lvl-mod  { --lc: #FFF3CD; --lt: #7a5a00; }
+  .lvl-alto { --lc: #FFE0C2; --lt: #8a4300; }
+  .lvl-crit { --lc: #F8D0CD; --lt: #9b1c14; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0 0; font-family: var(--font-ui); font-size: .78rem; }
+  .legend span {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    padding: .2rem .6rem; border-radius: 999px; font-weight: 700;
+  }
+
+  /* Recurso interactivo */
+  .lab {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin: 1.2rem 0;
+  }
+  .lab-head {
+    background: var(--guinda); color: var(--white);
+    padding: .8rem 1.3rem; font-family: var(--font-ui); font-size: .9rem; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center; gap: .8rem; flex-wrap: wrap;
+  }
+  .lab-body { background: var(--off-white); padding: 1.2rem 1.3rem; }
+  .lab-cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.3rem; align-items: start; }
+  @media (max-width: 900px) { .lab-cols { grid-template-columns: 1fr; } }
+
+  .btn {
+    font-family: var(--font-ui); font-weight: 700; font-size: .8rem;
+    background: var(--guinda); color: var(--white); border: none;
+    padding: .5rem .9rem; border-radius: 8px; cursor: pointer;
+  }
+  .btn:hover { background: var(--guinda-dark); }
+  .btn.ghost { background: var(--white); color: var(--guinda); border: 1px solid var(--guinda); }
+  .btn.ghost:hover { background: #FFF8FA; }
+  .lab-head .btn { background: var(--white); color: var(--guinda); }
+  .lab-head .btn:hover { background: #FFF8FA; }
+
+  .asp-row {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--lt, var(--guinda));
+    border-radius: 8px;
+    padding: .6rem .7rem;
+    margin-bottom: .6rem;
+  }
+  .asp-top { display: flex; gap: .5rem; align-items: center; margin-bottom: .45rem; }
+  .asp-num {
+    flex: 0 0 1.7rem; height: 1.7rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white);
+    font-family: var(--font-ui); font-weight: 700; font-size: .8rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .asp-top input[type="text"] {
+    flex: 1; min-width: 0; padding: .35rem .5rem; border: 1px solid var(--border);
+    border-radius: 6px; font-family: inherit; font-size: .9rem;
+  }
+  .asp-del {
+    background: none; border: none; color: var(--ink-secondary); cursor: pointer;
+    font-size: 1.1rem; line-height: 1; padding: .2rem .4rem;
+  }
+  .asp-del:hover { color: #9b1c14; }
+  .asp-sliders { display: grid; grid-template-columns: 1fr 1fr auto; gap: .6rem; align-items: center; font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); }
+  .asp-sliders label { display: block; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--guinda-dark); }
+  .asp-sliders input[type="range"] { width: 100%; accent-color: #490b58; }
+  .asp-score {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    border-radius: 8px; padding: .25rem .5rem; text-align: center; font-weight: 700; font-size: .78rem; min-width: 5.4rem;
+  }
+  @media (max-width: 500px) { .asp-sliders { grid-template-columns: 1fr 1fr; } .asp-score { grid-column: 1 / -1; } }
+
+  /* Mapa de calor */
+  .heat-wrap { display: grid; grid-template-columns: 1.6rem 1fr; gap: .3rem; }
+  .heat-ylabel {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    text-align: center; font-family: var(--font-ui); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--guinda-dark); font-weight: 700;
+  }
+  .heat-grid { display: grid; grid-template-columns: 1.1rem repeat(5, 1fr); gap: 3px; }
+  .heat-tick { font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); display: flex; align-items: center; justify-content: center; }
+  .heat-cell {
+    background: var(--lc); color: var(--lt);
+    border-radius: 6px; aspect-ratio: 1 / 1; min-height: 44px;
+    display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 2px;
+    padding: 2px; position: relative; font-family: var(--font-ui); font-size: .62rem;
+  }
+  .heat-cell .prod { position: absolute; top: 2px; left: 4px; opacity: .55; font-size: .6rem; }
+  .heat-dot {
+    width: 1.35rem; height: 1.35rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white); border: 2px solid var(--white);
+    font-weight: 700; font-size: .72rem; display: inline-flex; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+  .heat-xlabel {
+    grid-column: 2; text-align: center; font-family: var(--font-ui); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--guinda-dark); font-weight: 700; margin-top: .3rem;
+  }
+
+  .rank-title { font-family: var(--font-ui); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--guinda-dark); font-weight: 700; margin: 1.1rem 0 .4rem; }
+  .rank-list { list-style: none; margin: 0; padding: 0; }
+  .rank-list li {
+    display: flex; align-items: center; gap: .6rem; font-size: .88rem;
+    background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+    padding: .4rem .6rem; margin-bottom: .35rem;
+  }
+  .rank-list .rk-name { flex: 1; }
+  .rank-list .rk-lvl {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    border-radius: 999px; padding: .1rem .55rem; font-family: var(--font-ui); font-size: .72rem; font-weight: 700; white-space: nowrap;
+  }
+  .lab-note { font-size: .85rem; color: var(--ink-secondary); margin: .8rem 0 0; }
+
+  .text-sm { overflow-wrap: anywhere; }
+  .table-scroll { overflow-x: auto; max-width: 100%; }
+  .sig-table { min-width: 560px; }
+
+  /* Piezas del planteamiento */
+  .piece-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .7rem; margin: 1.3rem 0; }
+  @media (max-width: 900px) { .piece-grid { grid-template-columns: repeat(2, 1fr); } }
+  .piece-card {
+    background: var(--off-white); border: 1px solid var(--border); border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-lg); padding: .8rem .9rem; text-align: center;
+  }
+  .piece-card .piece-n { display: block; font-family: var(--font-ui); font-size: 1.5rem; font-weight: 700; color: var(--guinda); line-height: 1; margin-bottom: .25rem; }
+  .piece-card h4 { font-size: .92rem; color: var(--guinda-dark); margin-bottom: .2rem; }
+  .piece-card p { font-size: .8rem; margin: 0; color: var(--ink-secondary); }
+
+  .agenda-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-top: 1rem; }
+  @media (max-width: 700px) { .agenda-strip { grid-template-columns: repeat(2, 1fr); } }
+  .compare-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.2rem 0; }
+  @media (max-width: 700px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: .9rem 1.1rem; background: var(--off-white); }
+  .compare-card.weak { border-top: 4px solid #b3261e; }
+  .compare-card.strong { border-top: 4px solid #1e7d3a; }
+  .compare-card .cmp-label { display: block; font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; margin-bottom: .3rem; }
+  .compare-card.weak .cmp-label { color: #b3261e; }
+  .compare-card.strong .cmp-label { color: #1e7d3a; }
+  .compare-card p { font-size: .92rem; margin: 0 0 .4rem; }
+  .compare-card .cmp-why { font-size: .82rem; color: var(--ink-secondary); margin: 0; }
+
+  /* Constructor */
+  .pl-field { margin-bottom: .8rem; }
+  .pl-field label { display: block; font-family: var(--font-ui); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--guinda-dark); font-weight: 700; margin-bottom: .25rem; }
+  .pl-field .pl-hint { font-family: var(--font-ui); font-size: .74rem; color: var(--ink-secondary); text-transform: none; letter-spacing: 0; font-weight: 400; display: block; }
+  .pl-field input[type="text"], .pl-field textarea {
+    width: 100%; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 6px;
+    font-family: inherit; font-size: .93rem; background: var(--white); resize: vertical;
+  }
+  .pl-two { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  @media (max-width: 600px) { .pl-two { grid-template-columns: 1fr; } }
+
+  .meter { height: 10px; background: var(--border); border-radius: 999px; overflow: hidden; margin: .5rem 0 .2rem; }
+  .meter-fill { height: 100%; width: 0; background: var(--guinda); transition: width .25s; }
+  .meter-label { font-family: var(--font-ui); font-size: .78rem; font-weight: 700; color: var(--guinda-dark); }
+
+  .check-list { list-style: none; margin: .7rem 0 0; padding: 0; }
+  .check-list li { display: flex; gap: .5rem; align-items: flex-start; font-size: .86rem; padding: .3rem 0; }
+  .check-dot {
+    flex: 0 0 1.25rem; height: 1.25rem; border-radius: 50%; border: 2px solid var(--border-strong, #bbb);
+    display: inline-flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; color: var(--white); margin-top: .1rem;
+  }
+  .check-list li.ok .check-dot { background: #1e7d3a; border-color: #1e7d3a; }
+  .check-list li.ok { color: var(--ink); }
+  .check-list li:not(.ok) { color: var(--ink-secondary); }
+
+  .plan-preview { background: var(--white); border: 1px dashed var(--guinda); border-radius: var(--radius-md); padding: .9rem 1.1rem; margin-top: 1rem; }
+  .plan-preview h5 { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--guinda); margin: 0 0 .5rem; }
+  .plan-preview dt { font-family: var(--font-ui); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-secondary); margin-top: .5rem; }
+  .plan-preview dd { margin: 0; font-size: .92rem; min-height: 1.2em; }
+  .plan-preview dd.empty { color: var(--ink-secondary); font-style: italic; }
+  .copy-msg { font-family: var(--font-ui); font-size: .8rem; color: #1e7d3a; margin-left: .5rem; }
+  .btn-row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-top: .8rem; }
+
+  /* Indicadores */
+  .gauge { margin: .8rem 0 .3rem; }
+  .gauge-track { position: relative; height: 16px; background: var(--border); border-radius: 999px; overflow: hidden; }
+  .gauge-fill { height: 100%; width: 0; background: var(--guinda); transition: width .25s; }
+  .gauge-scale { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); margin-top: .25rem; }
+  .status-pill {
+    display: inline-block; font-family: var(--font-ui); font-size: .78rem; font-weight: 700;
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt); border-radius: 999px; padding: .15rem .7rem;
+  }
+  .gauge-row { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin-top: .5rem; font-family: var(--font-ui); font-size: .85rem; }
+  .gauge-row strong { font-size: 1.3rem; color: var(--guinda); }
+  .act-row { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: .6rem .7rem; margin-bottom: .5rem; }
+  .act-row .act-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .4rem; }
+  @media (max-width: 600px) { .act-row .act-grid { grid-template-columns: 1fr; } }
+  .act-row input[type="text"], .act-row input[type="date"] {
+    width: 100%; padding: .4rem .5rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: .88rem; background: var(--white);
+  }
+  .act-row .act-n { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--guinda-dark); font-weight: 700; display: block; margin-bottom: .3rem; }
+  .pl-field select, .pl-field input[type="number"] {
+    width: 100%; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: .93rem; background: var(--white);
+  }
+  .pl-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+  @media (max-width: 600px) { .pl-three { grid-template-columns: 1fr; } }
+  .pv-act { border-left: 4px solid var(--guinda); background: var(--off-white); border-radius: 0 8px 8px 0; padding: .45rem .7rem; margin-bottom: .45rem; font-size: .86rem; }
+  .pv-act strong { display: block; color: var(--guinda-dark); }
+  .pv-act span { display: block; color: var(--ink-secondary); font-size: .8rem; }
+  .eval-table td:first-child, .map-table td:first-child { font-weight: 700; color: var(--guinda-dark); width: 30%; }
+  .eval-table td:last-child { white-space: nowrap; text-align: center; font-family: var(--font-ui); font-weight: 700; }
+  .bridge { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin: 1.2rem 0; }
+  @media (max-width: 800px) { .bridge { grid-template-columns: 1fr; } }
+  .bridge .piece-card { text-align: left; }
+  .bridge .piece-card h4 { margin-bottom: .3rem; }
+  .bridge .piece-card p { font-size: .86rem; color: var(--ink); }
+
+  /* Sesion de evaluacion */
+  .step3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin: 1.3rem 0; }
+  @media (max-width: 800px) { .step3 { grid-template-columns: 1fr; } }
+  .step3 .piece-card { text-align: left; padding: 1rem 1.1rem; }
+  .step3 .piece-card h4 { font-size: 1rem; margin-bottom: .35rem; }
+  .step3 .piece-card p { font-size: .9rem; color: var(--ink); }
+
+  .callout p, .todo span { overflow-wrap: anywhere; }
+  .piece-grid.four { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .piece-grid.four { grid-template-columns: repeat(2, 1fr); } }
+  .ex-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.3rem 0; }
+  @media (max-width: 700px) { .ex-grid { grid-template-columns: 1fr; } }
+  .ex-card { background: var(--off-white); border: 1px solid var(--border); border-top: 4px solid var(--guinda); border-radius: var(--radius-lg); padding: 1rem 1.2rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
+  .ex-card h4 { color: var(--guinda-dark); font-size: 1.02rem; margin-bottom: .5rem; }
+  .ex-card dl { margin: 0 0 .8rem; flex: 1; }
+  .ex-card dt { font-family: var(--font-ui); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-secondary); margin-top: .45rem; }
+  .ex-card dd { margin: 0; font-size: .9rem; }
+  .ex-card .btn { align-self: flex-start; }
+
+  .ex-pick { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: 1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border); font-family: var(--font-ui); font-size: .78rem; font-weight: 700; color: var(--guinda-dark); }
+
+  .todo { list-style: none; margin: .8rem 0 0; padding: 0; }
+  .todo li { margin-bottom: .45rem; }
+  .todo label { display: flex; gap: .7rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: .6rem .8rem; cursor: pointer; font-size: .93rem; }
+  .todo input { margin-top: .25rem; width: 1.05rem; height: 1.05rem; accent-color: #490b58; flex: 0 0 auto; }
+  .todo input:checked + span { color: var(--ink-secondary); text-decoration: line-through; }
+  .todo-status { font-family: var(--font-ui); font-weight: 700; font-size: .85rem; color: var(--guinda-dark); margin-top: .6rem; }
+  .todo-status.done { color: #1e7d3a; }
+
+  /* Caso, estaciones y preguntas */
+  .station-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; margin: 1.2rem 0; }
+  @media (max-width: 800px) { .station-strip { grid-template-columns: repeat(2, 1fr); } }
+  .st { background: var(--off-white); border: 1px solid var(--border); border-top: 4px solid var(--border-strong, #bbb); border-radius: var(--radius-md); padding: .6rem .7rem; font-family: var(--font-ui); font-size: .78rem; }
+  .st b { display: block; font-size: .95rem; color: var(--guinda-dark); }
+  .st span { color: var(--ink-secondary); }
+  .st.done { border-top-color: #1e7d3a; background: #eef7ee; }
+  .st.done span { color: #1e7d3a; font-weight: 700; }
+
+  .scene { background: var(--off-white); border: 1px solid var(--border); border-left: 5px solid var(--guinda); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 1.1rem 1.4rem; margin: 1.2rem 0; box-shadow: var(--shadow-sm); }
+  .scene .scene-tag { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--guinda); font-weight: 700; display: block; margin-bottom: .4rem; }
+  .scene p { margin: 0 0 .6rem; }
+  .scene p:last-child { margin-bottom: 0; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0; }
+  .chip { font-family: var(--font-ui); font-size: .82rem; font-weight: 700; background: var(--white); color: var(--guinda); border: 1px solid var(--guinda); border-radius: 999px; padding: .4rem .9rem; cursor: pointer; }
+  .chip:hover { background: #FFF8FA; }
+  .chip.active { background: var(--guinda); color: var(--white); }
+  .chip.seen::after { content: " \2713"; }
+  .insp { background: var(--white); border: 1px dashed var(--guinda); border-radius: var(--radius-md); padding: .9rem 1.1rem; min-height: 6rem; }
+  .insp dt { font-family: var(--font-ui); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-secondary); margin-top: .5rem; }
+  .insp dt:first-child { margin-top: 0; }
+  .insp dd { margin: 0; font-size: .92rem; }
+  .insp .insp-q { color: var(--guinda-dark); font-weight: 700; }
+  .insp-count { font-family: var(--font-ui); font-size: .8rem; font-weight: 700; color: var(--guinda-dark); margin-top: .5rem; }
+
+  .qcard { background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.2rem; margin: 1rem 0; }
+  .qcard .q-n { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--guinda); font-weight: 700; display: block; margin-bottom: .3rem; }
+  .qcard .q-text { font-weight: 700; margin-bottom: .7rem; }
+  .qcard .q-ctx { font-size: .92rem; margin-bottom: .7rem; }
+  .opt { display: block; width: 100%; text-align: left; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: .6rem .8rem; margin-bottom: .45rem; font-family: inherit; font-size: .92rem; cursor: pointer; color: var(--ink); }
+  .opt:hover:not(:disabled) { border-color: var(--guinda); background: #FFF8FA; }
+  .opt:disabled { cursor: default; }
+  .opt .fb { display: none; margin-top: .4rem; font-size: .84rem; color: var(--ink-secondary); }
+  .qcard.answered .opt .fb { display: block; }
+  .opt.chosen { border-width: 2px; border-color: var(--guinda); }
+  .opt.best { background: #eef7ee; border-color: #1e7d3a; }
+  .opt.best .fb::before { content: "Mejor justificada. "; font-weight: 700; color: #1e7d3a; }
+  .opt.partial .fb::before { content: "Parcialmente válida. "; font-weight: 700; color: #7a5a00; }
+  .opt.weak .fb::before { content: "Poco recomendable. "; font-weight: 700; color: #b3261e; }
+  .q-pts { font-family: var(--font-ui); font-size: .78rem; font-weight: 700; color: var(--guinda-dark); margin-top: .4rem; display: none; }
+  .qcard.answered .q-pts { display: block; }
+
+  .cls-row { display: grid; grid-template-columns: 1fr 11rem; gap: .6rem; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: .5rem .7rem; margin-bottom: .45rem; }
+  @media (max-width: 600px) { .cls-row { grid-template-columns: 1fr; } }
+  .cls-row select { padding: .4rem .5rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; }
+  .cls-row .cls-fb { grid-column: 1 / -1; font-size: .84rem; display: none; }
+  .cls-row.ok { border-color: #1e7d3a; background: #eef7ee; }
+  .cls-row.bad { border-color: #b3261e; background: #fdeceb; }
+  .cls-row.ok .cls-fb, .cls-row.bad .cls-fb { display: block; }
+
+  .reflex textarea { width: 100%; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: .93rem; resize: vertical; background: var(--white); }
+  .reflex .pl-field { margin-bottom: 1rem; }
+
+  .const { position: relative; overflow: hidden; background: var(--white); border: 2px solid var(--guinda); border-radius: var(--radius-lg); padding: 1.3rem 1.5rem; margin: 1.2rem 0; }
+  .const h3 { font-family: var(--font-ui); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--guinda); margin: 0 0 .8rem; }
+  .const .wm { position: absolute; inset: -40% -20%; display: flex; flex-wrap: wrap; gap: 3rem 4rem; align-content: center; transform: rotate(-28deg); pointer-events: none; opacity: .07; font-family: var(--font-ui); font-size: 1.5rem; font-weight: 700; color: var(--guinda); user-select: none; }
+  .const .const-body { position: relative; }
+  .const dl { margin: 0; display: grid; grid-template-columns: 11rem 1fr; gap: .4rem 1rem; font-size: .95rem; }
+  @media (max-width: 600px) { .const dl { grid-template-columns: 1fr; } }
+  .const dt { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-secondary); align-self: center; }
+  .const dd { margin: 0; font-weight: 700; color: var(--guinda-dark); }
+  .const input[type="text"] { width: 100%; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: .95rem; }
+  body.only-const .site-header, body.only-const .class-hero, body.only-const .site-footer, body.only-const .page-wrapper > :not(#constancia) { display: none !important; }
+  @media print { .btn { display: none !important; } }
+  .sub-h { font-family: var(--font-ui); font-size: 1rem; color: var(--guinda); margin: 1.6rem 0 .4rem; }
+  .sig-table td:first-child { font-weight: 700; color: var(--guinda-dark); }
+  /* Actividad / proyecto */
+  .activity-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .activity-header {
+    background: var(--guinda);
+    color: var(--white);
+    padding: .9rem 1.4rem;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+
+  .activity-body {
+    padding: 1.3rem 1.5rem;
+    background: var(--off-white);
+  }
+
+  .activity-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui);
+    font-size: .82rem;
+    color: var(--ink-secondary);
+  }
+
+  .activity-meta strong { color: var(--guinda-dark); }
+
+  .project-tag {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--white);
+    background: var(--guinda-dark);
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .8rem;
+  }
+
+  .worksheet-title {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--guinda-dark);
+    font-weight: 700;
+    margin: 1.2rem 0 .4rem;
+  }
+
+  .charter-table td:first-child { width: 34%; font-weight: 700; color: var(--guinda-dark); }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .hero-mascot {
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    height: 150px;
+    width: auto;
+    opacity: .95;
+  }
+
+  .class-hero { position: relative; overflow: hidden; }
+
+  @media (max-width: 700px) {
+    .hero-mascot { display: none; }
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:56px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Material de clase — Licenciatura en Sistemas Computacionales</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Sustentabilidad · Tema 2. Gestión Ambiental · Sesión de evaluación y recuperación</span>
+  <h1>Reutilizar una computadora en desuso</h1>
+  <span class="class-subtitle">Un caso para pensar, decidir y retomar el camino del proyecto sustentable.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Programa educativo<span>Lic. en Sistemas Computacionales</span></div>
+    <div class="meta-item">Asignatura<span>Sustentabilidad</span></div>
+    <div class="meta-item">Unidad / Tema<span>2. Gestión Ambiental</span></div>
+    <div class="meta-item">Fecha<span>Sábado 31 de octubre de 2026</span></div>
+  </div>
+  <img src="imagen2.png" alt="" class="hero-mascot">
+</section>
+
+<div class="page-wrapper">
+
+  <section class="section">
+    <h2 class="section-title">Competencias a desarrollar</h2>
+    <div class="competency-card">
+      <span class="comp-num">01</span>
+      <span class="comp-text">
+        <strong>Analizar</strong> un caso real de reutilización de equipo de cómputo e identificar sus aspectos e
+        impactos ambientales, sociales y de seguridad de la información.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">02</span>
+      <span class="comp-text">
+        <strong>Formular</strong> el planteamiento, el indicador y el plan de acción del proyecto sustentable del
+        equipo, aplicando lo trabajado en el Tema 2.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">03</span>
+      <span class="comp-text">
+        <strong>Argumentar</strong> decisiones técnicas con criterios de sustentabilidad y reflexionar sobre su
+        aplicación en la práctica profesional.
+      </span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Para comenzar: retomemos el camino</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Mixtle propone el plan de hoy</span>
+        <p>
+          Si el proyecto se les fue quedando atrás, hoy es el momento de retomarlo. La sesión funciona como un
+          recorrido de cinco estaciones sobre un caso modelo que se parece mucho a su proyecto: reutilizar una
+          computadora en desuso que está guardada en la casa de un integrante del equipo. En cada estación
+          primero <strong>piensan y deciden</strong> con el caso, y después <strong>aplican lo mismo a su propio
+          proyecto</strong>. Al final obtienen una constancia con su resultado y una guía clara de lo que deben
+          entregar.
+        </p>
+      </div>
+    </div>
+
+    <div class="station-strip" id="stStrip" aria-live="polite">
+      <div class="st" data-st="1"><b>1. Planteamiento</b><span>Pendiente</span></div>
+      <div class="st" data-st="2"><b>2. Aspectos e impactos</b><span>Pendiente</span></div>
+      <div class="st" data-st="3"><b>3. Indicador y plan</b><span>Pendiente</span></div>
+      <div class="st" data-st="4"><b>4. Decisiones</b><span>Pendiente</span></div>
+      <div class="st" data-st="5"><b>5. Reflexión y entrega</b><span>Pendiente</span></div>
+    </div>
+    <div class="callout note">
+      <p>
+        Las preguntas del caso muestran retroalimentación al responder, porque el objetivo es que razonen, no que
+        adivinen. Su puntaje queda en la constancia final y se suma a los productos de su propio proyecto, según
+        la rúbrica de la estación 5.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">El caso: la computadora del cuarto de atrás</h2>
+    <div class="scene">
+      <span class="scene-tag">Escenario (personajes ficticios)</span>
+      <p>
+        El equipo Reboot debe reutilizar una computadora de escritorio en desuso que está arrumbada en la casa de
+        Dani, una de las personas integrantes. Tiene unos doce años: enciende con dificultad, cuenta con un disco
+        duro mecánico de 500 GB, 4 GB de memoria RAM y Windows 7. Lleva cuatro años guardada junto con un monitor,
+        un teclado, un mouse y varios cables.
+      </p>
+      <p>
+        En el disco siguen fotos familiares y archivos de tareas. En la casa hay tres posturas: venderla como fierro
+        viejo, tirarla a la basura o dársela a la hermana menor de Dani, que necesita una computadora para sus
+        tareas. El equipo tiene que decidir qué hacer, con qué criterios y cómo demostrarlo.
+      </p>
+    </div>
+
+    <p><strong>Inspeccionen el equipo.</strong> Pulsen cada componente para ver su estado, el aspecto ambiental que
+    implica y una pregunta para pensar.</p>
+    <div class="chips" id="chips"></div>
+    <div class="insp" id="insp" aria-live="polite"><p style="margin:0;color:var(--ink-secondary);">Elijan un componente para comenzar.</p></div>
+    <div class="insp-count" id="inspCount">Componentes inspeccionados: 0 de 6</div>
+
+    <div class="callout note">
+      <p>
+        Seguridad: no abran la fuente de poder, porque puede conservar carga aun desconectada; si necesita
+        revisión, que la haga una persona técnica. Desconecten el equipo antes de manipularlo, pidan permiso a la
+        familia antes de intervenirlo y no muestren datos personales en sus fotografías ni capturas.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="est1">
+    <h2 class="section-title">Estación 1. Planteamiento del proyecto</h2>
+    <p>
+      Todo proyecto empieza con un buen planteamiento: organización, problema, meta, objetivo y alcance. Primero
+      analicen tres decisiones del caso; después construyan el planteamiento de su propio proyecto.
+    </p>
+    <div id="q-plant"></div>
+    <h3 class="sub-h">Ahora, su proyecto</h3>
+    <p>
+      Completen el planteamiento con los datos de su equipo y de la computadora que van a reutilizar. Pueden
+      cargar el caso modelo como punto de partida y adaptarlo.
+    </p>
+    <div class="lab">
+      <div class="lab-head">
+        <span>Constructor del planteamiento inicial</span>
+        <span>
+          <button class="btn" type="button" id="plExample">Ver caso modelo</button>
+          <button class="btn" type="button" id="plClear">Limpiar</button>
+        </span>
+      </div>
+      <div class="lab-body">
+        <div class="lab-cols">
+          <div>
+            <div class="pl-field">
+              <label for="plOrg">1. Organización <span class="pl-hint">Dónde se realizará el proyecto</span></label>
+              <input type="text" id="plOrg" maxlength="120" placeholder="Ej.: casa de un integrante del equipo">
+            </div>
+            <div class="pl-field">
+              <label for="plProb">2. Problema <span class="pl-hint">Qué ocurre, dónde y a quién afecta</span></label>
+              <textarea id="plProb" rows="3" maxlength="400" placeholder="Ej.: los equipos en desuso se acumulan o se desechan sin clasificar…"></textarea>
+            </div>
+            <div class="pl-field">
+              <label for="plMeta">3. Meta de sostenibilidad <span class="pl-hint">Estado al que quieren llegar: cantidad, plazo y evidencia</span></label>
+              <textarea id="plMeta" rows="3" maxlength="400" placeholder="Ej.: que al cierre del cuatrimestre el 100% del equipo en desuso esté clasificado…"></textarea>
+            </div>
+            <div class="pl-field">
+              <label for="plObj">4. Objetivo general <span class="pl-hint">Empiecen con un verbo en infinitivo: diseñar, reducir, implementar…</span></label>
+              <textarea id="plObj" rows="3" maxlength="400" placeholder="Ej.: diseñar un plan de gestión de residuos electrónicos para…"></textarea>
+            </div>
+            <div class="pl-two">
+              <div class="pl-field">
+                <label for="plIn">5a. El alcance incluye</label>
+                <textarea id="plIn" rows="3" maxlength="300" placeholder="Qué sí abarca el proyecto"></textarea>
+              </div>
+              <div class="pl-field">
+                <label for="plOut">5b. El alcance no incluye</label>
+                <textarea id="plOut" rows="3" maxlength="300" placeholder="Qué queda fuera de este cuatrimestre"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="meter" aria-hidden="true"><div class="meter-fill" id="plMeter"></div></div>
+            <div class="meter-label" id="plMeterLabel">0 de 5 sugerencias cumplidas</div>
+            <ul class="check-list" id="plChecks"></ul>
+
+            <div class="plan-preview">
+              <h5>Planteamiento inicial del proyecto sustentable</h5>
+              <dl>
+                <dt>Organización</dt><dd id="pvOrg"></dd>
+                <dt>Problema</dt><dd id="pvProb"></dd>
+                <dt>Meta de sostenibilidad</dt><dd id="pvMeta"></dd>
+                <dt>Objetivo general</dt><dd id="pvObj"></dd>
+                <dt>Alcance: incluye</dt><dd id="pvIn"></dd>
+                <dt>Alcance: no incluye</dt><dd id="pvOut"></dd>
+                <dt>Historia de usuario sugerida</dt><dd id="pvStory"></dd>
+              </dl>
+              <div class="btn-row">
+                <button class="btn" type="button" id="plCopy">Copiar planteamiento</button>
+                <span class="copy-msg" id="plMsg"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="lab-note">
+          Las sugerencias son automáticas y orientativas: no sustituyen la revisión del asesor. Lo que escriban
+          aquí no se guarda; copien el texto y péguenlo en el documento que entregarán.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="est2">
+    <h2 class="section-title">Estación 2. Aspectos e impactos</h2>
+    <p>
+      Recuerden la cadena: una <strong>actividad</strong> genera un <strong>aspecto</strong>, y el aspecto provoca
+      un <strong>impacto</strong> sobre el ambiente. Clasifiquen cuatro frases del caso.
+    </p>
+    <div class="qcard" id="clsCard">
+      <span class="q-n">Clasificación</span>
+      <div class="q-text">¿Es una actividad, un aspecto o un impacto?</div>
+      <div id="clsRows"></div>
+      <button class="btn" type="button" id="clsCheck">Comprobar</button>
+      <div class="q-pts" id="clsPts" style="display:none;"></div>
+    </div>
+
+    <h3 class="sub-h">La matriz del caso modelo</h3>
+    <p>
+      Mueve los controles para ver cómo se priorizan los aspectos de la computadora. Después, pulsen
+      <strong>"Mi proyecto"</strong> para capturar los aspectos de su propio equipo.
+    </p>
+    <div class="lab">
+      <div class="lab-head">
+        <span>Matriz de significancia ambiental (G × F)</span>
+        <span>
+          <button class="btn" type="button" id="btnExample">Caso modelo</button>
+          <button class="btn" type="button" id="btnMine">Mi proyecto</button>
+        </span>
+      </div>
+      <div class="lab-body">
+        <div class="lab-cols">
+          <div>
+            <div id="rows"></div>
+            <button class="btn ghost" type="button" id="btnAdd">+ Agregar aspecto</button>
+            <p class="lab-note" id="limitNote"></p>
+          </div>
+          <div>
+            <div class="heat-wrap">
+              <div class="heat-ylabel">Gravedad</div>
+              <div>
+                <div class="heat-grid" id="heat"></div>
+                <div class="heat-grid"><span></span><div class="heat-xlabel" style="grid-column: 2 / -1;">Frecuencia</div></div>
+              </div>
+            </div>
+            <div class="rank-title">Orden de prioridad</div>
+            <ol class="rank-list" id="rank"></ol>
+          </div>
+        </div>
+        <p class="lab-note">
+          Los datos que captures aquí no se guardan: si cierras la página, se pierden. Copia tus resultados a la
+          tabla de la actividad integradora.
+        </p>
+      </div>
+    </div>
+    <div id="q-asp"></div>
+  </section>
+
+  <section class="section" id="est3">
+    <h2 class="section-title">Estación 3. Indicador y plan de acción</h2>
+    <p>
+      Un indicador convierte un aspecto en algo medible; un plan de acción convierte la intención en trabajo con
+      responsables, fechas y evidencias. Respondan las dos preguntas y luego usen el simulador con su proyecto.
+    </p>
+    <div id="q-ind"></div>
+    <h3 class="sub-h">Simulador de indicador y plan de acción</h3>
+    <p>
+      Carguen uno de los ejemplos del caso o escriban el indicador de su aspecto prioritario. El punto de partida
+      puede ser una estimación razonable del equipo.
+    </p>
+    <div class="lab">
+      <div class="lab-head">
+        <span>Ficha de indicador y plan de acción</span>
+        <span>
+          <button class="btn" type="button" id="inClear">Limpiar</button>
+        </span>
+      </div>
+      <div class="lab-body">
+        <div class="ex-pick">
+          <span>Cargar ejemplo:</span>
+          <button class="btn ghost" type="button" data-ex="destino">Destino de componentes</button>
+          <button class="btn ghost" type="button" data-ex="borrado">Borrado seguro</button>
+          <button class="btn ghost" type="button" data-ex="energia">Consumo eléctrico</button>
+        </div>
+        <div class="lab-cols">
+          <div>
+            <div class="pl-field">
+              <label for="inAsp">Aspecto prioritario <span class="pl-hint">El que salió más alto en su matriz</span></label>
+              <input type="text" id="inAsp" maxlength="100" placeholder="Ej.: componentes sin destino definido">
+            </div>
+            <div class="pl-field">
+              <label for="inName">Nombre del indicador</label>
+              <input type="text" id="inName" maxlength="100" placeholder="Ej.: componentes con destino responsable">
+            </div>
+            <div class="pl-two">
+              <div class="pl-field">
+                <label for="inType">Tipo</label>
+                <select id="inType"><option value="resultado">De resultado</option><option value="proceso">De proceso</option></select>
+              </div>
+              <div class="pl-field">
+                <label for="inUnit">Unidad de medida</label>
+                <input type="text" id="inUnit" maxlength="40" placeholder="Ej.: %, kg/mes, kWh/mes">
+              </div>
+            </div>
+            <div class="pl-field">
+              <label for="inFormula">Cómo se calcula <span class="pl-hint">Fórmula o procedimiento de medición</span></label>
+              <input type="text" id="inFormula" maxlength="160" placeholder="Ej.: componentes con destino ÷ total × 100">
+            </div>
+            <div class="pl-three">
+              <div class="pl-field">
+                <label for="inBase">Punto de partida</label>
+                <input type="number" id="inBase" step="any" placeholder="Estimado">
+              </div>
+              <div class="pl-field">
+                <label for="inGoal">Meta</label>
+                <input type="number" id="inGoal" step="any" placeholder="A dónde llegar">
+              </div>
+              <div class="pl-field">
+                <label for="inNow">Valor actual</label>
+                <input type="number" id="inNow" step="any" placeholder="Último dato">
+              </div>
+            </div>
+            <div class="pl-two">
+              <div class="pl-field">
+                <label for="inFreq">Frecuencia de medición</label>
+                <select id="inFreq">
+                  <option value="">Elige…</option><option>Diaria</option><option>Semanal</option><option>Quincenal</option><option>Mensual</option>
+                </select>
+              </div>
+              <div class="pl-field">
+                <label for="inSrc">Fuente de evidencia</label>
+                <input type="text" id="inSrc" maxlength="120" placeholder="Ej.: registro mensual con fotos">
+              </div>
+            </div>
+
+            <div class="pl-field" style="margin-top:.6rem;">
+              <label>Plan de acción <span class="pl-hint">Al menos tres acciones con responsable y evidencia</span></label>
+              <div id="actRows"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="plan-preview" style="margin-top:0;">
+              <h5>Tarjeta del indicador</h5>
+              <dl>
+                <dt>Aspecto</dt><dd id="pvAsp"></dd>
+                <dt>Indicador</dt><dd id="pvName"></dd>
+                <dt>Cómo se calcula</dt><dd id="pvFormula"></dd>
+                <dt>Medición</dt><dd id="pvMeas"></dd>
+              </dl>
+
+              <div class="gauge" aria-live="polite">
+                <div class="gauge-track"><div class="gauge-fill" id="gFill"></div></div>
+                <div class="gauge-scale"><span id="gBase">Punto de partida</span><span id="gGoal">Meta</span></div>
+                <div class="gauge-row"><strong id="gPct">--</strong><span class="status-pill lvl-mod" id="gStatus">Sin datos</span></div>
+              </div>
+              <div class="pl-field" style="margin-top:.8rem;">
+                <label for="inSlide">Simular avance: <span id="slideVal">0</span>%</label>
+                <input type="range" id="inSlide" min="0" max="120" step="1" value="0" style="width:100%;accent-color:#490b58;">
+              </div>
+            </div>
+
+            <div class="meter" aria-hidden="true" style="margin-top:1rem;"><div class="meter-fill" id="inMeter"></div></div>
+            <div class="meter-label" id="inMeterLabel">0 de 5 sugerencias cumplidas</div>
+            <ul class="check-list" id="inChecks"></ul>
+
+            <div class="plan-preview">
+              <h5>Plan de acción</h5>
+              <div id="pvActs"></div>
+              <div class="btn-row">
+                <button class="btn" type="button" id="inCopy">Copiar ficha y plan</button>
+                <span class="copy-msg" id="inMsg"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="lab-note">
+          El avance se calcula como (valor actual − punto de partida) ÷ (meta − punto de partida). Funciona tanto para metas
+          de reducir como de aumentar. Las sugerencias son automáticas y orientativas; lo que escriban aquí no se
+          guarda, así que copien la ficha al documento que entregarán.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="est4">
+    <h2 class="section-title">Estación 4. Decisiones que ponen a prueba su criterio</h2>
+    <p>
+      En estos tres dilemas casi nunca hay una opción perfecta. Elijan la que mejor puedan justificar, lean las
+      consecuencias de cada alternativa y comenten en equipo por qué la mejor es la mejor.
+    </p>
+    <div id="q-dil"></div>
+  </section>
+
+  <section class="section" id="est5">
+    <h2 class="section-title">Estación 5. Reflexión y entrega</h2>
+    <h3 class="sub-h">Reflexión del equipo</h3>
+    <p>Respondan con sus palabras, en equipo. No hay respuestas únicas, pero sí respuestas fundamentadas.</p>
+    <div class="reflex">
+      <div class="pl-field">
+        <label for="rf1">1. ¿Qué decisión de su proyecto cambiarían después de analizar el caso?</label>
+        <textarea id="rf1" rows="3" placeholder="Escriban al menos dos o tres oraciones"></textarea>
+      </div>
+      <div class="pl-field">
+        <label for="rf2">2. ¿Qué aspecto o impacto estaban pasando por alto y por qué?</label>
+        <textarea id="rf2" rows="3" placeholder="Escriban al menos dos o tres oraciones"></textarea>
+      </div>
+      <div class="pl-field">
+        <label for="rf3">3. Como profesionales de sistemas, ¿qué pregunta de sustentabilidad deberían hacerse antes de comprar, configurar o desechar un equipo?</label>
+        <textarea id="rf3" rows="3" placeholder="Escriban al menos dos o tres oraciones"></textarea>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Qué deben entregar</h3>
+    <p>Un solo PDF por equipo, con estos elementos. Marquen cada uno cuando esté listo.</p>
+    <ul class="todo" id="todoList">
+      <li><label><input type="checkbox"><span>Portada con nombre del proyecto, integrantes y fecha.</span></label></li>
+      <li><label><input type="checkbox"><span>Planteamiento de su proyecto, copiado desde el constructor.</span></label></li>
+      <li><label><input type="checkbox"><span>Matriz de significancia con los aspectos de su proyecto (captura de pantalla).</span></label></li>
+      <li><label><input type="checkbox"><span>Ficha de indicador y plan de acción, copiados desde el simulador, con al menos tres acciones.</span></label></li>
+      <li><label><input type="checkbox"><span>Reflexión del equipo con las tres respuestas.</span></label></li>
+      <li><label><input type="checkbox"><span>Dos evidencias del trabajo: fotografías de la computadora (con permiso y sin datos personales) y captura del respaldo o del borrado seguro.</span></label></li>
+      <li><label><input type="checkbox"><span>Constancia de resultado del escenario de esta sesión.</span></label></li>
+      <li><label><input type="checkbox"><span>Archivo en PDF, con el nombre correcto, subido a Classroom.</span></label></li>
+    </ul>
+    <div class="todo-status" id="todoStatus" aria-live="polite">0 de 8 elementos listos</div>
+    <div class="callout note">
+      <p>
+        Nombren el archivo así: <em>Equipo_NombreDelProyecto_Sustentabilidad_Evaluacion.pdf</em>. La fecha y hora
+        límite de entrega las indica el asesor en Classroom.
+      </p>
+    </div>
+
+    <h3 class="sub-h">Cómo se evalúa</h3>
+    <div class="table-scroll">
+      <table class="worksheet-table eval-table" style="min-width:480px;">
+        <thead><tr><th>Criterio</th><th>Qué se revisa</th><th>Peso</th></tr></thead>
+        <tbody>
+          <tr><td>Escenario guiado</td><td>Puntaje de la constancia y razonamiento en las decisiones</td><td>25%</td></tr>
+          <tr><td>Planteamiento del proyecto</td><td>Organización, problema, meta, objetivo y alcance claros</td><td>20%</td></tr>
+          <tr><td>Matriz de aspectos</td><td>Aspectos del proyecto, valoración y priorización justificadas</td><td>15%</td></tr>
+          <tr><td>Indicador y plan de acción</td><td>Indicador medible; acciones con responsable, fecha y evidencia</td><td>25%</td></tr>
+          <tr><td>Reflexión y presentación</td><td>Respuestas fundamentadas, orden y evidencias reales</td><td>15%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">Constancia de resultado</h3>
+  </section>
+
+  <section class="section" id="constancia" style="margin-top:0;">
+    <div class="const">
+      <div class="wm" id="wm" aria-hidden="true"></div>
+      <div class="const-body">
+        <h3>Constancia del escenario: reutilizar una computadora en desuso</h3>
+        <div class="pl-field" style="margin-bottom:.9rem;">
+          <label for="stuName" style="font-family:var(--font-ui);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--guinda-dark);font-weight:700;">Nombre de la persona</label>
+          <input type="text" id="stuName" maxlength="80" placeholder="Escribe tu nombre completo">
+        </div>
+        <dl>
+          <dt>Puntaje del escenario</dt><dd id="cScore">0 de 0 puntos</dd>
+          <dt>Estaciones completadas</dt><dd id="cSt">0 de 5</dd>
+          <dt>Fecha</dt><dd id="cDate"></dd>
+        </dl>
+        <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
+          <button class="btn" type="button" id="btnPrint">Imprimir o guardar constancia en PDF</button>
+          <button class="btn ghost" type="button" id="btnCopyRef">Copiar mis reflexiones</button>
+          <span class="copy-msg" id="cMsg"></span>
+        </div>
+        <p class="lab-note" style="margin-top:.8rem;">
+          La constancia no se guarda: si cierran la página, el puntaje se pierde. Exporten el PDF antes de salir.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section class="section">
+    <h2 class="section-title">Conclusión</h2>
+    <p>
+      Reutilizar una computadora parece una tarea pequeña, y sin embargo reúne todo lo que trabajaron en el
+      Tema 2: un problema bien planteado, aspectos que se identifican y se priorizan, un indicador que permite
+      comprobar el avance y un plan con responsables, fechas y evidencias. Además obliga a decidir con criterio
+      entre reutilizar, reparar, donar o desechar, cuidando los datos de las personas. Si algo del proyecto se
+      quedó pendiente, hoy tienen una ruta clara para retomarlo: lo que construyeron en cada estación es la base
+      de su entrega. Y la pregunta que vale la pena llevarse a su práctica profesional es la misma en cualquier
+      equipo: ¿qué pasará con esto cuando ya no lo usemos?
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Referencias bibliográficas</h2>
+    <p class="text-sm">
+      Gómez, J. L. (2014). Del Desarrollo Sostenible a la Sustentabilidad Ambiental. <em>Revista Facultad de
+      Ciencias Económicas: Investigación y Reflexión</em>, 22(1), 115-136.
+      http://www.scielo.org.co/pdf/rfce/v22n1/v22n1a09.pdf
+    </p>
+    <p class="text-sm">
+      Ibáñez, R. M. (2012). Indicadores de sustentabilidad: utilidad y limitaciones. <em>Teoría y
+      Praxis</em>, (11), 102-126. https://www.redalyc.org/pdf/4561/456145105006.pdf
+    </p>
+    <p class="text-sm" style="margin-bottom:0;">
+      Sánchez, V. G. (2019). <em>¿Qué significa sustentabilidad?</em>
+      https://ceiba.org.mx/publicaciones/Consejo%20Editorial/190501_QueeslaSustentabilidad_VictorSS.pdf
+    </p>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Tema 2</span>
+  <img src="imagen1.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var MAX = 8;
+  var EXAMPLE = [
+    { n: "Equipo completo desechado en la basura común", g: 5, f: 2 },
+    { n: "Consumo eléctrico de la computadora encendida muchas horas", g: 2, f: 5 },
+    { n: "Datos personales en el disco sin borrado seguro", g: 4, f: 2 },
+    { n: "Monitor funcional que se descarta sin probarlo", g: 3, f: 2 },
+    { n: "Cables y periféricos sin destino", g: 2, f: 3 },
+    { n: "Pila de la tarjeta madre descartada sin acopio", g: 4, f: 1 }
+  ]
+  var data = clone(EXAMPLE);
+
+  function clone(a) { return a.map(function (x) { return { n: x.n, g: x.g, f: x.f }; }); }
+
+  function level(p) {
+    if (p <= 4) return { k: "lvl-bajo", t: "Bajo" };
+    if (p <= 9) return { k: "lvl-mod", t: "Moderado" };
+    if (p <= 15) return { k: "lvl-alto", t: "Alto" };
+    return { k: "lvl-crit", t: "Crítico" };
+  }
+
+  var rowsEl = document.getElementById("rows");
+  var heatEl = document.getElementById("heat");
+  var rankEl = document.getElementById("rank");
+  var noteEl = document.getElementById("limitNote");
+
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function renderRows() {
+    rowsEl.innerHTML = "";
+    data.forEach(function (d, i) {
+      var p = d.g * d.f, lv = level(p);
+      var el = document.createElement("div");
+      el.className = "asp-row " + lv.k;
+      el.innerHTML =
+        '<div class="asp-top">' +
+          '<span class="asp-num">' + (i + 1) + '</span>' +
+          '<input type="text" maxlength="60" value="' + esc(d.n) + '" aria-label="Nombre del aspecto ' + (i + 1) + '" placeholder="Nombre del aspecto">' +
+          '<button type="button" class="asp-del" title="Quitar aspecto" aria-label="Quitar aspecto ' + (i + 1) + '">&times;</button>' +
+        '</div>' +
+        '<div class="asp-sliders">' +
+          '<div><label>Gravedad: <span data-v="g">' + d.g + '</span></label><input type="range" min="1" max="5" step="1" value="' + d.g + '" data-k="g" aria-label="Gravedad del aspecto ' + (i + 1) + '"></div>' +
+          '<div><label>Frecuencia: <span data-v="f">' + d.f + '</span></label><input type="range" min="1" max="5" step="1" value="' + d.f + '" data-k="f" aria-label="Frecuencia del aspecto ' + (i + 1) + '"></div>' +
+          '<div class="asp-score">' + p + ' · ' + lv.t + '</div>' +
+        '</div>';
+      el.querySelector('input[type="text"]').addEventListener("input", function (e) {
+        d.n = e.target.value; renderViews();
+      });
+      el.querySelectorAll('input[type="range"]').forEach(function (r) {
+        r.addEventListener("input", function (e) {
+          d[e.target.getAttribute("data-k")] = parseInt(e.target.value, 10);
+          // actualizar solo esta fila para no perder el foco del control
+          var np = d.g * d.f, nl = level(np);
+          el.className = "asp-row " + nl.k;
+          el.querySelector('[data-v="g"]').textContent = d.g;
+          el.querySelector('[data-v="f"]').textContent = d.f;
+          el.querySelector(".asp-score").textContent = np + " · " + nl.t;
+          renderViews();
+        });
+      });
+      el.querySelector(".asp-del").addEventListener("click", function () {
+        data.splice(i, 1); renderAll();
+      });
+      rowsEl.appendChild(el);
+    });
+    document.getElementById("btnAdd").disabled = data.length >= MAX;
+    noteEl.textContent = data.length >= MAX ? "Máximo de " + MAX + " aspectos en el recurso." : "";
+    if (!data.length) rowsEl.innerHTML = '<p class="lab-note">Aún no hay aspectos. Pulsa "Agregar aspecto".</p>';
+  }
+
+  function renderViews() {
+    // mapa de calor: filas de gravedad 5..1, columnas de frecuencia 1..5
+    var html = "";
+    for (var g = 5; g >= 1; g--) {
+      html += '<div class="heat-tick">' + g + '</div>';
+      for (var f = 1; f <= 5; f++) {
+        var lv = level(g * f);
+        var dots = "";
+        data.forEach(function (d, i) {
+          if (d.g === g && d.f === f) {
+            dots += '<span class="heat-dot" title="' + esc(d.n || "Aspecto " + (i + 1)) + '">' + (i + 1) + '</span>';
+          }
+        });
+        html += '<div class="heat-cell ' + lv.k + '" title="G ' + g + ' × F ' + f + ' = ' + (g * f) + ' (' + lv.t + ')">' +
+                '<span class="prod">' + (g * f) + '</span>' + dots + '</div>';
+      }
+    }
+    html += '<div class="heat-tick"></div>';
+    for (var x = 1; x <= 5; x++) html += '<div class="heat-tick">' + x + '</div>';
+    heatEl.innerHTML = html;
+
+    var order = data.map(function (d, i) { return { d: d, i: i, p: d.g * d.f }; })
+      .sort(function (a, b) { return b.p - a.p || a.i - b.i; });
+    rankEl.innerHTML = order.map(function (o) {
+      var lv = level(o.p);
+      return '<li class="' + lv.k + '"><span class="asp-num">' + (o.i + 1) + '</span>' +
+        '<span class="rk-name">' + esc(o.d.n || "Aspecto sin nombre") + '</span>' +
+        '<span class="rk-lvl">' + o.p + ' · ' + lv.t + '</span></li>';
+    }).join("");
+  }
+
+  function renderAll() { renderRows(); renderViews(); }
+
+  document.getElementById("btnAdd").addEventListener("click", function () {
+    if (data.length >= MAX) return;
+    data.push({ n: "", g: 3, f: 3 });
+    renderAll();
+    var inputs = rowsEl.querySelectorAll('input[type="text"]');
+    if (inputs.length) inputs[inputs.length - 1].focus();
+  });
+  document.getElementById("btnExample").addEventListener("click", function () { data = clone(EXAMPLE); renderAll(); });
+  document.getElementById("btnMine").addEventListener("click", function () {
+    data = [{ n: "", g: 3, f: 3 }, { n: "", g: 3, f: 3 }, { n: "", g: 3, f: 3 }];
+    renderAll();
+  });
+
+  renderAll();
+})();
+
+// ---------------- Constructor del planteamiento ----------------
+(function () {
+  "use strict";
+  var F = {
+    org: document.getElementById("plOrg"), prob: document.getElementById("plProb"),
+    meta: document.getElementById("plMeta"), obj: document.getElementById("plObj"),
+    inc: document.getElementById("plIn"), out: document.getElementById("plOut")
+  };
+  var EX = {
+    org: "Casa de una persona integrante del equipo (caso modelo)",
+    prob: "Una computadora de escritorio en desuso lleva cuatro años guardada, con datos personales sin respaldar. La familia piensa tirarla o venderla como chatarra, lo que la convertiría en residuo electrónico aunque podría reutilizarse.",
+    meta: "Que al cierre del cuatrimestre la computadora esté funcionando para uso escolar en casa, con sus datos respaldados y borrados de forma segura, y que el 100% de los componentes no reutilizables tenga un destino responsable documentado.",
+    obj: "Diseñar y ejecutar un plan de reutilización de la computadora que permita respaldar y borrar sus datos, reactivarla con un sistema operativo seguro y dar destino responsable a lo que no pueda reutilizarse.",
+    inc: "La computadora, el monitor y los periféricos del caso; respaldo, borrado seguro, reactivación, y destino de los componentes no reutilizables.",
+    out: "Los demás dispositivos de la casa, la compra de equipo nuevo y la recolección física de residuos por un gestor."
+  }
+  var CHECKS = [
+    { t: "La organización está definida", f: function (v) { return v.org.length >= 8; } },
+    { t: "El problema explica qué ocurre y tiene un desarrollo suficiente (al menos 60 caracteres)", f: function (v) { return v.prob.length >= 60; } },
+    { t: "La meta incluye una cantidad y un plazo", f: function (v) {
+        return /\d/.test(v.meta) && /(semana|mes|cuatrimestre|sprint|d[ií]a|a[ñn]o|antes|al cierre|para el|en \d)/i.test(v.meta); } },
+    { t: "El objetivo empieza con un verbo en infinitivo (diseñar, reducir, implementar…)", f: function (v) {
+        return /^\s*[a-záéíóúñ]{3,}(ar|er|ir|ír)\b/i.test(v.obj); } },
+    { t: "El alcance dice qué incluye y qué no incluye", f: function (v) { return v.inc.length >= 10 && v.out.length >= 10; } }
+  ];
+
+  function vals() {
+    var o = {}; Object.keys(F).forEach(function (k) { o[k] = F[k].value.trim(); }); return o;
+  }
+  function setPv(id, text) {
+    var el = document.getElementById(id);
+    if (text) { el.textContent = text; el.className = ""; }
+    else { el.textContent = "Pendiente"; el.className = "empty"; }
+  }
+  function lowerFirst(s) { return s ? s.charAt(0).toLowerCase() + s.slice(1) : s; }
+  function story(v) {
+    if (!v.obj) return "";
+    return "Como equipo del proyecto, queremos " + lowerFirst(v.obj.replace(/\.$/, "")) + ", para avanzar hacia nuestra meta de sostenibilidad.";
+  }
+  function plain(v) {
+    function g(x) { return x || "(pendiente)"; }
+    return "PLANTEAMIENTO INICIAL DEL PROYECTO SUSTENTABLE\n" +
+      "Organización: " + g(v.org) + "\n" +
+      "Problema: " + g(v.prob) + "\n" +
+      "Meta de sostenibilidad: " + g(v.meta) + "\n" +
+      "Objetivo general: " + g(v.obj) + "\n" +
+      "Alcance (incluye): " + g(v.inc) + "\n" +
+      "Alcance (no incluye): " + g(v.out) + "\n" +
+      "Historia de usuario sugerida: " + (story(v) || "(pendiente)");
+  }
+  function render() {
+    var v = vals();
+    setPv("pvOrg", v.org); setPv("pvProb", v.prob); setPv("pvMeta", v.meta);
+    setPv("pvObj", v.obj); setPv("pvIn", v.inc); setPv("pvOut", v.out); setPv("pvStory", story(v));
+    var list = document.getElementById("plChecks"), ok = 0;
+    list.innerHTML = CHECKS.map(function (c) {
+      var pass = c.f(v); if (pass) ok++;
+      return '<li class="' + (pass ? "ok" : "") + '"><span class="check-dot">' + (pass ? "&#10003;" : "") + '</span><span>' + c.t + '</span></li>';
+    }).join("");
+    document.getElementById("plMeter").style.width = (ok / CHECKS.length * 100) + "%";
+    document.getElementById("plMeterLabel").textContent = ok + " de " + CHECKS.length + " sugerencias cumplidas";
+  }
+  Object.keys(F).forEach(function (k) { F[k].addEventListener("input", render); });
+  document.getElementById("plExample").addEventListener("click", function () {
+    Object.keys(F).forEach(function (k) { F[k].value = EX[k]; }); render();
+  });
+  document.getElementById("plClear").addEventListener("click", function () {
+    Object.keys(F).forEach(function (k) { F[k].value = ""; }); render();
+  });
+  document.getElementById("plCopy").addEventListener("click", function () {
+    var text = plain(vals()), msg = document.getElementById("plMsg");
+    function ok() { msg.textContent = "Copiado"; setTimeout(function () { msg.textContent = ""; }, 2000); }
+    function fb() {
+      try {
+        var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand("copy"); document.body.removeChild(ta); ok();
+      } catch (e) { msg.textContent = "Selecciona el texto de la vista previa y cópialo manualmente"; }
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fb); else fb();
+    } catch (e) { fb(); }
+  });
+  render();
+})();
+
+
+(function () {
+  "use strict";
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  var NACT = 3;
+
+  // filas de acciones
+  var actWrap = $("actRows");
+  for (var i = 1; i <= NACT; i++) {
+    var d = document.createElement("div");
+    d.className = "act-row";
+    d.innerHTML =
+      '<span class="act-n">Acción ' + i + '</span>' +
+      '<input type="text" id="aA' + i + '" maxlength="140" placeholder="Qué se hará" aria-label="Acción ' + i + '">' +
+      '<div class="act-grid">' +
+        '<input type="text" id="aR' + i + '" maxlength="80" placeholder="Responsable" aria-label="Responsable de la acción ' + i + '">' +
+        '<input type="date" id="aD' + i + '" aria-label="Fecha de la acción ' + i + '">' +
+      '</div>' +
+      '<div style="margin-top:.5rem"><input type="text" id="aE' + i + '" maxlength="140" placeholder="Evidencia que se generará" aria-label="Evidencia de la acción ' + i + '"></div>';
+    actWrap.appendChild(d);
+  }
+
+  var F = { asp: $("inAsp"), name: $("inName"), type: $("inType"), unit: $("inUnit"), formula: $("inFormula"),
+            base: $("inBase"), goal: $("inGoal"), now: $("inNow"), freq: $("inFreq"), src: $("inSrc") };
+  var syncing = false;
+
+  var EXS = {
+    destino: {
+      asp: "Componentes de la computadora sin destino definido", name: "Componentes con destino responsable", type: "resultado",
+      unit: "% de componentes", formula: "componentes reutilizados, donados o entregados a un gestor con comprobante ÷ componentes totales × 100",
+      base: "0", goal: "100", now: "40", freq: "Semanal", src: "Hoja de inventario con fotografías y comprobantes",
+      acts: [
+        ["Hacer el inventario de componentes y clasificarlos como reutilizable, reparable o desecho", "Integrante 1", "2026-11-07", "Hoja de inventario con fotografías"],
+        ["Reactivar lo reutilizable (equipo, monitor y periféricos) para su uso en casa", "Integrante 2", "2026-11-14", "Fotografía del equipo funcionando"],
+        ["Entregar lo no reutilizable a un centro de acopio o gestor autorizado y pedir comprobante", "Integrante 3", "2026-11-21", "Comprobante de entrega"]
+      ]
+    },
+    borrado: {
+      asp: "Datos personales en el disco duro sin borrado seguro", name: "Dispositivos con borrado seguro verificado", type: "resultado",
+      unit: "% de dispositivos", formula: "discos y memorias con respaldo y borrado verificados ÷ discos y memorias totales × 100",
+      base: "0", goal: "100", now: "50", freq: "Semanal", src: "Lista de verificación y captura del programa de borrado",
+      acts: [
+        ["Respaldar fotos y archivos en una memoria externa, con apoyo de la persona dueña", "Integrante 1", "2026-11-07", "Fotografía del respaldo sin mostrar contenido personal"],
+        ["Aplicar borrado seguro al disco con un programa confiable y verificarlo", "Integrante 2", "2026-11-10", "Captura del programa con el resultado"],
+        ["Instalar un sistema operativo actualizado y ligero y comprobar que arranca", "Integrante 3", "2026-11-14", "Captura del sistema funcionando"]
+      ]
+    },
+    energia: {
+      asp: "Consumo eléctrico de la computadora encendida muchas horas", name: "Horas de uso con ahorro de energía", type: "proceso",
+      unit: "% de horas con ahorro activo", formula: "horas de uso con suspensión o apagado automático ÷ horas encendida × 100",
+      base: "10", goal: "80", now: "30", freq: "Semanal", src: "Bitácora semanal de uso con capturas de configuración",
+      acts: [
+        ["Configurar suspensión y apagado automático de pantalla y disco", "Integrante 1", "2026-11-07", "Captura de la configuración"],
+        ["Acordar con la familia un horario de uso y apagado completo", "Integrante 2", "2026-11-10", "Acuerdo escrito o mensaje de confirmación"],
+        ["Llevar una bitácora semanal de horas de uso y de apagado", "Integrante 3", "2026-11-14", "Bitácora semanal"]
+      ]
+    }
+  };
+
+    function num(el) { var v = parseFloat(el.value); return isFinite(v) ? v : null; }
+  function fmtDate(v) { if (!v) return ""; var p = v.split("-"); return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : v; }
+  function acts() {
+    var out = [];
+    for (var i = 1; i <= NACT; i++) {
+      out.push({ a: $("aA" + i).value.trim(), r: $("aR" + i).value.trim(), d: $("aD" + i).value, e: $("aE" + i).value.trim() });
+    }
+    return out;
+  }
+
+  function status(p) {
+    if (p < 0) return { k: "lvl-crit", t: "Por debajo del punto de partida" };
+    if (p < 40) return { k: "lvl-crit", t: "Atención: avance bajo" };
+    if (p < 80) return { k: "lvl-mod", t: "En camino" };
+    if (p < 100) return { k: "lvl-bajo", t: "Casi en la meta" };
+    return { k: "lvl-bajo", t: "Meta alcanzada" };
+  }
+
+  function setDd(id, text) {
+    var el = $(id);
+    if (text) { el.textContent = text; el.className = ""; } else { el.textContent = "Pendiente"; el.className = "empty"; }
+  }
+
+  function render() {
+    var base = num(F.base), goal = num(F.goal), now = num(F.now);
+    var unit = F.unit.value.trim();
+    setDd("pvAsp", F.asp.value.trim());
+    setDd("pvName", F.name.value.trim());
+    setDd("pvFormula", F.formula.value.trim());
+    var meas = [];
+    meas.push(F.type.value === "resultado" ? "Indicador de resultado" : "Indicador de proceso");
+    if (F.freq.value) meas.push("medición " + F.freq.value.toLowerCase());
+    if (F.src.value.trim()) meas.push("evidencia: " + F.src.value.trim());
+    $("pvMeas").textContent = meas.join(" · ");
+    $("pvMeas").className = "";
+
+    var valid = base !== null && goal !== null && base !== goal;
+    $("gBase").textContent = base !== null ? "Partida: " + base + (unit ? " " + unit : "") : "Punto de partida";
+    $("gGoal").textContent = goal !== null ? "Meta: " + goal + (unit ? " " + unit : "") : "Meta";
+    var pct = null;
+    if (valid && now !== null) pct = (now - base) / (goal - base) * 100;
+    var fill = $("gFill"), pctEl = $("gPct"), st = $("gStatus");
+    if (pct === null) {
+      fill.style.width = "0%"; pctEl.textContent = "--";
+      st.className = "status-pill lvl-mod";
+      st.textContent = valid ? "Captura el valor actual" : (base !== null && goal !== null ? "La meta debe ser distinta del punto de partida" : "Sin datos");
+    } else {
+      fill.style.width = Math.max(0, Math.min(100, pct)) + "%";
+      pctEl.textContent = Math.round(pct) + "% de avance";
+      var s = status(pct);
+      st.className = "status-pill " + s.k; st.textContent = s.t + (goal < base ? " (meta de reducir)" : " (meta de aumentar)");
+      if (!syncing) { $("inSlide").value = Math.max(0, Math.min(120, Math.round(pct))); }
+      $("slideVal").textContent = $("inSlide").value;
+    }
+
+    // plan de acción
+    var A = acts(), rows = A.filter(function (x) { return x.a || x.r || x.e || x.d; });
+    $("pvActs").innerHTML = rows.length
+      ? rows.map(function (x, i) {
+          var meta = [x.r ? "Responsable: " + x.r : "", x.d ? "Fecha: " + fmtDate(x.d) : ""].filter(Boolean).join(" · ");
+          return '<div class="pv-act"><strong>' + esc(x.a || "Acción sin describir") + '</strong>' +
+            (meta ? '<span>' + esc(meta) + '</span>' : '') +
+            (x.e ? '<span>Evidencia: ' + esc(x.e) + '</span>' : '') + '</div>';
+        }).join("")
+      : '<p class="lab-note" style="margin:0">Aún no hay acciones capturadas.</p>';
+
+    // sugerencias
+    var complete = A.filter(function (x) { return x.a && x.r && x.e; }).length;
+    var checks = [
+      { t: "El indicador tiene un nombre claro", ok: F.name.value.trim().length >= 8 },
+      { t: "Se define la unidad de medida y cómo se calcula", ok: unit.length >= 1 && F.formula.value.trim().length >= 10 },
+      { t: "Hay punto de partida y meta numéricos y distintos", ok: valid },
+      { t: "Se indica la frecuencia de medición y la fuente de evidencia", ok: F.freq.value !== "" && F.src.value.trim().length >= 10 },
+      { t: "El plan tiene al menos tres acciones con responsable y evidencia", ok: complete >= 3 }
+    ];
+    var ok = 0;
+    $("inChecks").innerHTML = checks.map(function (c) {
+      if (c.ok) ok++;
+      return '<li class="' + (c.ok ? "ok" : "") + '"><span class="check-dot">' + (c.ok ? "&#10003;" : "") + '</span><span>' + c.t + '</span></li>';
+    }).join("");
+    $("inMeter").style.width = (ok / checks.length * 100) + "%";
+    $("inMeterLabel").textContent = ok + " de " + checks.length + " sugerencias cumplidas";
+  }
+
+  function plain() {
+    function g(x) { return x || "(pendiente)"; }
+    var base = F.base.value, goal = F.goal.value, now = F.now.value, u = F.unit.value.trim();
+    var t = "FICHA DE INDICADOR\n" +
+      "Aspecto prioritario: " + g(F.asp.value.trim()) + "\n" +
+      "Indicador: " + g(F.name.value.trim()) + " (" + (F.type.value === "resultado" ? "de resultado" : "de proceso") + ")\n" +
+      "Unidad de medida: " + g(u) + "\n" +
+      "Cómo se calcula: " + g(F.formula.value.trim()) + "\n" +
+      "Punto de partida (estimado): " + g(base) + " | Meta: " + g(goal) + " | Valor actual: " + g(now) + "\n" +
+      "Frecuencia de medición: " + g(F.freq.value) + "\n" +
+      "Fuente de evidencia: " + g(F.src.value.trim()) + "\n\nPLAN DE ACCIÓN\n";
+    acts().forEach(function (x, i) {
+      t += (i + 1) + ". " + g(x.a) + " | Responsable: " + g(x.r) + " | Fecha: " + g(fmtDate(x.d)) + " | Evidencia: " + g(x.e) + "\n";
+    });
+    return t;
+  }
+
+  Object.keys(F).forEach(function (k) { F[k].addEventListener("input", render); F[k].addEventListener("change", render); });
+  for (var j = 1; j <= NACT; j++) {
+    ["aA", "aR", "aD", "aE"].forEach(function (p) { $(p + j).addEventListener("input", render); $(p + j).addEventListener("change", render); });
+  }
+
+  $("inSlide").addEventListener("input", function () {
+    var base = num(F.base), goal = num(F.goal);
+    var v = parseInt($("inSlide").value, 10);
+    $("slideVal").textContent = v;
+    if (base === null || goal === null || base === goal) { render(); return; }
+    var val = base + v / 100 * (goal - base);
+    F.now.value = String(Math.round(val * 100) / 100);
+    syncing = true; render(); syncing = false;
+  });
+
+  function loadEx(key, jump) {
+    var E = EXS[key]; if (!E) return;
+    ["asp", "name", "type", "unit", "formula", "base", "goal", "now", "freq", "src"].forEach(function (k) { F[k].value = E[k]; });
+    E.acts.forEach(function (a, i) { $("aA" + (i + 1)).value = a[0]; $("aR" + (i + 1)).value = a[1]; $("aD" + (i + 1)).value = a[2]; $("aE" + (i + 1)).value = a[3]; });
+    render();
+    if (jump) { try { $("simulador").scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) { $("simulador").scrollIntoView(); } }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ex]"), function (btn) {
+    btn.addEventListener("click", function () { loadEx(btn.getAttribute("data-ex"), !btn.closest(".lab")); });
+  });
+  $("inClear").addEventListener("click", function () {
+    Object.keys(F).forEach(function (k) { F[k].value = (k === "type") ? "resultado" : ""; });
+    for (var n = 1; n <= NACT; n++) { ["aA", "aR", "aD", "aE"].forEach(function (p) { $(p + n).value = ""; }); }
+    $("inSlide").value = 0; render();
+  });
+  $("inCopy").addEventListener("click", function () {
+    var text = plain(), msg = $("inMsg");
+    function ok() { msg.textContent = "Copiado"; setTimeout(function () { msg.textContent = ""; }, 2000); }
+    function fb() {
+      try {
+        var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand("copy"); document.body.removeChild(ta); ok();
+      } catch (e) { msg.textContent = "Selecciona el texto de la vista previa y cópialo manualmente"; }
+    }
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fb); else fb(); } catch (e) { fb(); }
+  });
+  render();
+})();
+
+(function () {
+  var boxes = document.querySelectorAll("#todoList input[type=checkbox]");
+  var st = document.getElementById("todoStatus");
+  function upd() {
+    var n = 0; Array.prototype.forEach.call(boxes, function (b) { if (b.checked) n++; });
+    st.textContent = n === boxes.length ? "Todo listo: ya pueden entregar" : n + " de " + boxes.length + " elementos listos";
+    st.className = "todo-status" + (n === boxes.length ? " done" : "");
+  }
+  Array.prototype.forEach.call(boxes, function (b) { b.addEventListener("change", upd); });
+  upd();
+})();
+
+
+(function () {
+  "use strict";
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+  // ---------- Inspeccion de componentes ----------
+  var PARTS = [
+    { n: "Gabinete y fuente de poder", e: "Mucho polvo acumulado. La fuente de poder hace ruido al encender.",
+      a: "Materiales metálicos y plásticos recuperables; una fuente deteriorada que puede fallar.",
+      q: "¿Quién debe revisar la fuente y qué se hace si no es seguro reutilizarla?" },
+    { n: "Disco duro", e: "Disco mecánico de 500 GB con fotos familiares y archivos de tareas, sin respaldo.",
+      a: "Datos personales en riesgo y un componente que será residuo electrónico si se desecha.",
+      q: "¿Qué se hace primero: respaldar o borrar? ¿Quién decide qué se conserva?" },
+    { n: "Memoria RAM y tarjeta madre", e: "Funcionan, pero con 4 GB el equipo es lento con programas actuales.",
+      a: "Componentes con vida útil restante; ampliar o reemplazar piezas implica nuevos materiales.",
+      q: "¿Conviene priorizar piezas usadas o reacondicionadas antes de comprar piezas nuevas?" },
+    { n: "Monitor", e: "Pantalla que enciende y muestra imagen, aunque con el brillo disminuido.",
+      a: "Equipo reutilizable; si se desecha, es un residuo electrónico voluminoso.",
+      q: "¿Se prueba antes de decidir, o se descarta por apariencia?" },
+    { n: "Teclado, mouse y cables", e: "Periféricos funcionales mezclados con cables de varios tipos, sin identificar.",
+      a: "Residuos pequeños que casi siempre terminan en la basura común.",
+      q: "¿Se reutilizan, se donan o se entregan a acopio? ¿Quién lo comprueba?" },
+    { n: "Pila de la tarjeta madre", e: "Pila de botón que mantiene el reloj del equipo y que probablemente está agotada.",
+      a: "Residuo que no debe ir a la basura común; suele requerir acopio especial. Verifiquen centros de acopio de su localidad.",
+      q: "¿A dónde la llevarían y cómo dejarían evidencia de la entrega?" }
+  ];
+  var seen = {};
+  var chips = $("chips");
+  PARTS.forEach(function (p, i) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = p.n;
+    b.addEventListener("click", function () {
+      seen[i] = true;
+      Array.prototype.forEach.call(chips.children, function (c) { c.classList.remove("active"); });
+      b.classList.add("active"); b.classList.add("seen");
+      $("insp").innerHTML = "<dl><dt>Estado</dt><dd>" + esc(p.e) + "</dd><dt>Aspecto ambiental</dt><dd>" + esc(p.a) +
+        '</dd><dt>Para pensar</dt><dd class="insp-q">' + esc(p.q) + "</dd></dl>";
+      $("inspCount").textContent = "Componentes inspeccionados: " + Object.keys(seen).length + " de " + PARTS.length;
+    });
+    chips.appendChild(b);
+  });
+
+  // ---------- Motor de preguntas ----------
+  var state = { answered: {}, pts: {} };
+  var MAXPTS = 0;
+  var QUIZ = {
+    "q-plant": [
+      { id: "p1", q: "¿Cuál es el planteamiento del problema mejor formulado?", o: [
+        { t: "Queremos ayudar al planeta con la computadora vieja.", p: 0, c: "weak", fb: "Es una intención, no un problema: no dice qué ocurre, dónde ni a quién afecta." },
+        { t: "Una computadora de escritorio en desuso lleva cuatro años guardada en una casa, con datos personales sin respaldar, y la familia piensa tirarla o venderla como chatarra, lo que la convertiría en residuo electrónico aunque podría reutilizarse.", p: 1, c: "best", fb: "Describe la situación, quién la vive y la consecuencia si no se actúa." },
+        { t: "Hay que reciclar todas las computadoras viejas de la colonia.", p: 0, c: "weak", fb: "Es demasiado amplio para un proyecto de un cuatrimestre y no parte del caso concreto." },
+        { t: "Vamos a instalar Linux en la computadora.", p: 0, c: "weak", fb: "Es una solución, no un problema. Plantear la solución antes del problema limita las alternativas." }
+      ] },
+      { id: "p2", q: "¿Qué meta de sostenibilidad está mejor formulada?", o: [
+        { t: "Reutilizar la computadora lo mejor posible.", p: 0, c: "weak", fb: "No tiene cantidad, plazo ni forma de comprobar si se logró." },
+        { t: "Que al cierre del cuatrimestre la computadora esté funcionando para uso escolar en casa, con sus datos respaldados y borrados de forma segura, y que el 100% de los componentes no reutilizables tenga un destino responsable documentado.", p: 1, c: "best", fb: "Tiene plazo, un estado final claro, una cantidad (100%) y evidencia (destino documentado)." },
+        { t: "Comprar una computadora nueva y regalar la vieja.", p: 0, c: "weak", fb: "Contradice el propósito: genera más consumo y no resuelve el destino del equipo viejo." },
+        { t: "Concientizar a toda la familia sobre la basura electrónica.", p: 0, c: "partial", fb: "Es valioso, pero es una acción de apoyo; todavía no es una meta medible." }
+      ] },
+      { id: "p3", q: "¿Qué debería quedar explícitamente fuera del alcance?", o: [
+        { t: "El respaldo y el borrado seguro de los datos.", p: 0, c: "weak", fb: "Son parte central del proyecto: sin ellos no se puede reutilizar ni desechar con responsabilidad." },
+        { t: "Los demás dispositivos de la casa y la compra de equipo nuevo.", p: 1, c: "best", fb: "Delimita el proyecto a la computadora del caso y evita que crezca sin control." },
+        { t: "La documentación con fotografías y registros.", p: 0, c: "weak", fb: "Las evidencias son lo que permite demostrar el trabajo; deben estar dentro del alcance." },
+        { t: "El plan de acción.", p: 0, c: "weak", fb: "El plan es el corazón del proyecto; dejarlo fuera lo vacía de contenido." }
+      ] }
+    ],
+    "q-asp": [
+      { id: "a1", q: "En la matriz, la pila de la tarjeta madre tiene gravedad 4 y frecuencia 1, así que su resultado es 4 (nivel Bajo). ¿Cómo interpretan ese resultado?", o: [
+        { t: "Se ignora, porque el nivel es bajo.", p: 0, c: "weak", fb: "Un nivel bajo por frecuencia no significa que el impacto sea menor si ocurre: conviene revisar la gravedad." },
+        { t: "Aunque el nivel sea bajo, conviene darle una acción sencilla (llevarla a acopio) porque su gravedad es alta y resolverla cuesta poco.", p: 1, c: "best", fb: "La matriz orienta, no decide sola: aspectos de alta gravedad y fácil solución merecen una acción aunque no lideren la lista." },
+        { t: "Se sube la frecuencia a 5 para que aparezca arriba.", p: 0, c: "weak", fb: "Alterar los datos para obtener otro resultado le quita sentido a la matriz." },
+        { t: "Se elimina de la matriz para que quede más corta.", p: 0, c: "weak", fb: "Una matriz útil conserva todos los aspectos identificados, aun los de nivel bajo." }
+      ] }
+    ],
+    "q-ind": [
+      { id: "i1", q: "¿Cuál es un indicador de resultado para este proyecto?", o: [
+        { t: "Número de reuniones del equipo.", p: 0, c: "weak", fb: "Mide esfuerzo del equipo (proceso), no el cambio en el aspecto ambiental." },
+        { t: "Porcentaje de componentes con destino responsable documentado.", p: 1, c: "best", fb: "Mide directamente el resultado sobre el aspecto: qué proporción del equipo tiene un destino adecuado." },
+        { t: "Horas que dedicó cada persona al proyecto.", p: 0, c: "weak", fb: "Mide dedicación, no resultados ambientales." },
+        { t: "Número de fotografías tomadas.", p: 0, c: "weak", fb: "Las fotos son evidencia, no un indicador del cambio logrado." }
+      ] },
+      { id: "i2", q: "¿Cuál es una acción bien planteada para el plan?", o: [
+        { t: "Cuidar los datos.", p: 0, c: "weak", fb: "No tiene verbo medible, responsable, fecha ni evidencia." },
+        { t: "Respaldar las fotos y archivos del disco en una memoria externa y aplicar borrado seguro. Responsable: Dani. Fecha: 7 de noviembre. Evidencia: captura del programa de borrado y fotografía del respaldo.", p: 1, c: "best", fb: "Es concreta y tiene responsable, fecha y evidencia verificable." },
+        { t: "Todos revisan la computadora cuando puedan.", p: 0, c: "weak", fb: "Sin responsable ni fecha, nadie se hace cargo y no se puede dar seguimiento." },
+        { t: "Que alguien se encargue de los datos.", p: 0, c: "weak", fb: "'Alguien' no es un responsable; la acción tampoco es concreta." }
+      ] }
+    ],
+    "q-dil": [
+      { id: "d1", ctx: "La computadora enciende, pero tarda cinco minutos en arrancar. Dani propone tirarla porque 'ya no sirve'. Su hermana necesita una computadora para sus tareas.",
+        q: "¿Qué hacen?", o: [
+        { t: "Tirarla a la basura y comprar una computadora nueva.", p: 0, c: "weak", fb: "Genera un residuo electrónico y un gasto, sin haber evaluado si el equipo podía recuperarse." },
+        { t: "Respaldar y borrar los datos, y evaluar un sistema operativo actualizado y ligero y mejoras económicas (por ejemplo memoria o unidad de estado sólido) antes de decidir.", p: 2, c: "best", fb: "Prolonga la vida útil con una inversión pequeña, protege los datos y decide con información." },
+        { t: "Dársela tal cual, con los datos personales y Windows 7.", p: 1, c: "partial", fb: "Reutiliza el equipo, pero expone datos y usa un sistema que ya no recibe actualizaciones de seguridad." }
+      ] },
+      { id: "d2", ctx: "Después de las pruebas, la tarjeta madre falla y la computadora no tiene arreglo.",
+        q: "¿Qué hacen con el equipo?", o: [
+        { t: "Dejarla en la bodega 'por si acaso'.", p: 1, c: "partial", fb: "No genera un impacto inmediato, pero pospone la decisión y el equipo termina como residuo más adelante." },
+        { t: "Recuperar lo reutilizable (memoria, monitor, periféricos y un disco ya borrado) y entregar el resto a un centro de acopio o gestor autorizado, con comprobante.", p: 2, c: "best", fb: "Aprovecha lo que sirve y da destino documentado al resto, que es justo lo que mide su meta." },
+        { t: "Dejarla en el contenedor de la calle para que 'se la lleven'.", p: 0, c: "weak", fb: "Pierde el control del destino, expone datos si el disco no se borró y puede terminar en la basura común." }
+      ] },
+      { id: "d3", ctx: "Un integrante propone comprar un equipo nuevo 'para que el proyecto se vea más profesional'.",
+        q: "¿Cómo responden?", o: [
+        { t: "Aceptar, porque un equipo nuevo dará mejor impresión.", p: 0, c: "weak", fb: "Contradice la meta del proyecto: la apariencia no justifica generar más consumo." },
+        { t: "Rechazarlo sin analizarlo y no gastar nada.", p: 1, c: "partial", fb: "Es coherente con la meta, pero deja sin respuesta una posible necesidad real." },
+        { t: "Evaluar la necesidad real. Si la computadora reutilizada no cubre una necesidad concreta y documentada, explorar primero piezas usadas o reacondicionadas, y justificar cualquier compra con el indicador del proyecto.", p: 2, c: "best", fb: "Decide con criterios y datos, y mantiene la coherencia con el objetivo de reutilizar." }
+      ] }
+    ]
+  };
+
+  function stationDone(n) {
+    var a = state.answered;
+    if (n === 1) return a.p1 && a.p2 && a.p3;
+    if (n === 2) return a.cls && a.a1;
+    if (n === 3) return a.i1 && a.i2;
+    if (n === 4) return a.d1 && a.d2 && a.d3;
+    if (n === 5) {
+      var ok = ["rf1", "rf2", "rf3"].every(function (id) { return $(id).value.trim().length >= 40; });
+      return ok && $("stuName").value.trim().length >= 5;
+    }
+    return false;
+  }
+
+  function totalPts() { var t = 0; Object.keys(state.pts).forEach(function (k) { t += state.pts[k]; }); return t; }
+
+  function refresh() {
+    var done = 0;
+    Array.prototype.forEach.call(document.querySelectorAll("#stStrip .st"), function (el) {
+      var n = parseInt(el.getAttribute("data-st"), 10), d = !!stationDone(n);
+      if (d) done++;
+      el.className = "st" + (d ? " done" : "");
+      el.querySelector("span").textContent = d ? "Completada" : "Pendiente";
+    });
+    $("cScore").textContent = totalPts() + " de " + MAXPTS + " puntos (" + Math.round(totalPts() / MAXPTS * 100) + "%)";
+    $("cSt").textContent = done + " de 5";
+    var nm = $("stuName").value.trim();
+    var wm = $("wm"), t = nm || "Nombre de la persona", h = "";
+    for (var i = 0; i < 24; i++) h += "<span>" + esc(t) + "</span>";
+    wm.innerHTML = h;
+  }
+
+  Object.keys(QUIZ).forEach(function (cid) {
+    var box = $(cid);
+    QUIZ[cid].forEach(function (Q, qi) {
+      var max = 0; Q.o.forEach(function (o) { if (o.p > max) max = o.p; }); MAXPTS += max;
+      var card = document.createElement("div");
+      card.className = "qcard";
+      var label = cid === "q-dil" ? "Dilema " + (qi + 1) : "Pregunta " + (qi + 1);
+      var html = '<span class="q-n">' + label + "</span>" + (Q.ctx ? '<div class="q-ctx">' + esc(Q.ctx) + "</div>" : "") +
+        '<div class="q-text">' + esc(Q.q) + "</div>";
+      Q.o.forEach(function (o, oi) {
+        html += '<button type="button" class="opt" data-oi="' + oi + '">' + esc(o.t) + '<span class="fb">' + esc(o.fb) + "</span></button>";
+      });
+      html += '<div class="q-pts"></div>';
+      card.innerHTML = html;
+      Array.prototype.forEach.call(card.querySelectorAll(".opt"), function (btn) {
+        btn.addEventListener("click", function () {
+          if (state.answered[Q.id]) return;
+          var oi = parseInt(btn.getAttribute("data-oi"), 10), sel = Q.o[oi];
+          state.answered[Q.id] = true; state.pts[Q.id] = sel.p;
+          card.classList.add("answered");
+          Array.prototype.forEach.call(card.querySelectorAll(".opt"), function (b, i) {
+            b.disabled = true; b.classList.add(Q.o[i].c);
+          });
+          btn.classList.add("chosen");
+          card.querySelector(".q-pts").textContent = "Obtuvieron " + sel.p + " de " + max + " punto" + (max === 1 ? "" : "s") + " en esta pregunta.";
+          refresh();
+        });
+      });
+      box.appendChild(card);
+    });
+  });
+
+  // ---------- Clasificacion ----------
+  var CLS = [
+    { t: "Limpiar y probar el equipo antes de decidir.", a: "actividad", fb: "Es algo que hace el equipo: una actividad." },
+    { t: "Pila de botón agotada en la tarjeta madre.", a: "aspecto", fb: "Es un elemento de la operación que interactúa con el ambiente: un aspecto." },
+    { t: "Posible contaminación del suelo si la pila va a la basura común.", a: "impacto", fb: "Es el cambio en el ambiente que provoca el aspecto: un impacto." },
+    { t: "Consumo eléctrico de la computadora encendida muchas horas.", a: "aspecto", fb: "Es un consumo asociado a la operación: un aspecto. Su impacto sería la demanda de energía y las emisiones al generarla." }
+  ];
+  MAXPTS += CLS.length;
+  var clsBox = $("clsRows"), clsLocked = false;
+  CLS.forEach(function (c, i) {
+    var r = document.createElement("div");
+    r.className = "cls-row";
+    r.innerHTML = "<div>" + esc(c.t) + '</div><select aria-label="Clasificación de la frase ' + (i + 1) + '"><option value="">Elige…</option><option value="actividad">Actividad</option><option value="aspecto">Aspecto</option><option value="impacto">Impacto</option></select><div class="cls-fb"></div>';
+    clsBox.appendChild(r);
+  });
+  $("clsCheck").addEventListener("click", function () {
+    if (clsLocked) return;
+    var rows = clsBox.children, pending = false;
+    Array.prototype.forEach.call(rows, function (r) { if (!r.querySelector("select").value) pending = true; });
+    if (pending) { $("clsPts").style.display = "block"; $("clsPts").textContent = "Elijan una opción en las cuatro frases para comprobar."; return; }
+    var pts = 0;
+    Array.prototype.forEach.call(rows, function (r, i) {
+      var v = r.querySelector("select").value, ok = v === CLS[i].a;
+      if (ok) pts++;
+      r.className = "cls-row " + (ok ? "ok" : "bad");
+      r.querySelector(".cls-fb").textContent = (ok ? "Correcto. " : "Era " + CLS[i].a + ". ") + CLS[i].fb;
+      r.querySelector("select").disabled = true;
+    });
+    clsLocked = true; state.answered.cls = true; state.pts.cls = pts;
+    $("clsPts").style.display = "block"; $("clsPts").textContent = "Obtuvieron " + pts + " de " + CLS.length + " puntos en esta clasificación.";
+    $("clsCheck").disabled = true;
+    refresh();
+  });
+
+  // ---------- Reflexion y constancia ----------
+  ["rf1", "rf2", "rf3", "stuName"].forEach(function (id) { $(id).addEventListener("input", refresh); });
+  try { $("cDate").textContent = new Date().toLocaleDateString("es-MX", { day: "numeric", month: "long", year: "numeric" }); }
+  catch (e) { $("cDate").textContent = new Date().toDateString(); }
+
+  $("btnPrint").addEventListener("click", function () {
+    document.body.classList.add("only-const");
+    try { window.print(); } catch (e) {}
+    setTimeout(function () { document.body.classList.remove("only-const"); }, 500);
+  });
+  $("btnCopyRef").addEventListener("click", function () {
+    var text = "REFLEXIÓN DEL EQUIPO\n1. " + $("rf1").value.trim() + "\n2. " + $("rf2").value.trim() + "\n3. " + $("rf3").value.trim();
+    var msg = $("cMsg");
+    function ok() { msg.textContent = "Copiado"; setTimeout(function () { msg.textContent = ""; }, 2000); }
+    function fb() {
+      try { var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); ok(); }
+      catch (e) { msg.textContent = "Copia el texto manualmente"; }
+    }
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fb); else fb(); } catch (e) { fb(); }
+  });
+
+  refresh();
+})();
+
+</script>
+
+</body>
+</html>
