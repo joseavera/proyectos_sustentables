@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avance 1 del proyecto sustentable — Clase 8</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .mixtle-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tip-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #FFF8FA;
+    border: 1px solid #D8A8BA;
+    border-left: 4px solid var(--guinda-rule);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.1rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .tip-box .tip-title {
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    font-weight: 700;
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .tip-box p { margin-bottom: 0; font-size: .97rem; }
+
+  .principle-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 700px) {
+    .principle-list { grid-template-columns: 1fr; }
+  }
+
+  .principle-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+  }
+
+  .principle-card h4 {
+    font-family: var(--font-ui);
+    font-size: .95rem;
+    color: var(--guinda);
+    margin-bottom: .3rem;
+  }
+
+  .principle-card p { font-size: .92rem; margin-bottom: 0; }
+
+  /* Flujo entradas / organizacion / salidas */
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 44px 1fr 44px 1fr;
+    align-items: stretch;
+    gap: 0;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 800px) {
+    .flow { grid-template-columns: 1fr; gap: .4rem; }
+    .flow-arrow { transform: rotate(90deg); height: 32px; }
+  }
+
+  .flow-col {
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--guinda);
+    border-radius: var(--radius-lg);
+    background: var(--off-white);
+    padding: .9rem 1rem 1rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .flow-col.center { background: var(--guinda); border-color: var(--guinda-dark); border-top-color: var(--guinda-rule); color: var(--white); }
+  .flow-col.center h4, .flow-col.center li { color: var(--white); }
+  .flow-col.out { border-top-color: var(--guinda-rule); }
+
+  .flow-col h4 {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--guinda);
+    margin-bottom: .6rem;
+  }
+
+  .flow-col ul { list-style: none; margin: 0; padding: 0; }
+  .flow-col li {
+    font-size: .9rem;
+    padding: .35rem .6rem;
+    margin-bottom: .35rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .flow-col.center li { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    font-size: 1.8rem;
+    color: var(--guinda);
+    font-weight: 700;
+  }
+
+  /* Cadena actividad - aspecto - impacto */
+  .chain-head, .chain-row {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1.2fr;
+    gap: .2rem;
+    align-items: center;
+  }
+  .chain-head {
+    font-family: var(--font-ui);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink-secondary);
+    margin: 1.3rem 0 .3rem;
+  }
+  .chain-row { margin-bottom: .5rem; }
+  .chain-cell {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .5rem .7rem;
+    font-size: .88rem;
+    height: 100%;
+  }
+  .chain-cell.aspect { border-left: 4px solid var(--guinda); }
+  .chain-cell.impact { border-left: 4px solid var(--guinda-rule); background: #FFF8FA; }
+  .chain-arrow { text-align: center; color: var(--guinda); font-weight: 700; font-family: var(--font-ui); }
+
+  @media (max-width: 700px) {
+    .chain-head { display: none; }
+    .chain-row { grid-template-columns: 1fr; margin-bottom: 1rem; }
+    .chain-arrow { transform: rotate(90deg); }
+  }
+
+  /* Escalas */
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  @media (max-width: 700px) { .scale-grid { grid-template-columns: 1fr; } }
+
+  .scale-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: .9rem 1.1rem;
+  }
+  .scale-card h4 { font-family: var(--font-ui); font-size: .95rem; color: var(--guinda); margin-bottom: .5rem; }
+  .scale-card ol { margin: 0; padding-left: 0; list-style: none; font-size: .88rem; }
+  .scale-card li { display: flex; gap: .6rem; padding: .2rem 0; }
+  .scale-card li b {
+    flex: 0 0 1.5rem; height: 1.5rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white);
+    font-family: var(--font-ui); font-size: .8rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  /* Niveles */
+  .lvl-bajo { --lc: #E3F1E6; --lt: #1e6b35; }
+  .lvl-mod  { --lc: #FFF3CD; --lt: #7a5a00; }
+  .lvl-alto { --lc: #FFE0C2; --lt: #8a4300; }
+  .lvl-crit { --lc: #F8D0CD; --lt: #9b1c14; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0 0; font-family: var(--font-ui); font-size: .78rem; }
+  .legend span {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    padding: .2rem .6rem; border-radius: 999px; font-weight: 700;
+  }
+
+  /* Recurso interactivo */
+  .lab {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin: 1.2rem 0;
+  }
+  .lab-head {
+    background: var(--guinda); color: var(--white);
+    padding: .8rem 1.3rem; font-family: var(--font-ui); font-size: .9rem; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center; gap: .8rem; flex-wrap: wrap;
+  }
+  .lab-body { background: var(--off-white); padding: 1.2rem 1.3rem; }
+  .lab-cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.3rem; align-items: start; }
+  @media (max-width: 900px) { .lab-cols { grid-template-columns: 1fr; } }
+
+  .btn {
+    font-family: var(--font-ui); font-weight: 700; font-size: .8rem;
+    background: var(--guinda); color: var(--white); border: none;
+    padding: .5rem .9rem; border-radius: 8px; cursor: pointer;
+  }
+  .btn:hover { background: var(--guinda-dark); }
+  .btn.ghost { background: var(--white); color: var(--guinda); border: 1px solid var(--guinda); }
+  .btn.ghost:hover { background: #FFF8FA; }
+  .lab-head .btn { background: var(--white); color: var(--guinda); }
+  .lab-head .btn:hover { background: #FFF8FA; }
+
+  .asp-row {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--lt, var(--guinda));
+    border-radius: 8px;
+    padding: .6rem .7rem;
+    margin-bottom: .6rem;
+  }
+  .asp-top { display: flex; gap: .5rem; align-items: center; margin-bottom: .45rem; }
+  .asp-num {
+    flex: 0 0 1.7rem; height: 1.7rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white);
+    font-family: var(--font-ui); font-weight: 700; font-size: .8rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .asp-top input[type="text"] {
+    flex: 1; min-width: 0; padding: .35rem .5rem; border: 1px solid var(--border);
+    border-radius: 6px; font-family: inherit; font-size: .9rem;
+  }
+  .asp-del {
+    background: none; border: none; color: var(--ink-secondary); cursor: pointer;
+    font-size: 1.1rem; line-height: 1; padding: .2rem .4rem;
+  }
+  .asp-del:hover { color: #9b1c14; }
+  .asp-sliders { display: grid; grid-template-columns: 1fr 1fr auto; gap: .6rem; align-items: center; font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); }
+  .asp-sliders label { display: block; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--guinda-dark); }
+  .asp-sliders input[type="range"] { width: 100%; accent-color: #490b58; }
+  .asp-score {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    border-radius: 8px; padding: .25rem .5rem; text-align: center; font-weight: 700; font-size: .78rem; min-width: 5.4rem;
+  }
+  @media (max-width: 500px) { .asp-sliders { grid-template-columns: 1fr 1fr; } .asp-score { grid-column: 1 / -1; } }
+
+  /* Mapa de calor */
+  .heat-wrap { display: grid; grid-template-columns: 1.6rem 1fr; gap: .3rem; }
+  .heat-ylabel {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    text-align: center; font-family: var(--font-ui); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--guinda-dark); font-weight: 700;
+  }
+  .heat-grid { display: grid; grid-template-columns: 1.1rem repeat(5, 1fr); gap: 3px; }
+  .heat-tick { font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); display: flex; align-items: center; justify-content: center; }
+  .heat-cell {
+    background: var(--lc); color: var(--lt);
+    border-radius: 6px; aspect-ratio: 1 / 1; min-height: 44px;
+    display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 2px;
+    padding: 2px; position: relative; font-family: var(--font-ui); font-size: .62rem;
+  }
+  .heat-cell .prod { position: absolute; top: 2px; left: 4px; opacity: .55; font-size: .6rem; }
+  .heat-dot {
+    width: 1.35rem; height: 1.35rem; border-radius: 50%;
+    background: var(--guinda); color: var(--white); border: 2px solid var(--white);
+    font-weight: 700; font-size: .72rem; display: inline-flex; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+  .heat-xlabel {
+    grid-column: 2; text-align: center; font-family: var(--font-ui); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--guinda-dark); font-weight: 700; margin-top: .3rem;
+  }
+
+  .rank-title { font-family: var(--font-ui); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--guinda-dark); font-weight: 700; margin: 1.1rem 0 .4rem; }
+  .rank-list { list-style: none; margin: 0; padding: 0; }
+  .rank-list li {
+    display: flex; align-items: center; gap: .6rem; font-size: .88rem;
+    background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+    padding: .4rem .6rem; margin-bottom: .35rem;
+  }
+  .rank-list .rk-name { flex: 1; }
+  .rank-list .rk-lvl {
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt);
+    border-radius: 999px; padding: .1rem .55rem; font-family: var(--font-ui); font-size: .72rem; font-weight: 700; white-space: nowrap;
+  }
+  .lab-note { font-size: .85rem; color: var(--ink-secondary); margin: .8rem 0 0; }
+
+  .text-sm { overflow-wrap: anywhere; }
+  .table-scroll { overflow-x: auto; max-width: 100%; }
+  .sig-table { min-width: 560px; }
+
+  /* Piezas del planteamiento */
+  .piece-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .7rem; margin: 1.3rem 0; }
+  @media (max-width: 900px) { .piece-grid { grid-template-columns: repeat(2, 1fr); } }
+  .piece-card {
+    background: var(--off-white); border: 1px solid var(--border); border-top: 4px solid var(--guinda);
+    border-radius: var(--radius-lg); padding: .8rem .9rem; text-align: center;
+  }
+  .piece-card .piece-n { display: block; font-family: var(--font-ui); font-size: 1.5rem; font-weight: 700; color: var(--guinda); line-height: 1; margin-bottom: .25rem; }
+  .piece-card h4 { font-size: .92rem; color: var(--guinda-dark); margin-bottom: .2rem; }
+  .piece-card p { font-size: .8rem; margin: 0; color: var(--ink-secondary); }
+
+  .agenda-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-top: 1rem; }
+  @media (max-width: 700px) { .agenda-strip { grid-template-columns: repeat(2, 1fr); } }
+  .compare-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.2rem 0; }
+  @media (max-width: 700px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: .9rem 1.1rem; background: var(--off-white); }
+  .compare-card.weak { border-top: 4px solid #b3261e; }
+  .compare-card.strong { border-top: 4px solid #1e7d3a; }
+  .compare-card .cmp-label { display: block; font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; margin-bottom: .3rem; }
+  .compare-card.weak .cmp-label { color: #b3261e; }
+  .compare-card.strong .cmp-label { color: #1e7d3a; }
+  .compare-card p { font-size: .92rem; margin: 0 0 .4rem; }
+  .compare-card .cmp-why { font-size: .82rem; color: var(--ink-secondary); margin: 0; }
+
+  /* Constructor */
+  .pl-field { margin-bottom: .8rem; }
+  .pl-field label { display: block; font-family: var(--font-ui); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--guinda-dark); font-weight: 700; margin-bottom: .25rem; }
+  .pl-field .pl-hint { font-family: var(--font-ui); font-size: .74rem; color: var(--ink-secondary); text-transform: none; letter-spacing: 0; font-weight: 400; display: block; }
+  .pl-field input[type="text"], .pl-field textarea {
+    width: 100%; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 6px;
+    font-family: inherit; font-size: .93rem; background: var(--white); resize: vertical;
+  }
+  .pl-two { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  @media (max-width: 600px) { .pl-two { grid-template-columns: 1fr; } }
+
+  .meter { height: 10px; background: var(--border); border-radius: 999px; overflow: hidden; margin: .5rem 0 .2rem; }
+  .meter-fill { height: 100%; width: 0; background: var(--guinda); transition: width .25s; }
+  .meter-label { font-family: var(--font-ui); font-size: .78rem; font-weight: 700; color: var(--guinda-dark); }
+
+  .check-list { list-style: none; margin: .7rem 0 0; padding: 0; }
+  .check-list li { display: flex; gap: .5rem; align-items: flex-start; font-size: .86rem; padding: .3rem 0; }
+  .check-dot {
+    flex: 0 0 1.25rem; height: 1.25rem; border-radius: 50%; border: 2px solid var(--border-strong, #bbb);
+    display: inline-flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; color: var(--white); margin-top: .1rem;
+  }
+  .check-list li.ok .check-dot { background: #1e7d3a; border-color: #1e7d3a; }
+  .check-list li.ok { color: var(--ink); }
+  .check-list li:not(.ok) { color: var(--ink-secondary); }
+
+  .plan-preview { background: var(--white); border: 1px dashed var(--guinda); border-radius: var(--radius-md); padding: .9rem 1.1rem; margin-top: 1rem; }
+  .plan-preview h5 { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--guinda); margin: 0 0 .5rem; }
+  .plan-preview dt { font-family: var(--font-ui); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-secondary); margin-top: .5rem; }
+  .plan-preview dd { margin: 0; font-size: .92rem; min-height: 1.2em; }
+  .plan-preview dd.empty { color: var(--ink-secondary); font-style: italic; }
+  .copy-msg { font-family: var(--font-ui); font-size: .8rem; color: #1e7d3a; margin-left: .5rem; }
+  .btn-row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-top: .8rem; }
+
+  /* Indicadores */
+  .gauge { margin: .8rem 0 .3rem; }
+  .gauge-track { position: relative; height: 16px; background: var(--border); border-radius: 999px; overflow: hidden; }
+  .gauge-fill { height: 100%; width: 0; background: var(--guinda); transition: width .25s; }
+  .gauge-scale { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: .72rem; color: var(--ink-secondary); margin-top: .25rem; }
+  .status-pill {
+    display: inline-block; font-family: var(--font-ui); font-size: .78rem; font-weight: 700;
+    background: var(--lc); color: var(--lt); border: 1px solid var(--lt); border-radius: 999px; padding: .15rem .7rem;
+  }
+  .gauge-row { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin-top: .5rem; font-family: var(--font-ui); font-size: .85rem; }
+  .gauge-row strong { font-size: 1.3rem; color: var(--guinda); }
+  .act-row { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: .6rem .7rem; margin-bottom: .5rem; }
+  .act-row .act-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .4rem; }
+  @media (max-width: 600px) { .act-row .act-grid { grid-template-columns: 1fr; } }
+  .act-row input[type="text"], .act-row input[type="date"] {
+    width: 100%; padding: .4rem .5rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: .88rem; background: var(--white);
+  }
+  .act-row .act-n { font-family: var(--font-ui); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--guinda-dark); font-weight: 700; display: block; margin-bottom: .3rem; }
+  .pl-field select, .pl-field input[type="number"] {
+    width: 100%; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: .93rem; background: var(--white);
+  }
+  .pl-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+  @media (max-width: 600px) { .pl-three { grid-template-columns: 1fr; } }
+  .pv-act { border-left: 4px solid var(--guinda); background: var(--off-white); border-radius: 0 8px 8px 0; padding: .45rem .7rem; margin-bottom: .45rem; font-size: .86rem; }
+  .pv-act strong { display: block; color: var(--guinda-dark); }
+  .pv-act span { display: block; color: var(--ink-secondary); font-size: .8rem; }
+  .eval-table td:first-child, .map-table td:first-child { font-weight: 700; color: var(--guinda-dark); width: 30%; }
+  .eval-table td:last-child { white-space: nowrap; text-align: center; font-family: var(--font-ui); font-weight: 700; }
+  .bridge { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin: 1.2rem 0; }
+  @media (max-width: 800px) { .bridge { grid-template-columns: 1fr; } }
+  .bridge .piece-card { text-align: left; }
+  .bridge .piece-card h4 { margin-bottom: .3rem; }
+  .bridge .piece-card p { font-size: .86rem; color: var(--ink); }
+
+  /* Sesion de evaluacion */
+  .step3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin: 1.3rem 0; }
+  @media (max-width: 800px) { .step3 { grid-template-columns: 1fr; } }
+  .step3 .piece-card { text-align: left; padding: 1rem 1.1rem; }
+  .step3 .piece-card h4 { font-size: 1rem; margin-bottom: .35rem; }
+  .step3 .piece-card p { font-size: .9rem; color: var(--ink); }
+
+  .callout p, .todo span { overflow-wrap: anywhere; }
+  .piece-grid.four { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .piece-grid.four { grid-template-columns: repeat(2, 1fr); } }
+  .ex-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.3rem 0; }
+  @media (max-width: 700px) { .ex-grid { grid-template-columns: 1fr; } }
+  .ex-card { background: var(--off-white); border: 1px solid var(--border); border-top: 4px solid var(--guinda); border-radius: var(--radius-lg); padding: 1rem 1.2rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
+  .ex-card h4 { color: var(--guinda-dark); font-size: 1.02rem; margin-bottom: .5rem; }
+  .ex-card dl { margin: 0 0 .8rem; flex: 1; }
+  .ex-card dt { font-family: var(--font-ui); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-secondary); margin-top: .45rem; }
+  .ex-card dd { margin: 0; font-size: .9rem; }
+  .ex-card .btn { align-self: flex-start; }
+
+  .ex-pick { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: 1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border); font-family: var(--font-ui); font-size: .78rem; font-weight: 700; color: var(--guinda-dark); }
+
+  .todo { list-style: none; margin: .8rem 0 0; padding: 0; }
+  .todo li { margin-bottom: .45rem; }
+  .todo label { display: flex; gap: .7rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: .6rem .8rem; cursor: pointer; font-size: .93rem; }
+  .todo input { margin-top: .25rem; width: 1.05rem; height: 1.05rem; accent-color: #490b58; flex: 0 0 auto; }
+  .todo input:checked + span { color: var(--ink-secondary); text-decoration: line-through; }
+  .todo-status { font-family: var(--font-ui); font-weight: 700; font-size: .85rem; color: var(--guinda-dark); margin-top: .6rem; }
+  .todo-status.done { color: #1e7d3a; }
+  .sig-table td:first-child { font-weight: 700; color: var(--guinda-dark); }
+  /* Actividad / proyecto */
+  .activity-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .activity-header {
+    background: var(--guinda);
+    color: var(--white);
+    padding: .9rem 1.4rem;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+
+  .activity-body {
+    padding: 1.3rem 1.5rem;
+    background: var(--off-white);
+  }
+
+  .activity-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui);
+    font-size: .82rem;
+    color: var(--ink-secondary);
+  }
+
+  .activity-meta strong { color: var(--guinda-dark); }
+
+  .project-tag {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--white);
+    background: var(--guinda-dark);
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    margin-bottom: .8rem;
+  }
+
+  .worksheet-title {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--guinda-dark);
+    font-weight: 700;
+    margin: 1.2rem 0 .4rem;
+  }
+
+  .charter-table td:first-child { width: 34%; font-weight: 700; color: var(--guinda-dark); }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .hero-mascot {
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    height: 150px;
+    width: auto;
+    opacity: .95;
+  }
+
+  .class-hero { position: relative; overflow: hidden; }
+
+  @media (max-width: 700px) {
+    .hero-mascot { display: none; }
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="imagen1.png" alt="Mixtle, mascota del IEDEP" style="height:56px;">
+  </div>
+  <div class="header-text">
+    <span class="inst-name">Instituto de Educación Digital del Estado de Puebla</span>
+    <span class="doc-title">Material de clase — Licenciatura en Administración de Empresas</span>
+  </div>
+</header>
+
+<section class="class-hero">
+  <span class="class-label">Sustentabilidad · Tema 2. Gestión Ambiental · Sesión de evaluación</span>
+  <h1>Avance 1 del proyecto sustentable</h1>
+  <span class="class-subtitle">Subtema 2.3 — Hoy se evalúa: construyan su indicador y su plan de acción con ayuda del simulador.</span>
+
+  <div class="meta-row">
+    <div class="meta-item">Programa educativo<span>Lic. en Administración de Empresas</span></div>
+    <div class="meta-item">Asignatura<span>Sustentabilidad</span></div>
+    <div class="meta-item">Unidad / Tema<span>2. Gestión Ambiental</span></div>
+    <div class="meta-item">Fecha<span>Sábado 31 de octubre de 2026</span></div>
+  </div>
+  <img src="imagen2.png" alt="" class="hero-mascot">
+</section>
+
+<div class="page-wrapper">
+
+  <section class="section">
+    <h2 class="section-title">Competencias a desarrollar</h2>
+    <div class="competency-card">
+      <span class="comp-num">01</span>
+      <span class="comp-text">
+        <strong>Definir</strong> un indicador medible para el aspecto prioritario del proyecto, con unidad,
+        punto de partida, meta, frecuencia y fuente de evidencia.
+      </span>
+    </div>
+    <div class="competency-card">
+      <span class="comp-num">02</span>
+      <span class="comp-text">
+        <strong>Elaborar</strong> un plan de acción con acciones concretas, responsables, fechas y evidencias, y
+        presentarlo en el Avance 1 del proyecto.
+      </span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Para comenzar: hoy se evalúa su Avance 1</h2>
+    <div class="tip-box">
+      <img src="imagen1.png" alt="Mixtle" class="mixtle-avatar">
+      <div>
+        <span class="tip-title">Mixtle explica la sesión de hoy</span>
+        <p>
+          La sesión de hoy es de evaluación y tiene una sola actividad: construir y entregar el
+          <strong>Avance 1 del proyecto sustentable</strong>. Para que sea ágil, la guía de entrega quedó en
+          tres pasos y el simulador hace la parte más pesada. No tienen que medir nada en campo hoy: parten de
+          un punto de partida estimado de forma razonable por el equipo. Lo que más pesa en la evaluación es un
+          buen <strong>plan de acción</strong>.
+        </p>
+      </div>
+    </div>
+    <div class="agenda-strip">
+      <div class="piece-card"><h4>Bloque 1</h4><p>Guía de entrega en tres pasos</p></div>
+      <div class="piece-card"><h4>Bloque 2</h4><p>Ejemplos de otras áreas</p></div>
+      <div class="piece-card"><h4>Bloque 3</h4><p>Simulador y plan de acción</p></div>
+      <div class="piece-card"><h4>Bloque 4</h4><p>Verificación y entrega</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Bloque 1. Guía de entrega en tres pasos</h2>
+    <span class="project-tag">Actividad principal: Entregable de la semana: Avance 1 del proyecto sustentable</span>
+    <p>
+      Un solo archivo PDF por equipo. Siguiendo estos tres pasos, tendrán todo lo necesario.
+    </p>
+    <div class="step3">
+      <div class="piece-card">
+        <span class="piece-n">1</span>
+        <h4>Llenen el simulador</h4>
+        <p>Definan el indicador del aspecto más prioritario de su matriz y escriban tres acciones. Busquen que las cinco sugerencias queden en verde.</p>
+      </div>
+      <div class="piece-card">
+        <span class="piece-n">2</span>
+        <h4>Armen el documento</h4>
+        <p>Pongan una portada, el planteamiento breve de su proyecto y peguen la ficha y el plan que genera el botón <em>Copiar ficha y plan</em>.</p>
+      </div>
+      <div class="piece-card">
+        <span class="piece-n">3</span>
+        <h4>Agreguen dos evidencias y entreguen</h4>
+        <p>Una captura del simulador con el semáforo y una foto o captura de su trabajo en equipo. Exporten a PDF y súbanlo a Classroom.</p>
+      </div>
+    </div>
+
+    <div class="activity-block">
+      <div class="activity-header">Lista de verificación antes de entregar</div>
+      <div class="activity-body">
+        <p style="margin-top:0;">Marquen cada elemento cuando esté listo. La lista no se guarda: es solo para su revisión.</p>
+        <ul class="todo" id="todoList">
+          <li><label><input type="checkbox"><span>Portada con nombre del proyecto, integrantes y fecha.</span></label></li>
+          <li><label><input type="checkbox"><span>Planteamiento breve: organización, problema y meta de sostenibilidad.</span></label></li>
+          <li><label><input type="checkbox"><span>Ficha del indicador copiada del simulador, con sus cinco sugerencias cumplidas.</span></label></li>
+          <li><label><input type="checkbox"><span>Plan de acción con al menos tres acciones, cada una con responsable, fecha y evidencia.</span></label></li>
+          <li><label><input type="checkbox"><span>Captura de pantalla del simulador con el semáforo visible.</span></label></li>
+          <li><label><input type="checkbox"><span>Una evidencia del trabajo del equipo: foto de la reunión, captura de la videollamada o visita a la organización.</span></label></li>
+          <li><label><input type="checkbox"><span>Archivo en PDF, con el nombre correcto, subido a Classroom.</span></label></li>
+        </ul>
+        <div class="todo-status" id="todoStatus" aria-live="polite">0 de 7 elementos listos</div>
+        <div class="callout note">
+          <p>
+            Nombren el archivo así: <em>Equipo_NombreDelProyecto_Sustentabilidad_Avance1.pdf</em>. Si fotografían
+            a personas o usan datos de una organización, pidan permiso antes y eviten información sensible. La
+            fecha y hora límite de entrega las indica el asesor en Classroom.
+          </p>
+        </div>
+
+        <div class="worksheet-title">Cómo se evalúa</div>
+        <div class="table-scroll"><table class="worksheet-table eval-table" style="min-width:480px;">
+          <thead><tr><th>Criterio</th><th>Qué se revisa</th><th>Peso</th></tr></thead>
+          <tbody>
+            <tr><td>Plan de acción</td><td>Acciones concretas, con responsable, fecha y evidencia</td><td>40%</td></tr>
+            <tr><td>Ficha del indicador</td><td>Claro, medible, con unidad, meta, frecuencia y fuente</td><td>30%</td></tr>
+            <tr><td>Evidencias</td><td>Reales, relacionadas con el proyecto y bien identificadas</td><td>20%</td></tr>
+            <tr><td>Presentación</td><td>Portada, orden, ortografía y archivo con el nombre correcto</td><td>10%</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Bloque 2. Ejemplos de otras áreas</h2>
+    <p>
+      El método funciona con cualquier actividad: se parte de un aspecto, se define cómo medirlo y se planean
+      acciones concretas. Observen cuatro ideas distintas y pulsen <strong>"Cargar en el simulador"</strong>
+      para ver cada ejemplo completo, con su plan de acción. Las cifras son ilustrativas.
+    </p>
+    <div class="ex-grid">
+      <div class="ex-card">
+        <h4>Reutilización de neumáticos</h4>
+        <dl>
+          <dt>Aspecto</dt><dd>Neumáticos usados que se desechan en un taller</dd>
+          <dt>Indicador</dt><dd>% de neumáticos usados que se reutilizan</dd>
+          <dt>Acción clave</dt><dd>Convertirlos en macetas, bancas o juegos con apoyo de un vivero o una escuela</dd>
+        </dl>
+        <button class="btn" type="button" data-ex="neumaticos">Cargar en el simulador</button>
+      </div>
+      <div class="ex-card">
+        <h4>Elaboración de jabones con aceite usado</h4>
+        <dl>
+          <dt>Aspecto</dt><dd>Aceite de cocina usado que se vierte al drenaje</dd>
+          <dt>Indicador</dt><dd>Litros de aceite usado convertidos en jabón por mes</dd>
+          <dt>Acción clave</dt><dd>Recolectar aceite en hogares y negocios y elaborar lotes con supervisión y equipo de protección</dd>
+        </dl>
+        <button class="btn" type="button" data-ex="jabones">Cargar en el simulador</button>
+      </div>
+      <div class="ex-card">
+        <h4>Clasificación de desechos</h4>
+        <dl>
+          <dt>Aspecto</dt><dd>Residuos mezclados en una sola bolsa</dd>
+          <dt>Indicador</dt><dd>% del peso de residuos que se separa correctamente</dd>
+          <dt>Acción clave</dt><dd>Colocar contenedores rotulados y pesar los residuos cada semana</dd>
+        </dl>
+        <button class="btn" type="button" data-ex="desechos">Cargar en el simulador</button>
+      </div>
+      <div class="ex-card">
+        <h4>Reutilización de botellas de agua maltratadas</h4>
+        <dl>
+          <dt>Aspecto</dt><dd>Botellas de PET deformadas o dañadas que se tiran</dd>
+          <dt>Indicador</dt><dd>% de botellas dañadas que se reutilizan o van a acopio</dd>
+          <dt>Acción clave</dt><dd>Elaborar macetas, organizadores o ecoladrillos y entregar el excedente a un centro de acopio</dd>
+        </dl>
+        <button class="btn" type="button" data-ex="botellas">Cargar en el simulador</button>
+      </div>
+    </div>
+    <div class="callout note">
+      <p>
+        Fíjense en lo que tienen en común: cada aspecto se convierte en un número que se puede seguir en el
+        tiempo y en acciones que alguien se compromete a realizar. Eso es lo que se evalúa hoy.
+      </p>
+    </div>
+  </section>
+<section class="section" id="simulador">
+    <h2 class="section-title">Bloque 3. Simulador de indicador y plan de acción</h2>
+    <p>
+      Capturen el aspecto prioritario de su proyecto, definan su indicador y escriban las acciones de su plan.
+      Después, muevan el control de avance para ver cómo cambia el semáforo. El punto de partida puede ser una
+      estimación razonable del equipo; lo importante es que la ficha y el plan queden claros.
+    </p>
+
+    <div class="lab">
+      <div class="lab-head">
+        <span>Ficha de indicador y plan de acción</span>
+        <span>
+          <button class="btn" type="button" id="inClear">Limpiar</button>
+        </span>
+      </div>
+      <div class="lab-body">
+        <div class="ex-pick">
+          <span>Cargar ejemplo:</span>
+          <button class="btn ghost" type="button" data-ex="neumaticos">Neumáticos</button>
+          <button class="btn ghost" type="button" data-ex="jabones">Jabones</button>
+          <button class="btn ghost" type="button" data-ex="desechos">Desechos</button>
+          <button class="btn ghost" type="button" data-ex="botellas">Botellas</button>
+        </div>
+        <div class="lab-cols">
+          <div>
+            <div class="pl-field">
+              <label for="inAsp">Aspecto prioritario <span class="pl-hint">El que salió más alto en su matriz</span></label>
+              <input type="text" id="inAsp" maxlength="100" placeholder="Ej.: neumáticos usados que se desechan">
+            </div>
+            <div class="pl-field">
+              <label for="inName">Nombre del indicador</label>
+              <input type="text" id="inName" maxlength="100" placeholder="Ej.: neumáticos que se reutilizan">
+            </div>
+            <div class="pl-two">
+              <div class="pl-field">
+                <label for="inType">Tipo</label>
+                <select id="inType"><option value="resultado">De resultado</option><option value="proceso">De proceso</option></select>
+              </div>
+              <div class="pl-field">
+                <label for="inUnit">Unidad de medida</label>
+                <input type="text" id="inUnit" maxlength="40" placeholder="Ej.: %, kg/mes, kWh/mes">
+              </div>
+            </div>
+            <div class="pl-field">
+              <label for="inFormula">Cómo se calcula <span class="pl-hint">Fórmula o procedimiento de medición</span></label>
+              <input type="text" id="inFormula" maxlength="160" placeholder="Ej.: reutilizados ÷ desechados × 100">
+            </div>
+            <div class="pl-three">
+              <div class="pl-field">
+                <label for="inBase">Punto de partida</label>
+                <input type="number" id="inBase" step="any" placeholder="Estimado">
+              </div>
+              <div class="pl-field">
+                <label for="inGoal">Meta</label>
+                <input type="number" id="inGoal" step="any" placeholder="A dónde llegar">
+              </div>
+              <div class="pl-field">
+                <label for="inNow">Valor actual</label>
+                <input type="number" id="inNow" step="any" placeholder="Último dato">
+              </div>
+            </div>
+            <div class="pl-two">
+              <div class="pl-field">
+                <label for="inFreq">Frecuencia de medición</label>
+                <select id="inFreq">
+                  <option value="">Elige…</option><option>Diaria</option><option>Semanal</option><option>Quincenal</option><option>Mensual</option>
+                </select>
+              </div>
+              <div class="pl-field">
+                <label for="inSrc">Fuente de evidencia</label>
+                <input type="text" id="inSrc" maxlength="120" placeholder="Ej.: registro mensual con fotos">
+              </div>
+            </div>
+
+            <div class="pl-field" style="margin-top:.6rem;">
+              <label>Plan de acción <span class="pl-hint">Al menos tres acciones con responsable y evidencia</span></label>
+              <div id="actRows"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="plan-preview" style="margin-top:0;">
+              <h5>Tarjeta del indicador</h5>
+              <dl>
+                <dt>Aspecto</dt><dd id="pvAsp"></dd>
+                <dt>Indicador</dt><dd id="pvName"></dd>
+                <dt>Cómo se calcula</dt><dd id="pvFormula"></dd>
+                <dt>Medición</dt><dd id="pvMeas"></dd>
+              </dl>
+
+              <div class="gauge" aria-live="polite">
+                <div class="gauge-track"><div class="gauge-fill" id="gFill"></div></div>
+                <div class="gauge-scale"><span id="gBase">Punto de partida</span><span id="gGoal">Meta</span></div>
+                <div class="gauge-row"><strong id="gPct">--</strong><span class="status-pill lvl-mod" id="gStatus">Sin datos</span></div>
+              </div>
+              <div class="pl-field" style="margin-top:.8rem;">
+                <label for="inSlide">Simular avance: <span id="slideVal">0</span>%</label>
+                <input type="range" id="inSlide" min="0" max="120" step="1" value="0" style="width:100%;accent-color:#490b58;">
+              </div>
+            </div>
+
+            <div class="meter" aria-hidden="true" style="margin-top:1rem;"><div class="meter-fill" id="inMeter"></div></div>
+            <div class="meter-label" id="inMeterLabel">0 de 5 sugerencias cumplidas</div>
+            <ul class="check-list" id="inChecks"></ul>
+
+            <div class="plan-preview">
+              <h5>Plan de acción</h5>
+              <div id="pvActs"></div>
+              <div class="btn-row">
+                <button class="btn" type="button" id="inCopy">Copiar ficha y plan</button>
+                <span class="copy-msg" id="inMsg"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="lab-note">
+          El avance se calcula como (valor actual − punto de partida) ÷ (meta − punto de partida). Funciona tanto para metas
+          de reducir como de aumentar. Las sugerencias son automáticas y orientativas; lo que escriban aquí no se
+          guarda, así que copien la ficha al documento que entregarán.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <h2 class="section-title">Un buen plan de acción en cuatro reglas</h2>
+    <div class="piece-grid four">
+      <div class="piece-card"><span class="piece-n">1</span><h4>Concreta</h4><p>Empieza con un verbo: contar, instalar, elaborar, entregar.</p></div>
+      <div class="piece-card"><span class="piece-n">2</span><h4>Con responsable</h4><p>Una persona con nombre, no "todos" ni "el equipo".</p></div>
+      <div class="piece-card"><span class="piece-n">3</span><h4>Con fecha</h4><p>Un día concreto, dentro de las próximas semanas.</p></div>
+      <div class="piece-card"><span class="piece-n">4</span><h4>Con evidencia</h4><p>Algo que se pueda mostrar: foto, lista, registro o documento.</p></div>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card weak">
+        <span class="cmp-label">Acción débil</span>
+        <p>"Cuidar mejor los neumáticos."</p>
+        <p class="cmp-why">No dice qué se hará, quién lo hará, cuándo ni cómo se comprobará.</p>
+      </div>
+      <div class="compare-card strong">
+        <span class="cmp-label">Acción bien planteada</span>
+        <p>"Contar y clasificar los neumáticos del taller por estado. Responsable: Integrante 1. Fecha: 7 de noviembre. Evidencia: lista de conteo con fotografías."</p>
+        <p class="cmp-why">Tiene verbo, responsable, fecha y evidencia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Bloque 4. Verificación y entrega</h2>
+    <div class="card">
+      <span class="card-title">Inicio</span>
+      <p>Presentación de la guía de entrega en tres pasos y aclaración de dudas sobre el simulador.</p>
+    </div>
+    <div class="card">
+      <span class="card-title">Desarrollo</span>
+      <p>
+        Asesoría síncrona (Google Meet): trabajo por equipos en el simulador y en el armado del documento, con
+        revisión del asesor sobre la marcha.
+      </p>
+    </div>
+    <div class="card">
+      <span class="card-title">Cierre</span>
+      <p>
+        Verificación con la lista de comprobación y entrega del PDF en Classroom. Cada equipo comparte, si da
+        tiempo, su indicador y una de sus acciones.
+      </p>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section class="section">
+    <h2 class="section-title">Conclusión</h2>
+    <p>
+      Un indicador convierte un aspecto ambiental en algo que se puede seguir, y un plan de acción convierte la
+      intención en trabajo con responsables, fechas y evidencias. Con el simulador, tu equipo tiene ambos listos
+      para el Avance 1. Lo que construyas hoy es la base para verificar resultados y ajustar el rumbo del
+      proyecto en las siguientes sesiones.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Referencias bibliográficas</h2>
+    <p class="text-sm">
+      Gómez, J. L. (2014). Del Desarrollo Sostenible a la Sustentabilidad Ambiental. <em>Revista Facultad de
+      Ciencias Económicas: Investigación y Reflexión</em>, 22(1), 115-136.
+      http://www.scielo.org.co/pdf/rfce/v22n1/v22n1a09.pdf
+    </p>
+    <p class="text-sm">
+      Ibáñez, R. M. (2012). Indicadores de sustentabilidad: utilidad y limitaciones. <em>Teoría y
+      Praxis</em>, (11), 102-126. https://www.redalyc.org/pdf/4561/456145105006.pdf
+    </p>
+    <p class="text-sm" style="margin-bottom:0;">
+      Sánchez, V. G. (2019). <em>¿Qué significa sustentabilidad?</em>
+      https://ceiba.org.mx/publicaciones/Consejo%20Editorial/190501_QueeslaSustentabilidad_VictorSS.pdf
+    </p>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <span><strong>Instituto de Educación Digital del Estado de Puebla</strong> · Sustentabilidad · Tema 2</span>
+  <img src="imagen1.png" alt="Mixtle" class="footer-logo">
+</footer>
+
+<script>
+
+(function () {
+  "use strict";
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  var NACT = 3;
+
+  // filas de acciones
+  var actWrap = $("actRows");
+  for (var i = 1; i <= NACT; i++) {
+    var d = document.createElement("div");
+    d.className = "act-row";
+    d.innerHTML =
+      '<span class="act-n">Acción ' + i + '</span>' +
+      '<input type="text" id="aA' + i + '" maxlength="140" placeholder="Qué se hará" aria-label="Acción ' + i + '">' +
+      '<div class="act-grid">' +
+        '<input type="text" id="aR' + i + '" maxlength="80" placeholder="Responsable" aria-label="Responsable de la acción ' + i + '">' +
+        '<input type="date" id="aD' + i + '" aria-label="Fecha de la acción ' + i + '">' +
+      '</div>' +
+      '<div style="margin-top:.5rem"><input type="text" id="aE' + i + '" maxlength="140" placeholder="Evidencia que se generará" aria-label="Evidencia de la acción ' + i + '"></div>';
+    actWrap.appendChild(d);
+  }
+
+  var F = { asp: $("inAsp"), name: $("inName"), type: $("inType"), unit: $("inUnit"), formula: $("inFormula"),
+            base: $("inBase"), goal: $("inGoal"), now: $("inNow"), freq: $("inFreq"), src: $("inSrc") };
+  var syncing = false;
+
+  var EXS = {
+    neumaticos: {
+      asp: "Neumáticos usados que se desechan en un taller", name: "Reutilización de neumáticos usados", type: "resultado",
+      unit: "% de neumáticos reutilizados", formula: "neumáticos reutilizados ÷ neumáticos desechados × 100",
+      base: "5", goal: "60", now: "20", freq: "Mensual", src: "Registro mensual de conteo con fotografías",
+      acts: [
+        ["Contar y clasificar los neumáticos del taller por estado", "Integrante 1", "2026-11-07", "Lista de conteo con fotografías"],
+        ["Acordar con un vivero o una escuela la recepción de neumáticos para macetas y juegos", "Integrante 2", "2026-11-14", "Correo o carta de acuerdo"],
+        ["Elaborar cinco prototipos (macetas o bancas) con neumáticos limpios", "Integrante 3", "2026-11-21", "Fotografías de los prototipos terminados"]
+      ]
+    },
+    jabones: {
+      asp: "Aceite de cocina usado que se vierte al drenaje", name: "Aceite usado convertido en jabón", type: "resultado",
+      unit: "litros por mes", formula: "litros de aceite usado recolectados y usados en jabón durante el mes",
+      base: "2", goal: "20", now: "8", freq: "Mensual", src: "Registro de litros recolectados y lotes elaborados con fotografías",
+      acts: [
+        ["Recolectar aceite usado, en botellas cerradas, de diez hogares o negocios", "Integrante 1", "2026-11-07", "Registro de litros por aportante"],
+        ["Elaborar el primer lote de jabón con receta supervisada y equipo de protección", "Integrante 2", "2026-11-14", "Fotografías del proceso y del lote terminado"],
+        ["Entregar o vender los jabones y registrar cuántos se distribuyeron", "Integrante 3", "2026-11-21", "Lista de entregas o ventas"]
+      ]
+    },
+    desechos: {
+      asp: "Residuos mezclados en una sola bolsa de basura", name: "Separación correcta de residuos", type: "resultado",
+      unit: "% del peso separado", formula: "kg de residuos clasificados (orgánico, PET, papel, vidrio, otros) ÷ kg totales × 100",
+      base: "10", goal: "70", now: "30", freq: "Semanal", src: "Bitácora semanal de pesaje con fotografías",
+      acts: [
+        ["Colocar tres contenedores rotulados en el área de trabajo", "Integrante 1", "2026-11-07", "Fotografía de los contenedores instalados"],
+        ["Pesar y registrar cada semana lo que se recolecta en cada contenedor", "Integrante 2", "2026-11-14", "Bitácora de pesaje"],
+        ["Dar una plática de quince minutos al personal sobre cómo separar", "Integrante 3", "2026-11-21", "Lista de asistencia y fotografía"]
+      ]
+    },
+    botellas: {
+      asp: "Botellas de PET deformadas o dañadas que se tiran", name: "Reutilización de botellas dañadas", type: "resultado",
+      unit: "% de botellas reutilizadas", formula: "botellas dañadas reutilizadas o enviadas a acopio ÷ botellas dañadas generadas × 100",
+      base: "15", goal: "85", now: "40", freq: "Semanal", src: "Conteo semanal de botellas con fotografías",
+      acts: [
+        ["Instalar un punto de recolección de botellas dañadas y llevar su conteo", "Integrante 1", "2026-11-07", "Fotografía del punto y hoja de conteo"],
+        ["Elaborar macetas y organizadores con las botellas, lavadas y sin etiqueta", "Integrante 2", "2026-11-14", "Fotografías de los productos elaborados"],
+        ["Entregar el excedente a un centro de acopio y pedir comprobante", "Integrante 3", "2026-11-21", "Comprobante de entrega"]
+      ]
+    }
+  };
+
+    function num(el) { var v = parseFloat(el.value); return isFinite(v) ? v : null; }
+  function fmtDate(v) { if (!v) return ""; var p = v.split("-"); return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : v; }
+  function acts() {
+    var out = [];
+    for (var i = 1; i <= NACT; i++) {
+      out.push({ a: $("aA" + i).value.trim(), r: $("aR" + i).value.trim(), d: $("aD" + i).value, e: $("aE" + i).value.trim() });
+    }
+    return out;
+  }
+
+  function status(p) {
+    if (p < 0) return { k: "lvl-crit", t: "Por debajo del punto de partida" };
+    if (p < 40) return { k: "lvl-crit", t: "Atención: avance bajo" };
+    if (p < 80) return { k: "lvl-mod", t: "En camino" };
+    if (p < 100) return { k: "lvl-bajo", t: "Casi en la meta" };
+    return { k: "lvl-bajo", t: "Meta alcanzada" };
+  }
+
+  function setDd(id, text) {
+    var el = $(id);
+    if (text) { el.textContent = text; el.className = ""; } else { el.textContent = "Pendiente"; el.className = "empty"; }
+  }
+
+  function render() {
+    var base = num(F.base), goal = num(F.goal), now = num(F.now);
+    var unit = F.unit.value.trim();
+    setDd("pvAsp", F.asp.value.trim());
+    setDd("pvName", F.name.value.trim());
+    setDd("pvFormula", F.formula.value.trim());
+    var meas = [];
+    meas.push(F.type.value === "resultado" ? "Indicador de resultado" : "Indicador de proceso");
+    if (F.freq.value) meas.push("medición " + F.freq.value.toLowerCase());
+    if (F.src.value.trim()) meas.push("evidencia: " + F.src.value.trim());
+    $("pvMeas").textContent = meas.join(" · ");
+    $("pvMeas").className = "";
+
+    var valid = base !== null && goal !== null && base !== goal;
+    $("gBase").textContent = base !== null ? "Partida: " + base + (unit ? " " + unit : "") : "Punto de partida";
+    $("gGoal").textContent = goal !== null ? "Meta: " + goal + (unit ? " " + unit : "") : "Meta";
+    var pct = null;
+    if (valid && now !== null) pct = (now - base) / (goal - base) * 100;
+    var fill = $("gFill"), pctEl = $("gPct"), st = $("gStatus");
+    if (pct === null) {
+      fill.style.width = "0%"; pctEl.textContent = "--";
+      st.className = "status-pill lvl-mod";
+      st.textContent = valid ? "Captura el valor actual" : (base !== null && goal !== null ? "La meta debe ser distinta del punto de partida" : "Sin datos");
+    } else {
+      fill.style.width = Math.max(0, Math.min(100, pct)) + "%";
+      pctEl.textContent = Math.round(pct) + "% de avance";
+      var s = status(pct);
+      st.className = "status-pill " + s.k; st.textContent = s.t + (goal < base ? " (meta de reducir)" : " (meta de aumentar)");
+      if (!syncing) { $("inSlide").value = Math.max(0, Math.min(120, Math.round(pct))); }
+      $("slideVal").textContent = $("inSlide").value;
+    }
+
+    // plan de acción
+    var A = acts(), rows = A.filter(function (x) { return x.a || x.r || x.e || x.d; });
+    $("pvActs").innerHTML = rows.length
+      ? rows.map(function (x, i) {
+          var meta = [x.r ? "Responsable: " + x.r : "", x.d ? "Fecha: " + fmtDate(x.d) : ""].filter(Boolean).join(" · ");
+          return '<div class="pv-act"><strong>' + esc(x.a || "Acción sin describir") + '</strong>' +
+            (meta ? '<span>' + esc(meta) + '</span>' : '') +
+            (x.e ? '<span>Evidencia: ' + esc(x.e) + '</span>' : '') + '</div>';
+        }).join("")
+      : '<p class="lab-note" style="margin:0">Aún no hay acciones capturadas.</p>';
+
+    // sugerencias
+    var complete = A.filter(function (x) { return x.a && x.r && x.e; }).length;
+    var checks = [
+      { t: "El indicador tiene un nombre claro", ok: F.name.value.trim().length >= 8 },
+      { t: "Se define la unidad de medida y cómo se calcula", ok: unit.length >= 1 && F.formula.value.trim().length >= 10 },
+      { t: "Hay punto de partida y meta numéricos y distintos", ok: valid },
+      { t: "Se indica la frecuencia de medición y la fuente de evidencia", ok: F.freq.value !== "" && F.src.value.trim().length >= 10 },
+      { t: "El plan tiene al menos tres acciones con responsable y evidencia", ok: complete >= 3 }
+    ];
+    var ok = 0;
+    $("inChecks").innerHTML = checks.map(function (c) {
+      if (c.ok) ok++;
+      return '<li class="' + (c.ok ? "ok" : "") + '"><span class="check-dot">' + (c.ok ? "&#10003;" : "") + '</span><span>' + c.t + '</span></li>';
+    }).join("");
+    $("inMeter").style.width = (ok / checks.length * 100) + "%";
+    $("inMeterLabel").textContent = ok + " de " + checks.length + " sugerencias cumplidas";
+  }
+
+  function plain() {
+    function g(x) { return x || "(pendiente)"; }
+    var base = F.base.value, goal = F.goal.value, now = F.now.value, u = F.unit.value.trim();
+    var t = "FICHA DE INDICADOR\n" +
+      "Aspecto prioritario: " + g(F.asp.value.trim()) + "\n" +
+      "Indicador: " + g(F.name.value.trim()) + " (" + (F.type.value === "resultado" ? "de resultado" : "de proceso") + ")\n" +
+      "Unidad de medida: " + g(u) + "\n" +
+      "Cómo se calcula: " + g(F.formula.value.trim()) + "\n" +
+      "Punto de partida (estimado): " + g(base) + " | Meta: " + g(goal) + " | Valor actual: " + g(now) + "\n" +
+      "Frecuencia de medición: " + g(F.freq.value) + "\n" +
+      "Fuente de evidencia: " + g(F.src.value.trim()) + "\n\nPLAN DE ACCIÓN\n";
+    acts().forEach(function (x, i) {
+      t += (i + 1) + ". " + g(x.a) + " | Responsable: " + g(x.r) + " | Fecha: " + g(fmtDate(x.d)) + " | Evidencia: " + g(x.e) + "\n";
+    });
+    return t;
+  }
+
+  Object.keys(F).forEach(function (k) { F[k].addEventListener("input", render); F[k].addEventListener("change", render); });
+  for (var j = 1; j <= NACT; j++) {
+    ["aA", "aR", "aD", "aE"].forEach(function (p) { $(p + j).addEventListener("input", render); $(p + j).addEventListener("change", render); });
+  }
+
+  $("inSlide").addEventListener("input", function () {
+    var base = num(F.base), goal = num(F.goal);
+    var v = parseInt($("inSlide").value, 10);
+    $("slideVal").textContent = v;
+    if (base === null || goal === null || base === goal) { render(); return; }
+    var val = base + v / 100 * (goal - base);
+    F.now.value = String(Math.round(val * 100) / 100);
+    syncing = true; render(); syncing = false;
+  });
+
+  function loadEx(key, jump) {
+    var E = EXS[key]; if (!E) return;
+    ["asp", "name", "type", "unit", "formula", "base", "goal", "now", "freq", "src"].forEach(function (k) { F[k].value = E[k]; });
+    E.acts.forEach(function (a, i) { $("aA" + (i + 1)).value = a[0]; $("aR" + (i + 1)).value = a[1]; $("aD" + (i + 1)).value = a[2]; $("aE" + (i + 1)).value = a[3]; });
+    render();
+    if (jump) { try { $("simulador").scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) { $("simulador").scrollIntoView(); } }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ex]"), function (btn) {
+    btn.addEventListener("click", function () { loadEx(btn.getAttribute("data-ex"), !btn.closest(".lab")); });
+  });
+  $("inClear").addEventListener("click", function () {
+    Object.keys(F).forEach(function (k) { F[k].value = (k === "type") ? "resultado" : ""; });
+    for (var n = 1; n <= NACT; n++) { ["aA", "aR", "aD", "aE"].forEach(function (p) { $(p + n).value = ""; }); }
+    $("inSlide").value = 0; render();
+  });
+  $("inCopy").addEventListener("click", function () {
+    var text = plain(), msg = $("inMsg");
+    function ok() { msg.textContent = "Copiado"; setTimeout(function () { msg.textContent = ""; }, 2000); }
+    function fb() {
+      try {
+        var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand("copy"); document.body.removeChild(ta); ok();
+      } catch (e) { msg.textContent = "Selecciona el texto de la vista previa y cópialo manualmente"; }
+    }
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fb); else fb(); } catch (e) { fb(); }
+  });
+  render();
+})();
+(function () {
+  var boxes = document.querySelectorAll("#todoList input[type=checkbox]");
+  var st = document.getElementById("todoStatus");
+  function upd() {
+    var n = 0; Array.prototype.forEach.call(boxes, function (b) { if (b.checked) n++; });
+    st.textContent = n === boxes.length ? "Todo listo: ya pueden entregar" : n + " de " + boxes.length + " elementos listos";
+    st.className = "todo-status" + (n === boxes.length ? " done" : "");
+  }
+  Array.prototype.forEach.call(boxes, function (b) { b.addEventListener("change", upd); });
+  upd();
+})();
+</script>
+
+</body>
+</html>
